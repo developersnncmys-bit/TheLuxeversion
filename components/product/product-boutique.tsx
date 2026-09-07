@@ -22,6 +22,7 @@ export function ProductBoutique() {
             fallbackSeed="product-boutique"
             fill
             sizes="100vw"
+            quality={55}
             className="object-cover grayscale"
           />
         </motion.div>

@@ -104,6 +104,7 @@ export function ProductHero({ product, ref_ }: Props) {
                       fill
                       priority={i === 0}
                       sizes="58vw"
+                      quality={i === 0 ? 78 : 70}
                       className="object-cover"
                     />
                   )}
@@ -168,6 +169,7 @@ export function ProductHero({ product, ref_ }: Props) {
                   fill
                   sizes="100vw"
                   loading={i === 0 ? "eager" : "lazy"}
+                  quality={i === 0 ? 78 : 70}
                   className="object-cover"
                 />
               </div>

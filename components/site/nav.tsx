@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconSearch, IconAccount, IconHeart, IconBag } from "@/components/ui/icons";
 import { useStore } from "@/components/store/store-provider";
+import { HighContrastToggle } from "@/components/site/high-contrast-toggle";
 
 const PRIMARY_LINKS: Array<{ href: string; label: string; tag?: string }> = [
   { href: "/", label: "Home" },
@@ -284,10 +285,14 @@ export function Nav() {
             <nav
               className={clsx(
                 "relative z-[60] flex items-center gap-4 transition-colors duration-500 ease-silk md:gap-5",
-                isProductPage ? "text-ink/85" : "text-chalk/90 group-hover/nav:text-ink"
+                // Solid chalk/ink (no /opacity) so high-contrast mode's
+                // opacity-lift rule doesn't force chalk with !important and
+                // clobber the group-hover:text-ink flip when the bar inverts.
+                isProductPage ? "text-ink" : "text-chalk group-hover/nav:text-ink"
               )}
               aria-label="Utilities"
             >
+              <HighContrastToggle />
               <button
                 type="button"
                 onClick={() => openDrawer("search")}

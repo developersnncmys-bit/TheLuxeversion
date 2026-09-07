@@ -4,6 +4,24 @@ export type ProductDetail = {
   image: string;
 };
 
+// The "Inspiration" editorial block — a full-bleed in-situ shot followed by
+// a numbered three-column rationale grid: the reasons the buyer would want
+// to live with this piece. `image` falls back to lifestyleImage /
+// product.image; `body` is an optional intro paragraph above the grid.
+export type ProductInspirationReason = {
+  label: string;
+  body: string;
+};
+export type ProductInspiration = {
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  reasons?: ProductInspirationReason[];
+  image?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+};
+
 export type Product = {
   handle: string;
   name: string;
@@ -26,6 +44,7 @@ export type Product = {
   details?: ProductDetail[];
   pullQuote?: string;
   lifestyleImage?: string;
+  inspiration?: ProductInspiration;
 };
 
 // URL slug for a product's category page. Kept in sync with the CATEGORIES
@@ -98,7 +117,27 @@ export const PRODUCTS: Product[] = [
     ],
     pullQuote:
       "One fixture that holds the whole room together — hung once, lived with for decades.",
-    lifestyleImage: "/images/lighting/light4.png"
+    lifestyleImage: "/images/lighting/light4.png",
+    inspiration: {
+      title: "The piece the room is built around",
+      reasons: [
+        {
+          label: "Craftsmanship",
+          body:
+            "Each glass leaf is shaped by a single glassblower in a small studio outside Firozabad. No two Verre chandeliers are identical."
+        },
+        {
+          label: "Made to your ceiling",
+          body:
+            "Four to six weeks per piece. Drop, wiring and rose fitted to the exact height your room asks for."
+        },
+        {
+          label: "Living surface",
+          body:
+            "The brass is unlacquered — it warms and darkens with every year in the house. Fixtures at this scale are typically inherited, not bought."
+        }
+      ]
+    }
   },
   {
     handle: "table-lamp-alba",
@@ -133,7 +172,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "The lamp you leave on until the last of the guests have gone.",
-    lifestyleImage: "/images/lighting/light5.png"
+    lifestyleImage: "/images/lighting/light5.png",
+    inspiration: {
+      title: "The lamp you stop replacing",
+      reasons: [
+        {
+          label: "Solid brass",
+          body:
+            "Turned from solid stock — not plated, not lacquered. Nothing thin to chip; the finish gets better with age."
+        },
+        {
+          label: "Shade to order",
+          body:
+            "Each linen shade is cut, sewn and trimmed by hand. Small variations are inherent — no two are identical."
+        },
+        {
+          label: "Generational",
+          body:
+            "Buy this once at forty; hand it down at seventy. Replaces the whole cycle of disposable side-table lamps."
+        }
+      ]
+    }
   },
   {
     handle: "sculpture-ondu",
@@ -168,7 +227,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "One line, held. The room finds it first, and returns to it.",
-    lifestyleImage: "/images/sculptures/scu4.png"
+    lifestyleImage: "/images/sculptures/scu4.png",
+    inspiration: {
+      title: "Forty hours in one piece of walnut",
+      reasons: [
+        {
+          label: "Single billet",
+          body:
+            "Carved from one solid piece of walnut. No joins, no laminate, no shortcuts."
+        },
+        {
+          label: "One pair of hands",
+          body:
+            "Forty hours of hand-carving per sculpture — signed and dated at the base by the carver."
+        },
+        {
+          label: "Improves with age",
+          body:
+            "Dark, hand-rubbed oil that deepens with every year in the room. The silhouette can be copied. The hand behind it cannot."
+        }
+      ]
+    }
   },
   {
     handle: "pendant-lume",
@@ -203,7 +282,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Jewellery, hung.",
-    lifestyleImage: "/images/lighting/light6.png"
+    lifestyleImage: "/images/lighting/light6.png",
+    inspiration: {
+      title: "The small piece with real provenance",
+      reasons: [
+        {
+          label: "Same maker",
+          body:
+            "Spun and finished in the same brass workshop that shapes the Verre chandelier — same hands, same brass."
+        },
+        {
+          label: "Cut to your drop",
+          body:
+            "Drop height set at purchase. No standard length; every Lume is fitted to a specific ceiling."
+        },
+        {
+          label: "Ages upward",
+          body:
+            "Unlacquered brass warms into the walls over years. The finish improves rather than fades."
+        }
+      ]
+    }
   },
   {
     handle: "objet-sillon",
@@ -238,7 +337,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "A figure at rest — the room quiets around it.",
-    lifestyleImage: "/images/sculptures/scu5.png"
+    lifestyleImage: "/images/sculptures/scu5.png",
+    inspiration: {
+      title: "One year from clay maquette to finished bronze",
+      reasons: [
+        {
+          label: "Modelled first",
+          body:
+            "Sculpted in clay before it's ever cast in metal. The bronze is the final translation of a much longer process."
+        },
+        {
+          label: "Small foundry",
+          body:
+            "Sand-cast and hand-patinated at a small foundry outside Jaipur. Signed and numbered on the base."
+        },
+        {
+          label: "Appreciates with age",
+          body:
+            "Bronze at this scale doesn't lose value — it acquires it. The patina deepens through decades of handling."
+        }
+      ]
+    }
   },
   {
     handle: "mirror-solis",
@@ -273,7 +392,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "A mirror that lengthens a room without shouting for the credit.",
-    lifestyleImage: "/images/decorative-objects/deco4.png"
+    lifestyleImage: "/images/decorative-objects/deco4.png",
+    inspiration: {
+      title: "The mirror that sets the pitch of the house",
+      reasons: [
+        {
+          label: "Poured glass",
+          body:
+            "Not float glass. Poured to a nineteenth-century specification — soft, slightly warm, with a reflection the machine cannot fake."
+        },
+        {
+          label: "Hand-welded frame",
+          body:
+            "Unlacquered brass, welded and finished by hand. Warms into the walls over decades rather than chipping against them."
+        },
+        {
+          label: "First impression",
+          body:
+            "First piece seen coming into the house; often the piece guests remember most. Sets the tone at the door."
+        }
+      ]
+    }
   },
   {
     handle: "objet-vestige",
@@ -282,7 +421,7 @@ export const PRODUCTS: Product[] = [
     description:
       "A vessel in hand-thrown ceramic with a matte oxide glaze. Reads as sculpture on a shelf, quiet on a low table.",
     price: { inr: 74000, usd: 910 },
-    image: "/images/sculptures/scu4.png",
+    image: "/images/vases/vase1.png",
     aspect: "portrait",
     material: "Hand-thrown ceramic, matte iron-oxide glaze",
     body:
@@ -308,7 +447,27 @@ export const PRODUCTS: Product[] = [
     ],
     pullQuote:
       "Sculpture that also holds — the honest, ancient trick of the vessel.",
-    lifestyleImage: "/images/vases/vase4.png"
+    lifestyleImage: "/images/vases/vase4.png",
+    inspiration: {
+      title: "Part of a series of forty. Signed at the foot.",
+      reasons: [
+        {
+          label: "Small batch",
+          body:
+            "Wheel-thrown in a small Auroville studio. Fired in batches of no more than forty pieces at a time."
+        },
+        {
+          label: "Two objects in one",
+          body:
+            "Reads as sculpture on the shelf. Holds a dry branch when you want a vessel. Both roles included."
+        },
+        {
+          label: "Signed by the maker",
+          body:
+            "Each piece signed and dated where the foot meets the wheel. Studio provenance, not stock ceramic."
+        }
+      ]
+    }
   },
   {
     handle: "mirror-halo",
@@ -342,7 +501,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "A drawn line, held on the wall.",
-    lifestyleImage: "/images/decorative-objects/deco5.png"
+    lifestyleImage: "/images/decorative-objects/deco5.png",
+    inspiration: {
+      title: "One drawn line. No ornament.",
+      reasons: [
+        {
+          label: "Restrained design",
+          body:
+            "No filigree, no ornament, no competition. The mirror to buy when every other piece in the room is already doing its work."
+        },
+        {
+          label: "Spun by hand",
+          body:
+            "Rim spun from a single strip of unlacquered brass. The whole piece is essentially one drawn line."
+        },
+        {
+          label: "Deepens with time",
+          body:
+            "The brass warms into the plaster over years. The finish is the material — nothing to peel or fade."
+        }
+      ]
+    }
   },
   {
     handle: "mirror-lune",
@@ -377,7 +556,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "The mirror you dress in front of, and no other.",
-    lifestyleImage: "/images/decorative-objects/deco6.png"
+    lifestyleImage: "/images/decorative-objects/deco6.png",
+    inspiration: {
+      title: "Joinery built to last a century",
+      reasons: [
+        {
+          label: "Traditional joinery",
+          body:
+            "Mortise-and-tenon frame — the technique that keeps three-hundred-year-old doors on their hinges. No glue, no fasteners."
+        },
+        {
+          label: "Single-source oak",
+          body:
+            "Wood from a single European mill; blackened, hand-oiled to a slow satin. Cast brass pivots."
+        },
+        {
+          label: "Freestanding",
+          body:
+            "Not fixed to a wall. The mirror travels with you between rooms, houses, decades."
+        }
+      ]
+    }
   },
   {
     handle: "sculpture-monolith",
@@ -412,7 +611,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "A still figure, standing. The room composes itself around it.",
-    lifestyleImage: "/images/sculptures/scu6.png"
+    lifestyleImage: "/images/sculptures/scu6.png",
+    inspiration: {
+      title: "Gallery-grade stone, without gallery pricing",
+      reasons: [
+        {
+          label: "Single block",
+          body:
+            "Carved from one block of Italian travertine. No composite, no filler, no laminate."
+        },
+        {
+          label: "Tuscan mason",
+          body:
+            "Six to eight weeks of hand work by a stonemason in Tuscany. Honed to a matte surface that never glares."
+        },
+        {
+          label: "Permanent",
+          body:
+            "Twenty-eight kilos of solid stone. Doesn't move, doesn't date, doesn't lose value."
+        }
+      ]
+    }
   },
   {
     handle: "vase-ondule",
@@ -446,7 +665,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Weight and quiet — the shelf finally at rest.",
-    lifestyleImage: "/images/vases/vase5.png"
+    lifestyleImage: "/images/vases/vase5.png",
+    inspiration: {
+      title: "Every ripple pulled by one pair of hands",
+      reasons: [
+        {
+          label: "No mould",
+          body:
+            "Thrown on the wheel and ribbed entirely by hand. The rhythm shifts piece by piece — no two vessels move the same way."
+        },
+        {
+          label: "Unglazed",
+          body:
+            "Left bare so the stoneware reads warm and direct. The clay itself is the finish."
+        },
+        {
+          label: "A specific afternoon",
+          body:
+            "What you're buying isn't a shape. It's a particular afternoon in a particular studio, held in the surface."
+        }
+      ]
+    }
   },
   {
     handle: "vase-obra",
@@ -481,7 +720,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "One stem, held. The rest of the room composes itself.",
-    lifestyleImage: "/images/vases/vase6.png"
+    lifestyleImage: "/images/vases/vase6.png",
+    inspiration: {
+      title: "The kiln decides how each one looks",
+      reasons: [
+        {
+          label: "Unpredictable glaze",
+          body:
+            "Bronze glaze at cone 10 is unstable by nature. The potter loads the piece; the kiln decides the finish."
+        },
+        {
+          label: "No duplicates",
+          body:
+            "No two vessels reflect light the same way. There is no way to order a matching pair."
+        },
+        {
+          label: "Two objects in one",
+          body:
+            "Holds a single tall stem beautifully. Empty, it is a sculpture. Neither role requires the other."
+        }
+      ]
+    }
   },
   {
     handle: "figurine-fauna",
@@ -515,7 +774,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "The shelf's quiet occupant — patient, undemanding, present.",
-    lifestyleImage: "/images/figurines/figurine4.png"
+    lifestyleImage: "/images/figurines/figurine4.png",
+    inspiration: {
+      title: "Modelled from life. Numbered on the base.",
+      reasons: [
+        {
+          label: "From life",
+          body:
+            "Sculpted from live observation, not from photographs or stock reference. The animal comes first, the object second."
+        },
+        {
+          label: "Small foundry",
+          body:
+            "Sand-cast in solid bronze at a small foundry. Patinated and signed by hand."
+        },
+        {
+          label: "Collector piece",
+          body:
+            "Fourteen centimetres with the provenance of a piece ten times its size. Collectible art at accessible cost."
+        }
+      ]
+    }
   },
   {
     handle: "figurine-anima",
@@ -550,7 +829,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Stone that holds light — a small, interior sun.",
-    lifestyleImage: "/images/figurines/figurine5.png"
+    lifestyleImage: "/images/figurines/figurine5.png",
+    inspiration: {
+      title: "Stone that catches light from within",
+      reasons: [
+        {
+          label: "Rare material",
+          body:
+            "Rajasthani alabaster from a single quarry — dense enough to hold a shape, translucent enough to glow near a lamp."
+        },
+        {
+          label: "One hand, one block",
+          body:
+            "Cut, carved and polished by a single hand from a single block of stone. Never machine-finished."
+        },
+        {
+          label: "Interior light",
+          body:
+            "Placed near any lamp, the stone holds the warmth. Changes how the room reads after dark — no electricity required."
+        }
+      ]
+    }
   },
   {
     handle: "figurine-perle",
@@ -585,7 +884,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "The small, exact gift — a fruit that never turns.",
-    lifestyleImage: "/images/figurines/figurine6.png"
+    lifestyleImage: "/images/figurines/figurine6.png",
+    inspiration: {
+      title: "A small object, considered like a large one",
+      reasons: [
+        {
+          label: "Two materials",
+          body:
+            "Slip-cast porcelain paired with a hand-turned walnut plinth — two makers, two crafts, one small object."
+        },
+        {
+          label: "Fitted piece by piece",
+          body:
+            "Each plinth turned separately and fitted to its pear. No two pears sit on their base exactly the same way."
+        },
+        {
+          label: "Small enough to gift",
+          body:
+            "Small enough to give as a gift; considered enough to keep for decades. Both readings work."
+        }
+      ]
+    }
   },
   {
     handle: "charger-terra",
@@ -619,7 +938,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Under the plate at eight; low sculpture by ten.",
-    lifestyleImage: "/images/table-top/table4.png"
+    lifestyleImage: "/images/table-top/table4.png",
+    inspiration: {
+      title: "China for people who don't own china",
+      reasons: [
+        {
+          label: "Made to be used",
+          body:
+            "Dishwasher-safe stoneware. Meant to sit on the table, not in a cabinet behind glass."
+        },
+        {
+          label: "Dual life",
+          body:
+            "Under the plate at supper. On the sideboard as low sculpture the rest of the day. Two roles, one piece."
+        },
+        {
+          label: "Signed studio piece",
+          body:
+            "Wheel-thrown and signed at the foot. The provenance of a studio ceramic, at the price of dinnerware."
+        }
+      ]
+    }
   },
   {
     handle: "carafe-verre",
@@ -654,7 +993,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Even water, held with intent.",
-    lifestyleImage: "/images/table-top/table5.png"
+    lifestyleImage: "/images/table-top/table5.png",
+    inspiration: {
+      title: "The everyday piece, from the same hands as the chandelier",
+      reasons: [
+        {
+          label: "Same makers",
+          body:
+            "Blown by the same glassblowers who shape the Verre chandelier. Same studio, same lungs, same rods."
+        },
+        {
+          label: "No duplicates",
+          body:
+            "Small bubbles and slight asymmetries are inherent to the process. No two carafes are identical."
+        },
+        {
+          label: "A daily ritual",
+          body:
+            "Turns pouring water — an act you'll repeat thousands of times — into something worth doing well."
+        }
+      ]
+    }
   },
   {
     handle: "runner-bruma",
@@ -689,7 +1048,27 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Softens the wood, holds the plates, wears in like a favourite shirt.",
-    lifestyleImage: "/images/table-top/table6.png"
+    lifestyleImage: "/images/table-top/table6.png",
+    inspiration: {
+      title: "Better after fifty washes than the day it arrived",
+      reasons: [
+        {
+          label: "Undyed flax",
+          body:
+            "One hundred percent European flax. No dye to fade, no synthetics blended in for stretch."
+        },
+        {
+          label: "Single mill",
+          body:
+            "Woven at one small Belgian mill and hand-hemmed at both ends. Traceable end to end."
+        },
+        {
+          label: "Ages upward",
+          body:
+            "Most textiles cost more when new. This one is at its best after fifty washes. Rare in linen; rarer elsewhere."
+        }
+      ]
+    }
   },
   {
     handle: "sconce-fumo",

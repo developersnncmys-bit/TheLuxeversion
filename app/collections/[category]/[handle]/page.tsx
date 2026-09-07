@@ -11,6 +11,7 @@ import { ProductStickyBar } from "@/components/product/product-sticky-bar";
 import { ProductInfo } from "@/components/product/product-info";
 import { ProductQuote } from "@/components/product/product-quote";
 import { ProductDetails } from "@/components/product/product-details";
+import { ProductInspiration } from "@/components/product/product-inspiration";
 import { ProductDiscoverAlso } from "@/components/product/product-discover-also";
 import { ProductCollection } from "@/components/product/product-collection";
 import { ProductServices } from "@/components/product/product-services";
@@ -49,8 +50,9 @@ export default function ProductDetailPage({ params }: { params: Params }) {
       <ProductStickyBar product={product} />
       <ProductHero product={product} ref_={ref_} />
       <ProductInfo product={product} />
-      <ProductQuote product={product} />
       <ProductDetails product={product} />
+      <ProductInspiration product={product} />
+      <ProductQuote product={product} />
       <ProductDiscoverAlso products={related} />
       <ProductCollection product={product} />
       <ProductServices />

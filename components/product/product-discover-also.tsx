@@ -54,6 +54,7 @@ function RelatedCard({ product, index }: { product: Product; index: number }) {
             fallbackSeed={`${product.handle}-related`}
             fill
             sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+            quality={68}
             className="object-cover transition-transform duration-[1600ms] ease-silk group-hover:scale-[1.04]"
           />
         </div>

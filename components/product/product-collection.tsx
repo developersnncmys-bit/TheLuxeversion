@@ -32,6 +32,7 @@ export function ProductCollection({ product }: { product: Product }) {
           fallbackSeed={`${product.handle}-collection`}
           fill
           sizes="100vw"
+          quality={62}
           className="object-cover"
         />
 

@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import clsx from "clsx";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { IconGlobe, IconChevron } from "@/components/ui/icons";
 
@@ -56,27 +55,7 @@ const SOCIALS = [
 ];
 
 export function Footer() {
-  const [highContrast, setHighContrast] = useState(false);
   const stripRef = useRef<HTMLElement>(null);
-
-  // Hydrate from localStorage on mount
-  useEffect(() => {
-    try {
-      setHighContrast(localStorage.getItem("highContrast") === "true");
-    } catch {}
-  }, []);
-
-  // Reflect state on <html> so global CSS overrides can key off it, and persist
-  useEffect(() => {
-    if (highContrast) {
-      document.documentElement.dataset.highContrast = "true";
-    } else {
-      delete document.documentElement.dataset.highContrast;
-    }
-    try {
-      localStorage.setItem("highContrast", String(highContrast));
-    } catch {}
-  }, [highContrast]);
 
   /* Parallax the white client-services strip against page scroll.
      Faster-than-scroll upward translate (foreground plane) — strip rises
@@ -223,38 +202,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Accessibility + region + legal */}
+        {/* Region + legal */}
         <div className="mx-auto max-w-editorial px-6 pb-14 md:px-10">
-          <div className="mt-12 flex items-center justify-between border-t border-chalk/15 pt-8">
-            <label className="flex cursor-pointer items-center gap-3 text-[12px] text-chalk/75">
-              <span
-                role="switch"
-                aria-checked={highContrast}
-                tabIndex={0}
-                onClick={() => setHighContrast((v) => !v)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setHighContrast((v) => !v);
-                  }
-                }}
-                className={clsx(
-                  "relative h-5 w-9 rounded-full border border-chalk/40 transition-colors",
-                  highContrast ? "bg-chalk" : "bg-transparent"
-                )}
-              >
-                <span
-                  className={clsx(
-                    "absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full transition-all",
-                    highContrast ? "left-[calc(100%-14px)] bg-ink" : "left-1 bg-chalk"
-                  )}
-                />
-              </span>
-              Enable high contrast
-            </label>
-          </div>
-
-          <div className="mt-6 flex flex-col-reverse gap-4 md:mt-8 md:flex-row md:items-center md:justify-between">
+          <div className="mt-12 flex flex-col-reverse gap-4 border-t border-chalk/15 pt-8 md:mt-8 md:flex-row md:items-center md:justify-between">
             <p className="text-[11px] text-chalk/50">
               The Luxe Version Private Limited, 5th Floor, Unit N° 505, UB City,
               24 Vittal Mallya Road, Bengaluru 560001, India.

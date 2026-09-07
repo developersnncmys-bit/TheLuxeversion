@@ -4,6 +4,7 @@ import { SmoothScroll } from "@/components/site/smooth-scroll";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/components/site/footer";
 import { BackToTop } from "@/components/site/back-to-top";
+import { AmbientAudio } from "@/components/site/ambient-audio";
 import { ScrollTopOnRoute } from "@/components/site/scroll-top-on-route";
 import { Preloader } from "@/components/ui/preloader";
 import { StoreProvider } from "@/components/store/store-provider";
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main>{children}</main>
             <Footer />
             <BackToTop />
+            <AmbientAudio />
           </SmoothScroll>
           <StoreMount />
         </StoreProvider>
