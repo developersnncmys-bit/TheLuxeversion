@@ -173,7 +173,7 @@ const CATEGORIES: Record<string, CategoryConfig> = {
     kicker: "The Collection · Objects",
     description:
       "Mirrors, trays and the quiet objects that finish the surfaces of a room. Framed in brass, blackened oak, or unlacquered edges that warm with time.",
-    image: "/images/banners/decorative-objects.png",
+    image: "/images/banners/decorative-object.png",
     imageAlt: "An arched mirror",
     savoirFaire: {
       kicker: "The Savoir-faire",

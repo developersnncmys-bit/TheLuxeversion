@@ -2,6 +2,7 @@
 
 import { useEffect, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 import type { Product } from "@/lib/content";
 
 // Fixed keyword vocabulary — matched substring-wise against a product's
@@ -100,20 +101,26 @@ export function FilterDrawer({
   onClear: () => void;
   resultCount: number;
 }) {
-  // Lock body scroll + close on Escape while drawer is open.
+  const lenis = useLenis();
+
+  // Lock page scroll + close on Escape while drawer is open. The site runs
+  // Lenis (smooth-scroll library) which manages scroll itself, so body
+  // overflow alone won't stop the page — we also have to stop Lenis.
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
+      lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
-  }, [open, onClose]);
+  }, [open, onClose, lenis]);
 
   return (
     <AnimatePresence>
@@ -154,7 +161,10 @@ export function FilterDrawer({
               </button>
             </div>
 
-            <div className="flex-1 space-y-12 overflow-y-auto px-8 py-8">
+            <div
+              data-lenis-prevent
+              className="flex-1 space-y-12 overflow-y-auto overscroll-contain px-8 py-8"
+            >
               {materials.length > 0 && (
                 <FilterSection title="Material">
                   {materials.map((m) => (

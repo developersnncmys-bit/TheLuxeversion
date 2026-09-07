@@ -34,11 +34,11 @@ export function ProductStickyBar({ product }: { product: Product }) {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ y: -40, opacity: 0 }}
+          initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -40, opacity: 0 }}
+          exit={{ y: 40, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 top-0 z-40 border-b border-chalk/10 bg-ink/95 backdrop-blur-md"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-chalk/10 bg-ink/95 backdrop-blur-md"
         >
           <div className="mx-auto flex max-w-editorial items-center gap-4 px-6 py-4 md:gap-6 md:px-14">
             {/* Thumbnail */}

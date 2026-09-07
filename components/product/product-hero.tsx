@@ -22,6 +22,11 @@ type Props = {
 export function ProductHero({ product, ref_ }: Props) {
   const gallery = product.gallery?.length ? product.gallery : [product.image];
   const [activeIndex, setActiveIndex] = useState(0);
+  // Only mount images that have been (or are about to be) shown. Starts with
+  // {0} and expands as the user scrolls into each gallery spacer. Prevents
+  // the browser from downloading every gallery shot on first paint, which is
+  // the main cause of slow hero-image loads.
+  const [mounted, setMounted] = useState<Set<number>>(() => new Set([0]));
   const spacerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const { addToCart, openDrawer, toggleWishlist, isInWishlist } = useStore();
   const saved = isInWishlist(product.handle);
@@ -31,7 +36,8 @@ export function ProductHero({ product, ref_ }: Props) {
   };
 
   // Track which desktop spacer is centred in the viewport → drives which
-  // image is shown in the sticky display.
+  // image is shown in the sticky display. Also pre-mounts the neighbour
+  // (idx-1 & idx+1) so the crossfade never has to wait on a fresh download.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const observer = new IntersectionObserver(
@@ -39,7 +45,19 @@ export function ProductHero({ product, ref_ }: Props) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const idx = Number(entry.target.getAttribute("data-idx"));
-            if (!Number.isNaN(idx)) setActiveIndex(idx);
+            if (!Number.isNaN(idx)) {
+              setActiveIndex(idx);
+              setMounted((prev) => {
+                if (prev.has(idx) && prev.has(idx + 1) && prev.has(idx - 1)) {
+                  return prev;
+                }
+                const next = new Set(prev);
+                next.add(idx);
+                if (idx + 1 < gallery.length) next.add(idx + 1);
+                if (idx - 1 >= 0) next.add(idx - 1);
+                return next;
+              });
+            }
           }
         });
       },
@@ -78,15 +96,17 @@ export function ProductHero({ product, ref_ }: Props) {
                     i === activeIndex ? "z-10 opacity-100" : "z-0 opacity-0"
                   )}
                 >
-                  <SafeImage
-                    src={src}
-                    alt={`${product.name} — view ${i + 1}`}
-                    fallbackSeed={`${product.handle}-${i}`}
-                    fill
-                    priority={i === 0}
-                    sizes="58vw"
-                    className="object-cover"
-                  />
+                  {mounted.has(i) && (
+                    <SafeImage
+                      src={src}
+                      alt={`${product.name} — view ${i + 1}`}
+                      fallbackSeed={`${product.handle}-${i}`}
+                      fill
+                      priority={i === 0}
+                      sizes="58vw"
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               ))}
 
@@ -129,7 +149,12 @@ export function ProductHero({ product, ref_ }: Props) {
             ))}
           </div>
 
-          {/* Mobile: images stacked vertically */}
+          {/* Mobile: images stacked vertically. No `priority` here even on
+              the first image — desktop first already carries the preload; a
+              second one for the 100vw mobile variant would double-download
+              on desktop viewports. The mobile first image still loads fast
+              because it's the first in-viewport <img>, which browsers
+              natively prioritise. */}
           <div className="flex flex-col md:hidden">
             {gallery.map((src, i) => (
               <div
@@ -141,8 +166,8 @@ export function ProductHero({ product, ref_ }: Props) {
                   alt={`${product.name} — view ${i + 1}`}
                   fallbackSeed={`${product.handle}-${i}`}
                   fill
-                  priority={i === 0}
                   sizes="100vw"
+                  loading={i === 0 ? "eager" : "lazy"}
                   className="object-cover"
                 />
               </div>
