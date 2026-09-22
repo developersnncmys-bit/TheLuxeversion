@@ -82,9 +82,9 @@ export function ProductHero({ product, ref_ }: Props) {
       aria-labelledby="product-heading"
     >
       <div className="grid grid-cols-1 md:grid-cols-12">
-        {/* Left column — 7 cols. Desktop: sticky image display + invisible
+        {/* Left column — 6 cols. Desktop: sticky image display + invisible
             spacers for scroll length. Mobile: stacked images. */}
-        <div className="relative md:col-span-7">
+        <div className="relative md:col-span-6">
           {/* Desktop: sticky image display */}
           <div className="hidden md:block md:sticky md:top-36 md:h-[calc(100svh-9rem)]">
             <div className="relative h-full w-full overflow-hidden bg-onyx">
@@ -103,7 +103,7 @@ export function ProductHero({ product, ref_ }: Props) {
                       fallbackSeed={`${product.handle}-${i}`}
                       fill
                       priority={i === 0}
-                      sizes="58vw"
+                      sizes="50vw"
                       quality={i === 0 ? 78 : 70}
                       className="object-cover"
                     />
@@ -177,11 +177,11 @@ export function ProductHero({ product, ref_ }: Props) {
           </div>
         </div>
 
-        {/* Right column — sticky product panel. 5 cols. Since the left
+        {/* Right column — sticky product panel. 6 cols. Since the left
             column is (gallery.length × viewport) tall via spacers, the grid
             cells share that height and this sticky panel stays pinned for
             the entire gallery scroll. */}
-        <aside className="relative md:col-span-5">
+        <aside className="relative md:col-span-6">
           <div className="md:sticky md:top-36 md:flex md:h-[calc(100svh-9rem)] md:items-center">
             <div className="w-full px-6 py-16 md:px-14 md:py-12">
               <motion.div

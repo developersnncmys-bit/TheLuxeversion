@@ -18,8 +18,11 @@ type MediaTile =
   | { kind: "image"; src: string; alt: string; label: string; kicker: string };
 
 // Category order for the beats — matches the home Collection section so both
-// grids walk the house in the same rhythm. First product from each category
-// supplies the hero image + label; its lifestyleImage becomes the inset.
+// grids walk the house in the same rhythm.
+//   Hero  ← first product of the category (its main image + name)
+//   Inset ← SECOND product of the category (its lifestyleImage / image)
+// Using a different piece for the inset avoids showing the same product
+// twice in one beat, which read as duplication rather than "in the room".
 const CATEGORY_ORDER: Product["category"][] = [
   "Sculptures",
   "Vases"
@@ -28,22 +31,29 @@ const CATEGORY_ORDER: Product["category"][] = [
 type Beat = { hero: MediaTile; inset: MediaTile };
 
 const BEATS: Beat[] = CATEGORY_ORDER
-  .map((cat) => PRODUCTS.find((p) => p.category === cat))
-  .filter((p): p is Product => Boolean(p))
-  .map((product) => ({
+  .map((cat) => {
+    const catProducts = PRODUCTS.filter((p) => p.category === cat);
+    const heroProduct = catProducts[0];
+    if (!heroProduct) return null;
+    // Fall back to the hero product if the category only has one entry.
+    const insetProduct = catProducts[1] ?? heroProduct;
+    return { heroProduct, insetProduct };
+  })
+  .filter((b): b is { heroProduct: Product; insetProduct: Product } => b !== null)
+  .map(({ heroProduct, insetProduct }) => ({
     hero: {
       kind: "image" as const,
-      src: product.image,
-      alt: product.name,
-      kicker: product.category,
-      label: product.name
+      src: heroProduct.image,
+      alt: heroProduct.name,
+      kicker: heroProduct.category,
+      label: heroProduct.name
     },
     inset: {
       kind: "image" as const,
-      src: product.lifestyleImage ?? product.image,
-      alt: `${product.name} in situ`,
+      src: insetProduct.lifestyleImage ?? insetProduct.image,
+      alt: `${insetProduct.name} in situ`,
       kicker: "In Situ",
-      label: `In the Room · ${product.category}`
+      label: `In the Room · ${heroProduct.category}`
     }
   }));
 
