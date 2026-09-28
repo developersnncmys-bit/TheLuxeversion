@@ -23,8 +23,12 @@ export function ProductStickyBar({ product }: { product: Product }) {
 
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(!entry.isIntersecting),
-      // Trigger just past the very end of the hero.
-      { rootMargin: "-90% 0px 0px 0px", threshold: 0 }
+      // Trigger when the hero has fully scrolled out of view. The previous
+      // "-90% top" margin only worked when the hero was multi-viewport tall
+      // (old scroll-spacer design). With the current one-viewport hero,
+      // negative margins push the observer band past the hero, so it
+      // wrongly reports the hero as already gone at scroll=0.
+      { threshold: 0 }
     );
     observer.observe(hero);
     return () => observer.disconnect();

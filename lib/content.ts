@@ -471,6 +471,117 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
+    handle: "vase-rivage",
+    name: "Vase — Rivage",
+    category: "Vases",
+    description:
+      "A sculptural ceramic form where colour moves like an abstract landscape. Sweeps of mineral blue, ivory, charcoal and muted rust travel across its broad silhouette, giving the piece the presence of a painted canvas.",
+    price: { inr: 82000, usd: 1010 },
+    image: "/images/vases/vase2.png",
+    aspect: "portrait",
+    material: "Premium ceramic, hand-painted multitone finish",
+    body:
+      "RIVAGE transforms a vessel into an art object. Its generous proportions, tactile surface and expressive composition allow it to stand confidently on its own — commanding attention without excess.",
+    gallery: [
+      "/images/vases/vase2.png",
+      "/images/vases/vase3.png",
+      "/images/vases/vase4.png",
+      "/images/vases/vase5.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Premium ceramic. Dimensions: 41 × 11 × 35 cm (16.1 × 4.3 × 13.8 in). Weight: 3.413 kg / 7.52 lb.",
+        image: "/images/materials/ceramic.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "Hand-painted and hand-textured with a coarse, tactile finish and expressive multitone brushwork. Each piece bears its own composition — no two Rivages are alike.",
+        image: "/images/vases/vase6.png"
+      }
+    ],
+    pullQuote: "Colour moves across the surface like an abstract landscape.",
+    lifestyleImage: "/images/vases/vase6.png",
+    inspiration: {
+      title: "A vessel transformed into a canvas",
+      reasons: [
+        {
+          label: "Mediterranean coast",
+          body:
+            "Inspired by the Mediterranean coast of Spain — deep blue waters, sun-washed stone and earthy shores. The palette isn't decorative; it's referential."
+        },
+        {
+          label: "Hand-painted, hand-textured",
+          body:
+            "Every sweep of colour is applied by hand; the coarse surface texture is worked in during shaping. Each piece bears its own composition — no two Rivages are alike."
+        },
+        {
+          label: "Vessel as art object",
+          body:
+            "Generous proportions and expressive brushwork let RIVAGE stand alone. It reads as a ceramic form first, a vase second — a canvas on a shelf, not a container."
+        }
+      ]
+    }
+  },
+  {
+    handle: "vase-onde",
+    name: "Vase — Onde",
+    category: "Vases",
+    description:
+      "An open porcelain form with a fluid, irregular silhouette. Misty grey markings move across its ivory surface, while fine gold lines trace the rim and descend through the body.",
+    price: { inr: 72000, usd: 890 },
+    image: "/images/vases/vase3.png",
+    aspect: "portrait",
+    material: "Porcelain, grey marbling with gold detailing",
+    body:
+      "Onde means \"wave\" in French. The piece evokes France's Atlantic shoreline: water moving over pale stone, with a trace of gold in the last light. The glossy interior catches light within each curve.",
+    gallery: [
+      "/images/vases/vase3.png",
+      "/images/vases/vase2.png",
+      "/images/vases/vase4.png",
+      "/images/vases/vase5.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Porcelain with grey marbling, a smooth lacquered sheen and gold detailing. Dimensions: 52 × 29 × 26 cm (20.5 × 11.4 × 10.2 in). Weight: 3.841 kg / 8.47 lb.",
+        image: "/images/materials/ceramic.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "The grey marbling is worked into the porcelain by hand — every piece bears its own pattern of drift. Fine gold lines are applied last, tracing the rim and descending through the body.",
+        image: "/images/vases/vase6.png"
+      }
+    ],
+    pullQuote:
+      "Water moving over pale stone, with a trace of gold in the last light.",
+    lifestyleImage: "/images/vases/vase4.png",
+    inspiration: {
+      title: "A wave, held in porcelain",
+      reasons: [
+        {
+          label: "Different from every angle",
+          body:
+            "The shifting profile offers a distinct view from every side. From above, the opening reveals an entirely new composition — the piece keeps giving new readings."
+        },
+        {
+          label: "Complete when empty",
+          body:
+            "ONDE has presence even when left unfilled — silhouette, marbling and gold detailing do the work. A vessel that reads as sculpture first, container second."
+        },
+        {
+          label: "Atlantic reference",
+          body:
+            "Named for the French word for wave, the piece evokes France's Atlantic shoreline — water moving over pale stone, with a trace of gold in the last light."
+        }
+      ]
+    }
+  },
+  {
     handle: "mirror-halo",
     name: "Mirror — Halo",
     category: "Decorative Objects",
@@ -1333,6 +1444,62 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
+    handle: "sculpture-linconnu",
+    name: "Sculpture — L'Inconnu",
+    category: "Sculptures",
+    description:
+      "A study of human instinct — what is concealed, what is sought, what is ultimately revealed. A fluid gesture veils the gaze, poised between shadow and awakening.",
+    price: { inr: 168000, usd: 2060 },
+    image: "/images/sculptures/Linconnu/L1.png",
+    aspect: "portrait",
+    material: "Textured metal with layered detailing, black marble base",
+    body:
+      "L'INCONNU explores the space between the visible and the unknown. Its raw, fragmented surface is interrupted by a fluid gesture across the gaze — creating a sculptural presence that feels both human and abstract.",
+    gallery: [
+      "/images/sculptures/Linconnu/L1.png",
+      "/images/sculptures/Linconnu/L2.PNG",
+      "/images/sculptures/Linconnu/L3.PNG",
+      "/images/sculptures/Linconnu/L4.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Sculpted textured metal with layered metal detailing, mounted on a black marble base. Sculpture: 45 × 20 × 47 cm (17.7 × 8 × 18.5 in). Base: 32 × 16 × 3 cm (12.6 × 6.3 × 1.2 in). Weight: 13.8 kg / 30.4 lb.",
+        image: "/images/materials/metal.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "Monumental in expression, L'Inconnu commands through elegance, texture and restraint — an enigmatic objet d'art conceived as a focal point. The metallic surfaces are layered by hand; every piece bears its own pattern of light.",
+        image: "/images/sculptures/Linconnu/L5.PNG"
+      }
+    ],
+    pullQuote:
+      "As instinct yields to consciousness, light becomes revelation.",
+    lifestyleImage: "/images/sculptures/Linconnu/L6.PNG",
+    inspiration: {
+      title: "The space between the visible and the unknown",
+      reasons: [
+        {
+          label: "Human and abstract",
+          body:
+            "A raw, fragmented surface interrupted by a fluid gesture across the gaze. The piece reads as both figure and idea — recognisable, yet refusing to resolve."
+        },
+        {
+          label: "Layered by hand",
+          body:
+            "Sculpted textured metal with layered detailing worked into the surface by hand. Every piece bears its own pattern of light — no two L'Inconnu look exactly alike."
+        },
+        {
+          label: "Grounded on marble",
+          body:
+            "A black marble base — 32 × 16 × 3 cm — anchors nearly fourteen kilos of sculpted metal. Solidity beneath expression; the piece stays where you place it."
+        }
+      ]
+    }
+  },
+  {
     handle: "tray-perche",
     name: "Tray — Perche",
     category: "Decorative Objects",
@@ -1409,61 +1576,6 @@ export const PRODUCTS: Product[] = [
     material: "Hand-blown tinted glass",
     body:
       "A tall glass vase, hand-blown with a soft sand tint pulled through the wall. Reads sculptural in daylight; holds a single tall stem — a branch, a lily — beautifully."
-  },
-  {
-    handle: "vase-rivage",
-    name: "Vase — Rivage",
-    category: "Vases",
-    description:
-      "A sculptural ceramic form where colour moves like an abstract landscape. Sweeps of mineral blue, ivory, charcoal and muted rust travel across its broad silhouette, giving the piece the presence of a painted canvas.",
-    price: { inr: 82000, usd: 1010 },
-    image: "/images/vases/vase2.png",
-    aspect: "portrait",
-    material: "Premium ceramic, hand-painted multitone finish",
-    body:
-      "RIVAGE transforms a vessel into an art object. Its generous proportions, tactile surface and expressive composition allow it to stand confidently on its own — commanding attention without excess.",
-    gallery: [
-      "/images/vases/vase2.png",
-      "/images/vases/vase3.png",
-      "/images/vases/vase4.png",
-      "/images/vases/vase5.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body:
-          "Premium ceramic. Dimensions: 41 × 11 × 35 cm (16.1 × 4.3 × 13.8 in). Weight: 3.413 kg / 7.52 lb.",
-        image: "/images/materials/ceramic.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Hand-painted and hand-textured with a coarse, tactile finish and expressive multitone brushwork. Each piece bears its own composition — no two Rivages are alike.",
-        image: "/images/vases/vase6.png"
-      }
-    ],
-    pullQuote: "Colour moves across the surface like an abstract landscape.",
-    lifestyleImage: "/images/vases/vase6.png",
-    inspiration: {
-      title: "A vessel transformed into a canvas",
-      reasons: [
-        {
-          label: "Mediterranean coast",
-          body:
-            "Inspired by the Mediterranean coast of Spain — deep blue waters, sun-washed stone and earthy shores. The palette isn't decorative; it's referential."
-        },
-        {
-          label: "Hand-painted, hand-textured",
-          body:
-            "Every sweep of colour is applied by hand; the coarse surface texture is worked in during shaping. Each piece bears its own composition — no two Rivages are alike."
-        },
-        {
-          label: "Vessel as art object",
-          body:
-            "Generous proportions and expressive brushwork let RIVAGE stand alone. It reads as a ceramic form first, a vase second — a canvas on a shelf, not a container."
-        }
-      ]
-    }
   },
   {
     handle: "figurine-souche",

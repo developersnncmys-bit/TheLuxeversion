@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { SafeImage } from "@/components/ui/safe-image";
@@ -12,22 +12,23 @@ type Props = {
   ref_: string;
 };
 
-// Chanel-style split hero:
-//   Desktop — image column (left) shows one shot at a time via sticky
-//     display + crossfade; invisible scroll spacers (one per gallery image)
-//     drive the active index. Right column has the sticky product panel.
-//     Dots overlay the image, centred vertically, and always in the visible
-//     frame because they live inside the sticky container.
-//   Mobile — images stack naturally, panel appears after them.
+// Product hero — Tridhavarnam-style layout:
+//   Desktop — thumbnails on the LEFT (vertical column), main image in the
+//     centre, product panel on the right. Clicking a thumbnail switches the
+//     main image via crossfade — no scroll pin, no spacers. Info panel is a
+//     normal column that scrolls with the page.
+//   Mobile  — main image on top, horizontal thumb strip below it, then the
+//     product panel underneath.
+//
+// Preload behaviour is preserved from the previous scroll-driven version:
+// only the images the user has actually landed on (plus their neighbours)
+// get mounted, so the browser doesn't fetch every gallery shot on first
+// paint.
 export function ProductHero({ product, ref_ }: Props) {
   const gallery = product.gallery?.length ? product.gallery : [product.image];
   const [activeIndex, setActiveIndex] = useState(0);
-  // Only mount images that have been (or are about to be) shown. Starts with
-  // {0} and expands as the user scrolls into each gallery spacer. Prevents
-  // the browser from downloading every gallery shot on first paint, which is
-  // the main cause of slow hero-image loads.
   const [mounted, setMounted] = useState<Set<number>>(() => new Set([0]));
-  const spacerRefs = useRef<Array<HTMLDivElement | null>>([]);
+
   const { addToCart, openDrawer, toggleWishlist, isInWishlist } = useStore();
   const saved = isInWishlist(product.handle);
   const handleAddToBag = () => {
@@ -35,154 +36,140 @@ export function ProductHero({ product, ref_ }: Props) {
     openDrawer("cart");
   };
 
-  // Track which desktop spacer is centred in the viewport → drives which
-  // image is shown in the sticky display. Also pre-mounts the neighbour
-  // (idx-1 & idx+1) so the crossfade never has to wait on a fresh download.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.getAttribute("data-idx"));
-            if (!Number.isNaN(idx)) {
-              setActiveIndex(idx);
-              setMounted((prev) => {
-                if (prev.has(idx) && prev.has(idx + 1) && prev.has(idx - 1)) {
-                  return prev;
-                }
-                const next = new Set(prev);
-                next.add(idx);
-                if (idx + 1 < gallery.length) next.add(idx + 1);
-                if (idx - 1 >= 0) next.add(idx - 1);
-                return next;
-              });
-            }
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    );
-    spacerRefs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
-  }, [gallery.length]);
-
-  const scrollToIndex = (i: number) => {
-    spacerRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  const selectImage = (i: number) => {
+    setActiveIndex(i);
+    setMounted((prev) => {
+      if (prev.has(i) && prev.has(i + 1) && prev.has(i - 1)) return prev;
+      const next = new Set(prev);
+      next.add(i);
+      if (i + 1 < gallery.length) next.add(i + 1);
+      if (i - 1 >= 0) next.add(i - 1);
+      return next;
+    });
   };
 
   return (
     <section
       id="product-hero"
-      // Section starts at top:0 — the fixed white navbar sits over the top
-      // of the hero image cleanly, no visible black band between them. The
-      // sticky panel + spacers still use top-36 so their content lands
-      // BELOW the navbar rather than behind it.
       className="relative bg-ink text-chalk"
       aria-labelledby="product-heading"
     >
-      <div className="grid grid-cols-1 md:grid-cols-12">
-        {/* Left column — 6 cols. Desktop: sticky image display + invisible
-            spacers for scroll length. Mobile: stacked images. */}
-        <div className="relative md:col-span-6">
-          {/* Desktop: sticky image display */}
-          <div className="hidden md:block md:sticky md:top-36 md:h-[calc(100svh-9rem)]">
-            <div className="relative h-full w-full overflow-hidden bg-onyx">
-              {gallery.map((src, i) => (
-                <div
-                  key={`${src}-${i}`}
-                  className={clsx(
-                    "absolute inset-0 transition-opacity duration-700 ease-silk",
-                    i === activeIndex ? "z-10 opacity-100" : "z-0 opacity-0"
-                  )}
-                >
-                  {mounted.has(i) && (
-                    <SafeImage
-                      src={src}
-                      alt={`${product.name} — view ${i + 1}`}
-                      fallbackSeed={`${product.handle}-${i}`}
-                      fill
-                      priority={i === 0}
-                      sizes="50vw"
-                      quality={i === 0 ? 78 : 70}
-                      className="object-cover"
-                    />
-                  )}
-                </div>
-              ))}
-
-              {/* Vertical dot indicator — overlaid on image, centred. */}
-              <div className="absolute left-6 top-1/2 z-20 -translate-y-1/2">
-                <ul className="flex flex-col gap-3">
-                  {gallery.map((_, i) => (
-                    <li key={i}>
-                      <button
-                        type="button"
-                        onClick={() => scrollToIndex(i)}
-                        aria-label={`Go to image ${i + 1} of ${gallery.length}`}
-                        className={clsx(
-                          "block h-2 w-2 rounded-full border transition-all duration-500",
-                          i === activeIndex
-                            ? "border-chalk bg-chalk"
-                            : "border-chalk/40 bg-transparent hover:border-chalk/70"
-                        )}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Desktop: invisible scroll spacers — one per gallery image. Each
-              is a viewport-tall block that the IntersectionObserver watches
-              to determine which image should be active. */}
-          <div className="hidden md:block" aria-hidden>
-            {gallery.map((_, i) => (
-              <div
-                key={`spacer-${i}`}
-                ref={(el) => {
-                  spacerRefs.current[i] = el;
-                }}
-                data-idx={i}
-                className="h-[calc(100svh-9rem)]"
+      {/* Top padding clears the fixed nav (h-20 main bar + top-5 pill panel
+          on desktop). Without this the hero's first row of content sits
+          behind the nav. Value matches the old design's `top-36` offset. */}
+      <div className="grid grid-cols-1 pt-24 md:grid-cols-12 md:pt-36">
+        {/* ── DESKTOP THUMBNAIL COLUMN ────────────────────────────────────
+            Narrow strip on the left. Each thumbnail is a small button that
+            switches the main image on click. Active thumbnail keeps full
+            opacity + a chalk ring; the others sit at 60% opacity and lift
+            on hover. */}
+        <div className="hidden md:col-span-1 md:flex md:flex-col md:gap-3 md:py-8 md:pl-4 md:pr-2">
+          {gallery.map((src, i) => (
+            <button
+              key={`thumb-${src}-${i}`}
+              type="button"
+              onClick={() => selectImage(i)}
+              aria-label={`View image ${i + 1} of ${gallery.length}`}
+              aria-current={i === activeIndex}
+              className={clsx(
+                "relative aspect-[4/5] w-full overflow-hidden bg-onyx transition-all duration-500 ease-silk",
+                i === activeIndex
+                  ? "opacity-100 ring-1 ring-chalk"
+                  : "opacity-60 hover:opacity-100"
+              )}
+            >
+              <SafeImage
+                src={src}
+                alt=""
+                fallbackSeed={`${product.handle}-thumb-${i}`}
+                fill
+                sizes="8vw"
+                quality={55}
+                className="object-cover"
               />
-            ))}
-          </div>
+            </button>
+          ))}
+        </div>
 
-          {/* Mobile: images stacked vertically. No `priority` here even on
-              the first image — desktop first already carries the preload; a
-              second one for the 100vw mobile variant would double-download
-              on desktop viewports. The mobile first image still loads fast
-              because it's the first in-viewport <img>, which browsers
-              natively prioritise. */}
-          <div className="flex flex-col md:hidden">
-            {gallery.map((src, i) => (
-              <div
-                key={`mobile-${src}-${i}`}
-                className="relative aspect-[4/5] w-full overflow-hidden bg-onyx"
-              >
+        {/* ── MAIN IMAGE ─────────────────────────────────────────────────
+            Fills roughly half the width on desktop. Images are stacked in
+            an overflow-hidden container and crossfaded via opacity — the
+            mount set gates which layers actually render <SafeImage>, so
+            the browser doesn't preload every gallery shot on first paint.
+            On mobile the container takes the full width and a portrait
+            4:5 aspect. */}
+        <div
+          className={clsx(
+            "relative bg-onyx overflow-hidden aspect-[4/5] md:aspect-auto md:col-span-6",
+            // Image column ~70% of viewport height on desktop — a moderate
+            // portrait window that doesn't monopolise the screen the way a
+            // full 100svh image did.
+            "md:min-h-[70svh]"
+          )}
+        >
+          {gallery.map((src, i) => (
+            <div
+              key={`main-${src}-${i}`}
+              className={clsx(
+                "absolute inset-0 transition-opacity duration-700 ease-silk",
+                i === activeIndex ? "z-10 opacity-100" : "z-0 opacity-0"
+              )}
+            >
+              {mounted.has(i) && (
                 <SafeImage
                   src={src}
                   alt={`${product.name} — view ${i + 1}`}
                   fallbackSeed={`${product.handle}-${i}`}
                   fill
-                  sizes="100vw"
-                  loading={i === 0 ? "eager" : "lazy"}
-                  quality={i === 0 ? 78 : 70}
-                  className="object-cover"
+                  priority={i === 0}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  quality={i === 0 ? 78 : 74}
+                  className="object-contain p-6 md:p-10"
                 />
-              </div>
-            ))}
-          </div>
+              )}
+            </div>
+          ))}
         </div>
 
-        {/* Right column — sticky product panel. 6 cols. Since the left
-            column is (gallery.length × viewport) tall via spacers, the grid
-            cells share that height and this sticky panel stays pinned for
-            the entire gallery scroll. */}
-        <aside className="relative md:col-span-6">
-          <div className="md:sticky md:top-36 md:flex md:h-[calc(100svh-9rem)] md:items-center">
+        {/* ── MOBILE THUMBNAIL STRIP ─────────────────────────────────────
+            Horizontal row below the main image on mobile. Scrolls
+            horizontally if the gallery is wide enough. Hidden on desktop
+            (thumbnails live in the left column instead). */}
+        <div className="flex gap-2 overflow-x-auto px-4 py-4 md:hidden">
+          {gallery.map((src, i) => (
+            <button
+              key={`thumb-mobile-${src}-${i}`}
+              type="button"
+              onClick={() => selectImage(i)}
+              aria-label={`View image ${i + 1} of ${gallery.length}`}
+              aria-current={i === activeIndex}
+              className={clsx(
+                "relative aspect-[4/5] w-16 flex-shrink-0 overflow-hidden bg-onyx transition-all duration-500 ease-silk",
+                i === activeIndex
+                  ? "opacity-100 ring-1 ring-chalk"
+                  : "opacity-60"
+              )}
+            >
+              <SafeImage
+                src={src}
+                alt=""
+                fallbackSeed={`${product.handle}-thumb-mobile-${i}`}
+                fill
+                sizes="64px"
+                quality={50}
+                className="object-cover"
+              />
+            </button>
+          ))}
+        </div>
+
+        {/* ── PRODUCT PANEL ──────────────────────────────────────────────
+            Right-hand column on desktop, stacked below on mobile. No
+            sticky positioning — the hero is now a single-viewport section
+            that scrolls with the page. Panel content is unchanged from
+            the previous design. */}
+        <aside className="relative md:col-span-5">
+          <div className="md:flex md:min-h-[70svh] md:items-center">
             <div className="w-full px-6 py-16 md:px-14 md:py-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -263,20 +250,6 @@ export function ProductHero({ product, ref_ }: Props) {
             </div>
           </div>
         </aside>
-      </div>
-
-      {/* Mobile dot pagination — sits under the stacked images. */}
-      <div className="flex justify-center gap-2 border-t border-chalk/10 py-6 md:hidden">
-        {gallery.map((_, i) => (
-          <span
-            key={i}
-            className={clsx(
-              "h-1.5 w-1.5 rounded-full transition-colors",
-              i === activeIndex ? "bg-chalk" : "bg-chalk/30"
-            )}
-            aria-hidden
-          />
-        ))}
       </div>
     </section>
   );

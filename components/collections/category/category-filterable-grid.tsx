@@ -38,7 +38,15 @@ export function CategoryFilterableGrid({
     [products, selectedMaterials, selectedPrices]
   );
 
-  const midpoint = Math.ceil(filtered.length / 2);
+  // Split around the interstitial. Round the midpoint up to the nearest
+  // multiple of the desktop column count (3) so the first-half grid always
+  // ends on a full row — otherwise a lone product dangles next to the
+  // interstitial with two empty grid cells beside it.
+  const rawMidpoint = Math.ceil(filtered.length / 2);
+  const midpoint = Math.min(
+    Math.ceil(rawMidpoint / 3) * 3,
+    filtered.length
+  );
   const firstHalf = filtered.slice(0, midpoint);
   const secondHalf = filtered.slice(midpoint);
   const activeCount = selectedMaterials.size + selectedPrices.size;
