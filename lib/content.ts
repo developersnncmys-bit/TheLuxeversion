@@ -28,8 +28,6 @@ export type Product = {
   category:
     | "Sculptures"
     | "Vases"
-    | "Figurines"
-    | "Decorative Objects"
     | "Tabletop"
     | "Lighting";
   description: string;
@@ -201,16 +199,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A rare sculpture captures strength and momentum. Its sweeping horns and grounded stance convey an unmistakable sense of power and resolve.",
     price: { inr: 96000, usd: 1180 },
-    image: "/images/sculptures/Ardor/Ardorhover.png",
+    image: "/images/sculptures/Ardor/bull%201.jpg",
     aspect: "portrait",
     material: "Metal, textured bronze finish",
     body:
       "Defined by its richly textured surface and sculptural weight, the piece captures the bull's muscularity with striking depth. Sweeping horns, a lowered stance and pronounced contours heighten its sense of movement, while the nuanced bronze finish accentuates the character of the piece.",
     gallery: [
-      "/images/sculptures/Ardor/Ardor2.png",
-      "/images/sculptures/Ardor/Ardor3.png",
-      "/images/sculptures/Ardor/Ardor4.png",
-      "/images/sculptures/Ardor/Ardor5.png"
+      "/images/sculptures/Ardor/bull%201.jpg",
+      "/images/sculptures/Ardor/bull%202.jpg",
+      "/images/sculptures/Ardor/bull%203.jpg",
+      "/images/sculptures/Ardor/bull%204.jpg",
+      "/images/sculptures/Ardor/bull%205.jpg"
     ],
     details: [
       {
@@ -223,11 +222,11 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Cast in metal and hand-finished in a textured bronze patina. The surface catches light differently at every angle; every casting bears its own tonal variations — no two Ardor read exactly the same way.",
-        image: "/images/sculptures/Ardor/Ardorhover.png"
+        image: "/images/sculptures/Ardor/bull%202.jpg"
       }
     ],
     pullQuote: "Momentum captured in bronze — a study in strength and resolve.",
-    lifestyleImage: "/images/sculptures/Ardor/Ardorhover.png",
+    lifestyleImage: "/images/sculptures/Ardor/bull%205.jpg",
     inspiration: {
       title: "Strength and momentum, held in bronze",
       reasons: [
@@ -320,7 +319,12 @@ export const PRODUCTS: Product[] = [
       "/images/sculptures/Cadence/Cadence1.png",
       "/images/sculptures/Cadence/Cadence2.png",
       "/images/sculptures/Cadence/Cadence3.png",
-      "/images/sculptures/Cadence/Cadence4.png"
+      "/images/sculptures/Cadence/Cadence4.png",
+      "/images/sculptures/Cadence/Cadence5.png",
+      "/images/sculptures/Cadence/Cadence6.png",
+      "/images/sculptures/Cadence/Cadence7.png",
+      "/images/sculptures/Cadence/Cadence8.png",
+      "/images/sculptures/Cadence/Cadence9.png"
     ],
     details: [
       {
@@ -360,77 +364,22 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
-    handle: "mirror-solis",
-    name: "Mirror — Solis",
-    category: "Decorative Objects",
-    description:
-      "A tall arched mirror framed in unlacquered brass — the kind that warms with time. For entryways and dressing rooms.",
-    price: { inr: 96000, usd: 1180 },
-    image: "/images/decorative-objects/deco1.png",
-    aspect: "portrait",
-    material: "Unlacquered brass, antique-effect glass",
-    body:
-      "A tall arched mirror framed in unlacquered brass, glazed with slightly warm, antique-effect glass. For entryways and dressing rooms — the piece that opens a wall without cluttering it. The brass is raw and warms into the room.",
-    gallery: [
-      "/images/decorative-objects/deco1.png",
-      "/images/decorative-objects/deco2.png",
-      "/images/decorative-objects/deco3.png",
-      "/images/decorative-objects/deco4.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body:
-          "Hand-shaped brass frame with antique-effect glass. 170 × 85 cm; wall-mounted, cleats included.",
-        image: "/images/materials/metal.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Frame welded and finished by hand. Glass poured to old specification for a soft, warm reflection.",
-        image: "/images/decorative-objects/deco6.png"
-      }
-    ],
-    pullQuote: "A mirror that lengthens a room without shouting for the credit.",
-    lifestyleImage: "/images/decorative-objects/deco4.png",
-    inspiration: {
-      title: "The mirror that sets the pitch of the house",
-      reasons: [
-        {
-          label: "Poured glass",
-          body:
-            "Not float glass. Poured to a nineteenth-century specification — soft, slightly warm, with a reflection the machine cannot fake."
-        },
-        {
-          label: "Hand-welded frame",
-          body:
-            "Unlacquered brass, welded and finished by hand. Warms into the walls over decades rather than chipping against them."
-        },
-        {
-          label: "First impression",
-          body:
-            "First piece seen coming into the house; often the piece guests remember most. Sets the tone at the door."
-        }
-      ]
-    }
-  },
-  {
     handle: "vase-auren",
     name: "Vase — Auren",
     category: "Vases",
     description:
       "A sculptural vase defined by sweeping vertical contours and a dramatic petal-like crown. AUREN is a study of scale and texture, with a quiet presence.",
     price: { inr: 74000, usd: 910 },
-    image: "/images/vases/vase1.png",
+    image: "/images/vases/Auren/11.jpg",
     aspect: "portrait",
     material: "Ceramic, textured grey glaze",
     body:
       "A substantial ceramic vase defined by its broad proportions and sculptural, foliage-inspired silhouette. Deep vertical ridges travel across the surface into curved, rising edges, giving AUREN a distinct architectural character.",
     gallery: [
-      "/images/vases/vase1.png",
-      "/images/vases/vase2.png",
-      "/images/vases/vase3.png",
-      "/images/vases/vase4.png"
+      "/images/vases/Auren/11.jpg",
+      "/images/vases/Auren/12.jpg",
+      "/images/vases/Auren/14.jpg",
+      "/images/vases/Auren/15.jpg"
     ],
     details: [
       {
@@ -443,12 +392,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Thrown, glazed and fired in a small studio in Auroville. Each piece signed and dated at the foot.",
-        image: "/images/vases/vase6.png"
+        image: "/images/vases/Auren/12.jpg"
       }
     ],
     pullQuote:
       "Sculpture that also holds — the honest, ancient trick of the vessel.",
-    lifestyleImage: "/images/vases/vase4.png",
+    lifestyleImage: "/images/vases/Auren/15.jpg",
     inspiration: {
       title: "Part of a series of forty. Signed at the foot.",
       reasons: [
@@ -477,16 +426,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A sculptural ceramic form where colour moves like an abstract landscape. Sweeps of mineral blue, ivory, charcoal and muted rust travel across its broad silhouette, giving the piece the presence of a painted canvas.",
     price: { inr: 82000, usd: 1010 },
-    image: "/images/vases/vase2.png",
+    image: "/images/vases/Vase-rivage/01%20.jpg",
     aspect: "portrait",
     material: "Premium ceramic, hand-painted multitone finish",
     body:
       "RIVAGE transforms a vessel into an art object. Its generous proportions, tactile surface and expressive composition allow it to stand confidently on its own — commanding attention without excess.",
     gallery: [
-      "/images/vases/vase2.png",
-      "/images/vases/vase3.png",
-      "/images/vases/vase4.png",
-      "/images/vases/vase5.png"
+      "/images/vases/Vase-rivage/01%20.jpg",
+      "/images/vases/Vase-rivage/02.jpg",
+      "/images/vases/Vase-rivage/03.jpg",
+      "/images/vases/Vase-rivage/04.jpg",
+      "/images/vases/Vase-rivage/05.jpg"
     ],
     details: [
       {
@@ -499,11 +449,11 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Hand-painted and hand-textured with a coarse, tactile finish and expressive multitone brushwork. Each piece bears its own composition — no two Rivages are alike.",
-        image: "/images/vases/vase6.png"
+        image: "/images/vases/Vase-rivage/02.jpg"
       }
     ],
     pullQuote: "Colour moves across the surface like an abstract landscape.",
-    lifestyleImage: "/images/vases/vase6.png",
+    lifestyleImage: "/images/vases/Vase-rivage/05.jpg",
     inspiration: {
       title: "A vessel transformed into a canvas",
       reasons: [
@@ -532,16 +482,17 @@ export const PRODUCTS: Product[] = [
     description:
       "An open porcelain form with a fluid, irregular silhouette. Misty grey markings move across its ivory surface, while fine gold lines trace the rim and descend through the body.",
     price: { inr: 72000, usd: 890 },
-    image: "/images/vases/vase3.png",
+    image: "/images/vases/Onde/06.jpg",
     aspect: "portrait",
     material: "Porcelain, grey marbling with gold detailing",
     body:
       "Onde means \"wave\" in French. The piece evokes France's Atlantic shoreline: water moving over pale stone, with a trace of gold in the last light. The glossy interior catches light within each curve.",
     gallery: [
-      "/images/vases/vase3.png",
-      "/images/vases/vase2.png",
-      "/images/vases/vase4.png",
-      "/images/vases/vase5.png"
+      "/images/vases/Onde/06.jpg",
+      "/images/vases/Onde/07.jpg",
+      "/images/vases/Onde/08.jpg",
+      "/images/vases/Onde/09.jpg",
+      "/images/vases/Onde/10.jpg"
     ],
     details: [
       {
@@ -554,12 +505,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "The grey marbling is worked into the porcelain by hand — every piece bears its own pattern of drift. Fine gold lines are applied last, tracing the rim and descending through the body.",
-        image: "/images/vases/vase6.png"
+        image: "/images/vases/Onde/07.jpg"
       }
     ],
     pullQuote:
       "Water moving over pale stone, with a trace of gold in the last light.",
-    lifestyleImage: "/images/vases/vase4.png",
+    lifestyleImage: "/images/vases/Onde/10.jpg",
     inspiration: {
       title: "A wave, held in porcelain",
       reasons: [
@@ -582,130 +533,21 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
-    handle: "mirror-halo",
-    name: "Mirror — Halo",
-    category: "Decorative Objects",
-    description:
-      "A circular mirror set in a slim brass rim. Reads as a drawing on the wall — a single line, a held moment of light.",
-    price: { inr: 82000, usd: 1010 },
-    image: "/images/decorative-objects/deco2.png",
-    aspect: "portrait",
-    material: "Slim brass rim, mirrored glass",
-    body:
-      "A circular mirror set in a slim brass rim — a single drawn line on the wall, a held moment of light. Above a console, a low sideboard, or the quiet end of a hall.",
-    gallery: [
-      "/images/decorative-objects/deco2.png",
-      "/images/decorative-objects/deco3.png",
-      "/images/decorative-objects/deco4.png",
-      "/images/decorative-objects/deco5.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body: "Brass rim, mirrored glass. 80 cm diameter; wall-mounted.",
-        image: "/images/materials/glass.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Rim spun and finished by hand. The brass is unlacquered and will warm and darken with time.",
-        image: "/images/decorative-objects/deco1.png"
-      }
-    ],
-    pullQuote: "A drawn line, held on the wall.",
-    lifestyleImage: "/images/decorative-objects/deco5.png",
-    inspiration: {
-      title: "One drawn line. No ornament.",
-      reasons: [
-        {
-          label: "Restrained design",
-          body:
-            "No filigree, no ornament, no competition. The mirror to buy when every other piece in the room is already doing its work."
-        },
-        {
-          label: "Spun by hand",
-          body:
-            "Rim spun from a single strip of unlacquered brass. The whole piece is essentially one drawn line."
-        },
-        {
-          label: "Deepens with time",
-          body:
-            "The brass warms into the plaster over years. The finish is the material — nothing to peel or fade."
-        }
-      ]
-    }
-  },
-  {
-    handle: "mirror-lune",
-    name: "Mirror — Lune",
-    category: "Decorative Objects",
-    description:
-      "A freestanding cheval mirror in blackened oak, hand-oiled. For the dressing corner, the bedroom, the quiet end of a hall.",
-    price: { inr: 138000, usd: 1700 },
-    image: "/images/decorative-objects/deco3.png",
-    aspect: "portrait",
-    material: "Blackened oak, hand-oiled",
-    body:
-      "A freestanding cheval mirror in solid, blackened oak — hand-oiled to a slow satin finish. For the dressing corner, the bedroom, the quiet end of a hall.",
-    gallery: [
-      "/images/decorative-objects/deco3.png",
-      "/images/decorative-objects/deco4.png",
-      "/images/decorative-objects/deco5.png",
-      "/images/decorative-objects/deco6.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body:
-          "Solid blackened oak frame, hand-oiled. Cast brass pivots. 180 × 65 cm freestanding.",
-        image: "/images/materials/wood.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Frame joined by traditional mortise-and-tenon; oak sourced from a single European mill. Assembled and oiled by hand.",
-        image: "/images/decorative-objects/deco2.png"
-      }
-    ],
-    pullQuote: "The mirror you dress in front of, and no other.",
-    lifestyleImage: "/images/decorative-objects/deco6.png",
-    inspiration: {
-      title: "Joinery built to last a century",
-      reasons: [
-        {
-          label: "Traditional joinery",
-          body:
-            "Mortise-and-tenon frame — the technique that keeps three-hundred-year-old doors on their hinges. No glue, no fasteners."
-        },
-        {
-          label: "Single-source oak",
-          body:
-            "Wood from a single European mill; blackened, hand-oiled to a slow satin. Cast brass pivots."
-        },
-        {
-          label: "Freestanding",
-          body:
-            "Not fixed to a wall. The mirror travels with you between rooms, houses, decades."
-        }
-      ]
-    }
-  },
-  {
     handle: "sculpture-majeste",
     name: "Sculpture — Majesté",
     category: "Sculptures",
     description:
       "A study in quiet majesty. MAJESTÉ captures the profound stillness of the Buddha through a serene expression and intricately sculpted crown, while its time-worn patina lends the piece a sense of history, character and regal presence.",
     price: { inr: 148000, usd: 1820 },
-    image: "/images/sculptures/Majeste/majeste3.png",
+    image: "/images/sculptures/Majeste/majeste3.jpg",
     aspect: "portrait",
     material: "Premium ceramic, textured aged patina finish",
     body:
       "Arched brows, elongated features and an intricately carved crown lend MAJESTÉ its distinctly regal character. A richly aged patina in warm earth, ivory and charcoal heightens its time-worn presence. Rising to 52 cm, its substantial scale and commanding form give the sculpture an almost monumental presence.",
     gallery: [
-      "/images/sculptures/Majeste/majeste1.png",
-      "/images/sculptures/Majeste/majeste2.png",
-      "/images/sculptures/Majeste/majeste3.png"
+      "/images/sculptures/Majeste/majeste1.jpg",
+      "/images/sculptures/Majeste/majeste2.jpg",
+      "/images/sculptures/Majeste/majeste3.jpg"
     ],
     details: [
       {
@@ -849,170 +691,6 @@ export const PRODUCTS: Product[] = [
           label: "Two objects in one",
           body:
             "Holds a single tall stem beautifully. Empty, it is a sculpture. Neither role requires the other."
-        }
-      ]
-    }
-  },
-  {
-    handle: "figurine-fauna",
-    name: "Figurine — Fauna",
-    category: "Figurines",
-    description:
-      "A small bronze animal figure, patinated by hand. For the shelf edge, the desk, the bookcase that wants a single occupant.",
-    price: { inr: 42000, usd: 520 },
-    image: "/images/figurines/figurine1.png",
-    aspect: "portrait",
-    material: "Cast bronze, hand-patinated",
-    body:
-      "A small bronze animal figure, cast and patinated by hand. For the shelf edge, the writing desk, the bookcase that wants one single quiet occupant.",
-    gallery: [
-      "/images/figurines/figurine1.png",
-      "/images/figurines/figurine2.png",
-      "/images/figurines/figurine3.png",
-      "/images/figurines/figurine4.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body: "Solid bronze, sand-cast. Hand-patinated. 14 cm.",
-        image: "/images/materials/metal.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Modelled from life, cast in a small foundry, patinated by hand. Each piece signed and numbered on the base.",
-        image: "/images/figurines/figurine6.png"
-      }
-    ],
-    pullQuote: "The shelf's quiet occupant — patient, undemanding, present.",
-    lifestyleImage: "/images/figurines/figurine4.png",
-    inspiration: {
-      title: "Modelled from life. Numbered on the base.",
-      reasons: [
-        {
-          label: "From life",
-          body:
-            "Sculpted from live observation, not from photographs or stock reference. The animal comes first, the object second."
-        },
-        {
-          label: "Small foundry",
-          body:
-            "Sand-cast in solid bronze at a small foundry. Patinated and signed by hand."
-        },
-        {
-          label: "Collector piece",
-          body:
-            "Fourteen centimetres with the provenance of a piece ten times its size. Collectible art at accessible cost."
-        }
-      ]
-    }
-  },
-  {
-    handle: "figurine-anima",
-    name: "Figurine — Anima",
-    category: "Figurines",
-    description:
-      "A hand-carved alabaster form — a small figure, softly modelled. Casts a low interior light when placed near a lamp.",
-    price: { inr: 54000, usd: 670 },
-    image: "/images/figurines/figurine2.png",
-    aspect: "portrait",
-    material: "Hand-carved alabaster",
-    body:
-      "A hand-carved alabaster form — a small figure, softly modelled. When placed near a lamp the stone catches the light from within, casting a low interior glow.",
-    gallery: [
-      "/images/figurines/figurine2.png",
-      "/images/figurines/figurine3.png",
-      "/images/figurines/figurine4.png",
-      "/images/figurines/figurine5.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body:
-          "Solid alabaster, hand-carved and polished. Translucent under light. 18 cm.",
-        image: "/images/materials/stone.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Carved by a single hand from a single block. Alabaster sourced from a single quarry in Rajasthan.",
-        image: "/images/figurines/figurine1.png"
-      }
-    ],
-    pullQuote: "Stone that holds light — a small, interior sun.",
-    lifestyleImage: "/images/figurines/figurine5.png",
-    inspiration: {
-      title: "Stone that catches light from within",
-      reasons: [
-        {
-          label: "Rare material",
-          body:
-            "Rajasthani alabaster from a single quarry — dense enough to hold a shape, translucent enough to glow near a lamp."
-        },
-        {
-          label: "One hand, one block",
-          body:
-            "Cut, carved and polished by a single hand from a single block of stone. Never machine-finished."
-        },
-        {
-          label: "Interior light",
-          body:
-            "Placed near any lamp, the stone holds the warmth. Changes how the room reads after dark — no electricity required."
-        }
-      ]
-    }
-  },
-  {
-    handle: "figurine-perle",
-    name: "Figurine — Perle",
-    category: "Figurines",
-    description:
-      "A porcelain pear on a low walnut plinth. A quiet gift for a bedside, an entry table, a writing desk.",
-    price: { inr: 38000, usd: 470 },
-    image: "/images/figurines/figurine3.png",
-    aspect: "portrait",
-    material: "Hand-slipped porcelain, walnut plinth",
-    body:
-      "A porcelain pear rested on a low walnut plinth. A quiet gift for a bedside, an entry table, a writing desk — the object that says the room has been thought about.",
-    gallery: [
-      "/images/figurines/figurine3.png",
-      "/images/figurines/figurine4.png",
-      "/images/figurines/figurine5.png",
-      "/images/figurines/figurine6.png"
-    ],
-    details: [
-      {
-        label: "Material",
-        body:
-          "Slip-cast porcelain, matte white glaze. Solid walnut plinth, hand-oiled. 12 cm overall.",
-        image: "/images/materials/ceramic.png"
-      },
-      {
-        label: "Craft",
-        body:
-          "Cast, finished and glazed by hand. Plinth turned separately and hand-fitted to each piece.",
-        image: "/images/figurines/figurine2.png"
-      }
-    ],
-    pullQuote: "The small, exact gift — a fruit that never turns.",
-    lifestyleImage: "/images/figurines/figurine6.png",
-    inspiration: {
-      title: "A small object, considered like a large one",
-      reasons: [
-        {
-          label: "Two materials",
-          body:
-            "Slip-cast porcelain paired with a hand-turned walnut plinth — two makers, two crafts, one small object."
-        },
-        {
-          label: "Fitted piece by piece",
-          body:
-            "Each plinth turned separately and fitted to its pear. No two pears sit on their base exactly the same way."
-        },
-        {
-          label: "Small enough to gift",
-          body:
-            "Small enough to give as a gift; considered enough to keep for decades. Both readings work."
         }
       ]
     }
@@ -1227,16 +905,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A carved metal sculpture captured in motion. SILLAGE is conceived for a mantel, lounge or formal living that calls for a defining line.",
     price: { inr: 174000, usd: 2150 },
-    image: "/images/sculptures/scu4.png",
+    image: "/images/sculptures/Sillage/26.jpg",
     aspect: "portrait",
     material: "Metal, textured gold finish",
     body:
       "Monumental in scale, SILLAGE expresses an extravagance of form and gold, with a fluidity that seems to know no bounds. Its substantial metal construction gives the piece weight, solidity and commanding presence.",
     gallery: [
-      "/images/sculptures/scu4.png",
-      "/images/sculptures/scu1.png",
-      "/images/sculptures/scu2.png",
-      "/images/sculptures/scu3.png"
+      "/images/sculptures/Sillage/26.jpg",
+      "/images/sculptures/Sillage/27.jpg",
+      "/images/sculptures/Sillage/28.jpg",
+      "/images/sculptures/Sillage/29.jpg",
+      "/images/sculptures/Sillage/30.jpg"
     ],
     details: [
       {
@@ -1249,12 +928,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Cast in metal and hand-finished in textured gold. Each surface is layered to catch light differently at every angle; the tactile character emerges only when the piece is placed in a room.",
-        image: "/images/sculptures/scu6.png"
+        image: "/images/sculptures/Sillage/27.jpg"
       }
     ],
     pullQuote:
       "An extravagance of form — a fluidity that seems to know no bounds.",
-    lifestyleImage: "/images/sculptures/scu5.png",
+    lifestyleImage: "/images/sculptures/Sillage/30.jpg",
     inspiration: {
       title: "A defining line for the room",
       reasons: [
@@ -1283,16 +962,17 @@ export const PRODUCTS: Product[] = [
     description:
       "Ancient in spirit. Monumental in presence. VESTIGE rises in carved wood, its Egyptian-inspired form shaped by geometry, instinct and time.",
     price: { inr: 112000, usd: 1380 },
-    image: "/images/sculptures/scu5.png",
+    image: "/images/sculptures/Vestige/16.jpg",
     aspect: "portrait",
     material: "Solid wood, distressed finish",
     body:
       "At over five feet, VESTIGE commands space without ornament. Deep incisions trace its elongated form, while the weathered surface reveals the natural character of solid wood. Primitive in expression, architectural in scale — an object with the presence of a discovered artefact.",
     gallery: [
-      "/images/sculptures/scu5.png",
-      "/images/sculptures/scu1.png",
-      "/images/sculptures/scu2.png",
-      "/images/sculptures/scu4.png"
+      "/images/sculptures/Vestige/16.jpg",
+      "/images/sculptures/Vestige/17.jpg",
+      "/images/sculptures/Vestige/18.jpg",
+      "/images/sculptures/Vestige/19.jpg",
+      "/images/sculptures/Vestige/20.jpg"
     ],
     details: [
       {
@@ -1305,11 +985,11 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Deep incisions trace the elongated form; each cut is worked by hand. The distressed finish preserves the natural character of the wood — grain, knots and the marks of shaping intact.",
-        image: "/images/sculptures/scu6.png"
+        image: "/images/sculptures/Vestige/17.jpg"
       }
     ],
     pullQuote: "Ancient in spirit. Monumental in presence.",
-    lifestyleImage: "/images/sculptures/scu3.png",
+    lifestyleImage: "/images/sculptures/Vestige/20.jpg",
     inspiration: {
       title: "An object with the presence of a discovered artefact",
       reasons: [
@@ -1338,16 +1018,16 @@ export const PRODUCTS: Product[] = [
     description:
       "A study in abstraction and restraint. ÉNIGME reduces the human face to its most elemental lines, leaving expression deliberately unresolved.",
     price: { inr: 132000, usd: 1620 },
-    image: "/images/sculptures/scu6.png",
+    image: "/images/sculptures/Engime/face%201%20(1).jpg",
     aspect: "portrait",
     material: "Metal, textured pale gold and charcoal finish",
     body:
       "Two faces, two scales, two finishes — held together by a singular sculptural language. Their quiet ambiguity invites interpretation rather than defining it.",
     gallery: [
-      "/images/sculptures/scu6.png",
-      "/images/sculptures/scu1.png",
-      "/images/sculptures/scu2.png",
-      "/images/sculptures/scu3.png"
+      "/images/sculptures/Engime/face%201%20(1).jpg",
+      "/images/sculptures/Engime/face%202%20(1).jpg",
+      "/images/sculptures/Engime/face%203.%20(1).jpg",
+      "/images/sculptures/Engime/face%204%20(1).jpg"
     ],
     details: [
       {
@@ -1360,12 +1040,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Cast in metal, the pairing juxtaposes pale gold with deep charcoal. Textured surfaces temper the metallic finish, while carved contours give each face its individual presence.",
-        image: "/images/sculptures/scu4.png"
+        image: "/images/sculptures/Engime/face%202%20(1).jpg"
       }
     ],
     pullQuote:
       "Two faces, one language — expression deliberately unresolved.",
-    lifestyleImage: "/images/sculptures/scu5.png",
+    lifestyleImage: "/images/sculptures/Engime/face%204%20(1).jpg",
     inspiration: {
       title: "Two faces, one sculptural language",
       reasons: [
@@ -1394,16 +1074,17 @@ export const PRODUCTS: Product[] = [
     description:
       "An abstract interpretation of the horse, defined by elongated lines, sculptural geometry and a commanding stance. The contrasting metallic mane brings a quiet flash of opulence to its otherwise restrained form.",
     price: { inr: 118000, usd: 1450 },
-    image: "/images/sculptures/scu2.png",
+    image: "/images/sculptures/Fouge/horse%201.jpg",
     aspect: "portrait",
     material: "Metal, aged patina with metallic mane",
     body:
       "FOUGUE embodies contained power — strong without heaviness, expressive without excess. Its poised silhouette and architectural proportions give it a striking presence from every angle.",
     gallery: [
-      "/images/sculptures/scu2.png",
-      "/images/sculptures/scu1.png",
-      "/images/sculptures/scu3.png",
-      "/images/sculptures/scu7.png"
+      "/images/sculptures/Fouge/horse%201.jpg",
+      "/images/sculptures/Fouge/horse%202.jpg",
+      "/images/sculptures/Fouge/horse%203.jpg",
+      "/images/sculptures/Fouge/horse%204.jpg",
+      "/images/sculptures/Fouge/horse%205.jpg"
     ],
     details: [
       {
@@ -1416,12 +1097,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Tonal variations and an intentionally irregular surface texture lend depth and individual character to the piece. Each casting bears a slightly different pattern of light — no two Fougue read exactly the same way.",
-        image: "/images/sculptures/scu6.png"
+        image: "/images/sculptures/Fouge/horse%202.jpg"
       }
     ],
     pullQuote:
       "Contained power — strong without heaviness, expressive without excess.",
-    lifestyleImage: "/images/sculptures/scu5.png",
+    lifestyleImage: "/images/sculptures/Fouge/horse%205.jpg",
     inspiration: {
       title: "The horse, reduced to line and gesture",
       reasons: [
@@ -1500,43 +1181,117 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
-    handle: "tray-perche",
-    name: "Tray — Perche",
-    category: "Decorative Objects",
+    handle: "sculpture-thalassa",
+    name: "Sculpture — Thalassa",
+    category: "Sculptures",
     description:
-      "A long unlacquered-brass tray for the entry console. Holds keys, a bowl, the small things the house needs.",
-    price: { inr: 42000, usd: 520 },
-    image: "/images/decorative-objects/deco4.png",
-    aspect: "portrait",
-    material: "Hand-turned unlacquered brass",
+      "THALASSA reads like a jewel magnified into sculpture. Its clear, crystalline edge catches the light around a richly amber body, while dark striations travel into a sweeping, smoky crest. More than a foot across, the shell has impressive scale, yet its finely defined rim draws you in to look closer.",
+    price: { inr: 148000, usd: 1820 },
+    image: "/images/sculptures/Telassa/21.jpg",
+    aspect: "landscape",
+    material: "Mouth-blown, hand-shaped glass",
     body:
-      "A long brass tray, hand-turned and left unlacquered. Sits on the entry console; holds keys, a bowl, a folded letter — the small things the house needs at hand."
+      "Named for the sea, THALASSA calls to mind the Amalfi Coast: the movement of water against sculpted cliffs, the warmth of late sunlight and the glint of light along the shore. Its open spiral holds that sense of movement in glass, revealing new depths of amber and smoke from every angle.",
+    gallery: [
+      "/images/sculptures/Telassa/21.jpg",
+      "/images/sculptures/Telassa/22.jpg",
+      "/images/sculptures/Telassa/23.jpg",
+      "/images/sculptures/Telassa/24.jpg",
+      "/images/sculptures/Telassa/25.jpg"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Mouth-blown, hand-shaped glass with a glossy, translucent amber and smoky grey body, a crystal-clear edge, dark striations and warm copper-toned flecks. Dimensions: 32 × 15 × 18 cm (12.6 × 5.9 × 7.1 in). Weight: 2.688 kg / 5.93 lb.",
+        image: "/images/materials/glass.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "Selected for its generous scale, layered colour and exceptionally defined, jewel-like edge. Each piece is mouth-blown by hand — the spiral, the striations and the coppered flecks are the maker's decisions in the moment.",
+        image: "/images/sculptures/Telassa/22.jpg"
+      }
+    ],
+    pullQuote:
+      "The sea, held in glass — sunlight along the shore.",
+    lifestyleImage: "/images/sculptures/Telassa/25.jpg",
+    inspiration: {
+      title: "Selected for what a machine cannot make",
+      reasons: [
+        {
+          label: "Jewel-like edge",
+          body:
+            "The exceptionally defined, crystal-clear rim is where THALASSA earns its selection — a hand-shaped edge, not a moulded one."
+        },
+        {
+          label: "Amalfi light",
+          body:
+            "Named for the sea, evoking the Amalfi Coast: sunlight through amber, dark striations like water against cliff."
+        },
+        {
+          label: "Mouth-blown, one hand",
+          body:
+            "Every piece is mouth-blown and hand-shaped — the layered colour and coppered flecks belong to that one moment."
+        }
+      ]
+    }
   },
   {
-    handle: "bowl-onda",
-    name: "Bowl — Onda",
-    category: "Decorative Objects",
+    handle: "sculpture-altesse",
+    name: "Sculpture — Altesse",
+    category: "Sculptures",
     description:
-      "A shallow stone bowl in soft grey travertine. For the low table, the sideboard, the shelf that wants one form.",
-    price: { inr: 58000, usd: 720 },
-    image: "/images/decorative-objects/deco5.png",
+      "ALTESSE captures the regal presence of an eagle in a magnificent study of scale and proportion. Its transparent wing rises like an architectural gesture, giving the silhouette striking movement. Free-flowing, seemingly unstoppable curves carry ivory, black, amber and touches of brown through the glass. The finesse lies in its watchful eye, defined beak and talons, and the changing light within the form.",
+    price: { inr: 158000, usd: 1940 },
+    image: "/images/sculptures/Altesse/altesse1.png",
     aspect: "portrait",
-    material: "Hand-carved travertine",
+    material: "Glass",
     body:
-      "A shallow bowl carved from a single piece of soft grey travertine, honed to a matte finish. For the low table, the sideboard, the shelf that wants one form."
-  },
-  {
-    handle: "frame-silhouette",
-    name: "Frame — Silhouette",
-    category: "Decorative Objects",
-    description:
-      "A slim blackened-oak frame, hand-mitred. For a single print, a photograph, a piece worth setting apart.",
-    price: { inr: 36000, usd: 440 },
-    image: "/images/decorative-objects/deco6.png",
-    aspect: "portrait",
-    material: "Blackened oak, museum glass",
-    body:
-      "A slim blackened-oak frame, hand-mitred and finished in a soft satin oil. For a single print, a photograph, a piece worth setting apart on the wall."
+      "Its scale makes it a focal point, yet its transparency allows the room to breathe. From a distance, the silhouette commands attention; up close, the layers of colour invite discovery.",
+    gallery: [
+      "/images/sculptures/Altesse/altesse1.png",
+      "/images/sculptures/Altesse/altesse2.png",
+      "/images/sculptures/Altesse/altesse3.png",
+      "/images/sculptures/Altesse/altesse4.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Transparent glass with black, ivory and brown detailing, and amber accents. Dimensions: 27 × 22 × 42 cm (10.6 × 8.7 × 16.5 in). Weight: 4.223 kg / 9.31 lb.",
+        image: "/images/materials/glass.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "Selected for its architectural scale, balanced proportions and fluid layers of colour. The watchful eye, defined beak and talons are worked by hand — the finesse of the piece lives in those small marks against the sweep of the wing.",
+        image: "/images/sculptures/Altesse/altesse-craft.png"
+      }
+    ],
+    pullQuote:
+      "A silhouette from across the room; layers of colour from close up.",
+    lifestyleImage: "/images/sculptures/Altesse/altesse-hover.png",
+    inspiration: {
+      title: "Architecture in glass, watched over by an eye",
+      reasons: [
+        {
+          label: "Architectural scale",
+          body:
+            "Forty-two centimetres tall — a focal point at real architectural scale, yet the transparency keeps the room breathing around it."
+        },
+        {
+          label: "Balanced proportions",
+          body:
+            "The wing rises as one uninterrupted gesture; the body holds the counterweight. Balance is the whole reason the piece stands as it does."
+        },
+        {
+          label: "Fluid layers of colour",
+          body:
+            "Ivory, black, amber and brown are carried through the glass in free-flowing bands — layers that reveal themselves only as the light changes."
+        }
+      ]
+    }
   },
   {
     handle: "vase-colline",
@@ -1576,45 +1331,6 @@ export const PRODUCTS: Product[] = [
     material: "Hand-blown tinted glass",
     body:
       "A tall glass vase, hand-blown with a soft sand tint pulled through the wall. Reads sculptural in daylight; holds a single tall stem — a branch, a lily — beautifully."
-  },
-  {
-    handle: "figurine-souche",
-    name: "Figurine — Souche",
-    category: "Figurines",
-    description:
-      "A small carved-walnut animal on a low base. A quiet occupant for the desk, the shelf, the entry.",
-    price: { inr: 34000, usd: 420 },
-    image: "/images/figurines/figurine4.png",
-    aspect: "portrait",
-    material: "Hand-carved walnut",
-    body:
-      "A small walnut animal, carved from a single block and set on a low base. A quiet occupant for the desk, the shelf, the entry — the object that acknowledges the room."
-  },
-  {
-    handle: "figurine-echo",
-    name: "Figurine — Écho",
-    category: "Figurines",
-    description:
-      "A pair of small porcelain forms — sold together, sit together. A study in near-symmetry.",
-    price: { inr: 46000, usd: 570 },
-    image: "/images/figurines/figurine5.png",
-    aspect: "portrait",
-    material: "Slip-cast porcelain, matte white",
-    body:
-      "A pair of small porcelain forms — sold together, meant to sit together. A study in near-symmetry; each piece cast slightly differently from the other."
-  },
-  {
-    handle: "figurine-petite",
-    name: "Figurine — Petite",
-    category: "Figurines",
-    description:
-      "A miniature bronze form on a marble plinth. Small enough for a bedside; considered enough to keep.",
-    price: { inr: 48000, usd: 590 },
-    image: "/images/figurines/figurine6.png",
-    aspect: "portrait",
-    material: "Cast bronze, marble plinth",
-    body:
-      "A miniature bronze form set on a small marble plinth. Small enough for a bedside table; considered enough to be a piece that stays with a person for years."
   },
   {
     handle: "salt-cellar-sel",
@@ -1675,7 +1391,7 @@ export const EDITS: EditSelection[] = [
     title: "Statement pieces",
     intro:
       "The pieces that command a room — a chandelier, a mirror, a sculpted form scaled to be seen.",
-    categories: ["Lighting", "Sculptures", "Decorative Objects"]
+    categories: ["Lighting", "Sculptures"]
   },
   {
     slug: "new",
@@ -1699,7 +1415,7 @@ export const EDITS: EditSelection[] = [
     title: "Designer pieces",
     intro:
       "Signature works from the studio — the pieces the house is known for.",
-    categories: ["Sculptures", "Lighting", "Decorative Objects"]
+    categories: ["Sculptures", "Lighting"]
   }
 ];
 

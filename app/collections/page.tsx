@@ -33,18 +33,6 @@ const CATEGORY_CONFIG: Array<{
       "Vessels in ceramic, stone and glass — sculpture that holds."
   },
   {
-    id: "figurines",
-    label: "Figurines",
-    intro:
-      "Small representational forms — quiet punctuation on a shelf."
-  },
-  {
-    id: "decorative-objects",
-    label: "Decorative Objects",
-    intro:
-      "Mirrors, trays and quiet objects for the surfaces of a room."
-  },
-  {
     id: "tabletop",
     label: "Tabletop",
     intro:

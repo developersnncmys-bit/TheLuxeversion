@@ -154,7 +154,7 @@ function SuggestedList({ onSelect }: { onSelect: () => void }) {
     { label: "Chandeliers", href: "/collections/lighting" },
     { label: "Vases", href: "/collections/vases" },
     { label: "Sculptures", href: "/collections/sculptures" },
-    { label: "Mirrors", href: "/collections/decorative-objects" }
+    { label: "Tabletop", href: "/collections/tabletop" }
   ];
   return (
     <div>

@@ -1,14 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform
-} from "framer-motion";
-import { SafeImage } from "@/components/ui/safe-image";
+import { motion } from "framer-motion";
 import type { Product, ProductInspirationReason } from "@/lib/content";
 
 // "Inspiration" — a full-bleed in-situ shot followed by a numbered
@@ -28,7 +21,6 @@ export function ProductInspiration({ product }: { product: Product }) {
   const inspiration = product.inspiration;
   if (!inspiration) return null;
 
-  const image = inspiration.image ?? product.lifestyleImage ?? product.image;
   const eyebrow = inspiration.eyebrow ?? "Why This Piece";
   const reasons = inspiration.reasons ?? [];
 
@@ -37,15 +29,6 @@ export function ProductInspiration({ product }: { product: Product }) {
       className="relative bg-ink text-chalk"
       aria-labelledby={`inspiration-${product.handle}`}
     >
-      {/* Full-bleed cinematic image with cursor-follow parallax + zoom.
-          The image lives inside its own sub-component so the parallax
-          hooks aren't affected by the early-return upstream. */}
-      <ParallaxImage
-        src={image}
-        alt={`${product.name} — ${eyebrow}`}
-        seed={`${product.handle}-inspiration`}
-      />
-
       <div className="mx-auto max-w-editorial px-6 py-20 md:px-14 md:py-28">
         {/* Header — eyebrow + display title, centred. Restrained. */}
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-7 text-center">
@@ -125,132 +108,6 @@ export function ProductInspiration({ product }: { product: Product }) {
         )}
       </div>
     </section>
-  );
-}
-
-// Inspiration image with cursor-follow parallax + zoom. On pointer enter
-// the image scales up ~6%; as the cursor moves within the frame, the image
-// translates OPPOSITE to the cursor (classic "peek" parallax — feels like
-// the frame is a viewport onto a larger image behind it, so different edges
-// of the piece are revealed depending on where you look). Springs smooth
-// the motion so it never jitters. Pointer leave returns to rest.
-//
-// The scroll-triggered fade-in lives on the outer container; the parallax
-// transforms live on an inner motion.div so opacity and transform don't
-// compete for the same style slot. The bottom scrim sits outside the
-// parallax container so it stays anchored to the frame edge, not the
-// image.
-function ParallaxImage({
-  src,
-  alt,
-  seed
-}: {
-  src: string;
-  alt: string;
-  seed: string;
-}) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  // Normalised cursor position (-1 to 1 in each axis) + scale target.
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-  const scale = useMotionValue(1);
-
-  // Spring config — snappier than a default spring so the image tracks
-  // the cursor closely, but still damped enough that quick flicks don't
-  // overshoot. Lighter mass = faster response.
-  const springConfig = { stiffness: 160, damping: 18, mass: 0.25 };
-  const springX = useSpring(cursorX, springConfig);
-  const springY = useSpring(cursorY, springConfig);
-  const springScale = useSpring(scale, {
-    stiffness: 140,
-    damping: 20,
-    mass: 0.3
-  });
-
-  // Map cursor position to translation. Inverted (positive cursor → negative
-  // translate) so the image reveals the edge you're pointing towards — the
-  // "peek behind" effect rather than "drag along". Amplitude bumped so the
-  // movement is unmistakably visible during interaction.
-  const translateX = useTransform(springX, [-1, 1], ["6%", "-6%"]);
-  const translateY = useTransform(springY, [-1, 1], ["6%", "-6%"]);
-
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = containerRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
-    cursorX.set(nx);
-    cursorY.set(ny);
-  };
-
-  const handlePointerEnter = () => {
-    scale.set(1.1);
-  };
-
-  const handlePointerLeave = () => {
-    cursorX.set(0);
-    cursorY.set(0);
-    scale.set(1);
-  };
-
-  // Wheel-to-zoom while hovering. Scroll up = zoom in further, scroll down
-  // = zoom out below the resting scale (< 1 shows letterbox against the
-  // onyx background — that's the "wider view" state). Clamped so it never
-  // gets absurdly big or vanishes to a dot.
-  //
-  // React 17+ makes onWheel passive by default, so preventDefault via the
-  // synthetic handler is ignored. Attaching natively with { passive: false }
-  // is the reliable way to stop the page from scrolling while zooming.
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const current = scale.get();
-      const next = Math.max(0.85, Math.min(1.35, current - e.deltaY * 0.0015));
-      scale.set(next);
-    };
-
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [scale]);
-
-  return (
-    <motion.div
-      ref={containerRef}
-      onPointerMove={handlePointerMove}
-      onPointerEnter={handlePointerEnter}
-      onPointerLeave={handlePointerLeave}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      className="relative aspect-[4/5] w-full overflow-hidden bg-onyx md:aspect-[21/9]"
-    >
-      <motion.div
-        style={{ x: translateX, y: translateY, scale: springScale }}
-        className="absolute inset-0 will-change-transform"
-      >
-        <SafeImage
-          src={src}
-          alt={alt}
-          fallbackSeed={seed}
-          fill
-          sizes="100vw"
-          quality={68}
-          className="object-cover"
-        />
-      </motion.div>
-      {/* Scrim stays anchored to the frame edge — not translated with the
-          parallax layer, so it never lifts off the bottom. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/60 to-transparent"
-      />
-    </motion.div>
   );
 }
 

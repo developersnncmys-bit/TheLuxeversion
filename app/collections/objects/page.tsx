@@ -6,7 +6,7 @@ import { ObjectsCatalog } from "@/components/collections/objects/objects-catalog
 export const metadata: Metadata = {
   title: "Objects — The Luxe Version",
   description:
-    "Sculptures, vases, figurines, decorative pieces and tabletop — the objects that finish a room."
+    "Sculptures, vases and tabletop — the objects that finish a room."
 };
 
 export default function ObjectsPage() {
@@ -18,7 +18,7 @@ export default function ObjectsPage() {
       <CategoryHero
         kicker="The Collection"
         title="Objects"
-        description="Sculptural, decorative and quiet — the objects that finish a room. Sculptures in hand-carved wood and cast bronze, vessels wheel-thrown in stoneware and glass, small figurines, decorative mirrors and tabletop pieces for the dining table. Each conceived as a composition, sized to be lived with."
+        description="Sculptural and quiet — the objects that finish a room. Sculptures in hand-carved wood and cast bronze, vessels wheel-thrown in stoneware and glass, and tabletop pieces for the dining table. Each conceived as a composition, sized to be lived with."
         image="/images/product-banners/allobjects-banner.png"
         imageAlt="An arrangement of objects — a curated composition"
       />

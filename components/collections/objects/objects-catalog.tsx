@@ -13,7 +13,7 @@ import {
   getAvailableMaterials
 } from "@/components/collections/filters/product-filters";
 
-type FilterId = "all" | "sculptures" | "vases" | "figurines" | "decorative-objects" | "tabletop";
+type FilterId = "all" | "sculptures" | "vases" | "tabletop";
 
 type Chip = {
   id: FilterId;
@@ -25,8 +25,6 @@ const CHIPS: Chip[] = [
   { id: "all", label: "All Objects" },
   { id: "sculptures", label: "Sculptures", match: "Sculptures" },
   { id: "vases", label: "Vases", match: "Vases" },
-  { id: "figurines", label: "Figurines", match: "Figurines" },
-  { id: "decorative-objects", label: "Decorative", match: "Decorative Objects" },
   { id: "tabletop", label: "Tabletop", match: "Tabletop" }
 ];
 

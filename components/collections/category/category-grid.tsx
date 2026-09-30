@@ -91,7 +91,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           <h3 className="font-display text-[15px] font-semibold uppercase leading-[1.15] tracking-[0.005em] md:text-[16px]">
             {product.name}
           </h3>
-          <p className="max-w-[36ch] text-[13px] leading-[1.6] text-chalk/70">
+          <p className="line-clamp-4 max-w-[36ch] text-[13px] leading-[1.6] text-chalk/70">
             {product.description}
           </p>
           <p className="mt-1 text-[13px] tracking-[0.02em] text-chalk/85">

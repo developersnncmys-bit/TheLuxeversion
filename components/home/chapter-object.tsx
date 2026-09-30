@@ -28,29 +28,60 @@ const CATEGORY_ORDER: Product["category"][] = [
   "Vases"
 ];
 
+// Per-category hero handle override for the home "Shop the Piece" beats.
+// Without this, the beat picks the first product in the category — which
+// shifts whenever content.ts is reordered. Pin the intended handle here.
+const HERO_HANDLE_OVERRIDE: Partial<Record<Product["category"], string>> = {
+  Sculptures: "sculpture-linconnu",
+  Vases: "vase-onde"
+};
+
+// Per-category HERO IMAGE override. When set, this path is used as the big
+// hero shot on the beat, ignoring the pinned product's own `image` field.
+// Lets us pick a specific in-frame image without mutating the product data
+// (which would also change the collection card, sticky bar, etc.).
+const HERO_IMAGE_OVERRIDE: Partial<Record<Product["category"], string>> = {
+  Vases: "/images/vases/Onde/06.jpg"
+};
+
+// Per-category INSET IMAGE override — same idea, for the "In the Room ·
+// <category>" inset. Path is used verbatim; not tied to any product's own
+// image or lifestyleImage.
+const INSET_IMAGE_OVERRIDE: Partial<Record<Product["category"], string>> = {
+  Sculptures: "/images/sculptures/Telassa/22.jpg",
+  Vases: "/images/sculptures/Vestige/16.jpg"
+};
+
 type Beat = { hero: MediaTile; inset: MediaTile };
 
 const BEATS: Beat[] = CATEGORY_ORDER
   .map((cat) => {
     const catProducts = PRODUCTS.filter((p) => p.category === cat);
-    const heroProduct = catProducts[0];
+    const pinned = HERO_HANDLE_OVERRIDE[cat];
+    const heroProduct =
+      (pinned && catProducts.find((p) => p.handle === pinned)) ?? catProducts[0];
     if (!heroProduct) return null;
-    // Fall back to the hero product if the category only has one entry.
-    const insetProduct = catProducts[1] ?? heroProduct;
+    // Inset falls back to the hero product if only one entry — but prefer
+    // a DIFFERENT product than the hero when available.
+    const insetProduct =
+      catProducts.find((p) => p.handle !== heroProduct.handle) ?? heroProduct;
     return { heroProduct, insetProduct };
   })
   .filter((b): b is { heroProduct: Product; insetProduct: Product } => b !== null)
   .map(({ heroProduct, insetProduct }) => ({
     hero: {
       kind: "image" as const,
-      src: heroProduct.image,
+      src: HERO_IMAGE_OVERRIDE[heroProduct.category] ?? heroProduct.image,
       alt: heroProduct.name,
       kicker: heroProduct.category,
       label: heroProduct.name
     },
     inset: {
       kind: "image" as const,
-      src: insetProduct.lifestyleImage ?? insetProduct.image,
+      src:
+        INSET_IMAGE_OVERRIDE[heroProduct.category] ??
+        insetProduct.lifestyleImage ??
+        insetProduct.image,
       alt: `${insetProduct.name} in situ`,
       kicker: "In Situ",
       label: `In the Room · ${heroProduct.category}`

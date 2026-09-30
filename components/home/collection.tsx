@@ -6,28 +6,28 @@ import { useEffect, useRef, useState } from "react";
 import { PRODUCTS, productHref, type Product } from "@/lib/content";
 import { SafeImage } from "@/components/ui/safe-image";
 
-// One representative piece per category, in the same order as the category
-// pages in app/collections/[category]/page.tsx. If a category has no
-// products (shouldn't happen), it's skipped rather than left blank.
-const CATEGORY_ORDER: Product["category"][] = [
-  "Sculptures",
-  "Vases",
-  "Figurines",
-  "Decorative Objects",
-  "Tabletop",
-  "Lighting"
+// Six hand-picked pieces for the home "Complete Collection" grid — arranged
+// so the 3-col desktop layout reads as two full rows (row 1: one per
+// category we're highlighting, row 2: a second draw from the two largest
+// categories). Handles are looked up in PRODUCTS at build time; if any go
+// missing they're silently dropped rather than leaving a blank tile.
+const FEATURED_HANDLES = [
+  "sculpture-linconnu",
+  "vase-onde",
+  "charger-terra",
+  "chandelier-verre",
+  "sculpture-ardor",
+  "vase-auren"
 ];
 
-const FEATURED = CATEGORY_ORDER
-  .map((cat) => PRODUCTS.find((p) => p.category === cat))
+const FEATURED = FEATURED_HANDLES
+  .map((handle) => PRODUCTS.find((p) => p.handle === handle))
   .filter((p): p is Product => Boolean(p));
 
 // Per-category image override for the home tiles. Falls back to the product's
 // own image if the override key is absent. Drop matching files into
 // public/images/home-tiles/ and they'll appear automatically.
-const TILE_IMAGE_OVERRIDE: Partial<Record<Product["category"], string>> = {
-  "Decorative Objects": "/images/decorative-objects/deco1.png"
-};
+const TILE_IMAGE_OVERRIDE: Partial<Record<Product["category"], string>> = {};
 
 export function Collection() {
   const isDesktop = useIsDesktop();

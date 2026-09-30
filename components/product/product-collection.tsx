@@ -9,10 +9,8 @@ import { categorySlug, type Product } from "@/lib/content";
 // public/images/product-banners/ and they'll appear automatically; missing
 // files fall back to picsum via SafeImage.
 const CATEGORY_BANNERS: Record<Product["category"], string> = {
-  Sculptures: "/images/product-banners/sculpture-banner.png",
+  Sculptures: "/images/product-banners/Sculpture-banner.png",
   Vases: "/images/product-banners/vase-banner.png",
-  Figurines: "/images/product-banners/figurine-banner.png",
-  "Decorative Objects": "/images/product-banners/decorative-banner.png",
   Tabletop: "/images/product-banners/tabletop-banner.png",
   Lighting: "/images/product-banners/lighting-banner.png"
 };
@@ -36,14 +34,14 @@ export function ProductCollection({ product }: { product: Product }) {
           className="object-cover"
         />
 
-        {/* Right-side scrim so the copy stays legible over any imagery. */}
+        {/* Left-side scrim so the copy stays legible over any imagery. */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-l from-ink/80 via-ink/40 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 to-transparent"
         />
 
-        {/* Copy — pinned to the right, vertically centred. */}
-        <div className="absolute inset-y-0 right-0 flex items-center px-6 md:px-14">
+        {/* Copy — pinned to the left, vertically centred. */}
+        <div className="absolute inset-y-0 left-0 flex items-center px-6 md:px-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}

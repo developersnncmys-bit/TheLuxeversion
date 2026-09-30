@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { SafeImage } from "@/components/ui/safe-image";
@@ -28,6 +28,27 @@ export function ProductHero({ product, ref_ }: Props) {
   const gallery = product.gallery?.length ? product.gallery : [product.image];
   const [activeIndex, setActiveIndex] = useState(0);
   const [mounted, setMounted] = useState<Set<number>>(() => new Set([0]));
+  const thumbStripRef = useRef<HTMLDivElement>(null);
+
+  // Hover-zoom on the main image. Cursor position (as a % of the frame)
+  // drives transform-origin so moving the mouse pans the zoomed view.
+  const [zooming, setZooming] = useState(false);
+  const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
+  const handleZoomMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomPos({ x, y });
+  };
+
+  const scrollThumbs = (dir: 1 | -1) => {
+    const el = thumbStripRef.current;
+    if (!el) return;
+    // Scroll by roughly one thumbnail's height so each click advances the
+    // strip by one row rather than a fixed pixel amount.
+    const step = el.clientHeight * 0.35;
+    el.scrollBy({ top: step * dir, behavior: "smooth" });
+  };
 
   const { addToCart, openDrawer, toggleWishlist, isInWishlist } = useStore();
   const saved = isInWishlist(product.handle);
@@ -59,53 +80,74 @@ export function ProductHero({ product, ref_ }: Props) {
           behind the nav. Value matches the old design's `top-36` offset. */}
       <div className="grid grid-cols-1 pt-24 md:grid-cols-12 md:pt-36">
         {/* ── DESKTOP THUMBNAIL COLUMN ────────────────────────────────────
-            Narrow strip on the left. Each thumbnail is a small button that
-            switches the main image on click. Active thumbnail keeps full
-            opacity + a chalk ring; the others sit at 60% opacity and lift
-            on hover. */}
-        <div className="hidden md:col-span-1 md:flex md:flex-col md:gap-3 md:py-8 md:pl-4 md:pr-2">
-          {gallery.map((src, i) => (
-            <button
-              key={`thumb-${src}-${i}`}
-              type="button"
-              onClick={() => selectImage(i)}
-              aria-label={`View image ${i + 1} of ${gallery.length}`}
-              aria-current={i === activeIndex}
-              className={clsx(
-                "relative aspect-[4/5] w-full overflow-hidden bg-onyx transition-all duration-500 ease-silk",
-                i === activeIndex
-                  ? "opacity-100 ring-1 ring-chalk"
-                  : "opacity-60 hover:opacity-100"
-              )}
-            >
-              <SafeImage
-                src={src}
-                alt=""
-                fallbackSeed={`${product.handle}-thumb-${i}`}
-                fill
-                sizes="8vw"
-                quality={55}
-                className="object-cover"
-              />
-            </button>
-          ))}
+            Kalki-style: narrow strip on the left with up/down chevrons
+            that advance the selected image. Thumbnails hold a fixed
+            portrait aspect and scroll vertically inside the column if
+            there are more than fit; overflow bar is hidden. */}
+        <div className="hidden md:col-span-1 md:flex md:h-[80svh] md:flex-col md:items-stretch md:py-2 md:pl-4 md:pr-2">
+          <button
+            type="button"
+            onClick={() => scrollThumbs(-1)}
+            aria-label="Scroll thumbnails up"
+            className="mb-2 flex h-6 w-full items-center justify-center text-chalk/60 transition-colors hover:text-chalk"
+          >
+            <Chevron dir="up" />
+          </button>
+
+          <div
+            ref={thumbStripRef}
+            className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {gallery.map((src, i) => (
+              <button
+                key={`thumb-${src}-${i}`}
+                type="button"
+                onClick={() => selectImage(i)}
+                aria-label={`View image ${i + 1} of ${gallery.length}`}
+                aria-current={i === activeIndex}
+                className={clsx(
+                  "relative aspect-[4/5] w-full flex-shrink-0 overflow-hidden bg-onyx transition-all duration-500 ease-silk",
+                  i === activeIndex
+                    ? "opacity-100 ring-1 ring-chalk"
+                    : "opacity-60 hover:opacity-100"
+                )}
+              >
+                <SafeImage
+                  src={src}
+                  alt=""
+                  fallbackSeed={`${product.handle}-thumb-${i}`}
+                  fill
+                  sizes="8vw"
+                  quality={55}
+                  className="object-cover"
+                />
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => scrollThumbs(1)}
+            aria-label="Scroll thumbnails down"
+            className="mt-2 flex h-6 w-full items-center justify-center text-chalk/60 transition-colors hover:text-chalk"
+          >
+            <Chevron dir="down" />
+          </button>
         </div>
 
         {/* ── MAIN IMAGE ─────────────────────────────────────────────────
-            Fills roughly half the width on desktop. Images are stacked in
-            an overflow-hidden container and crossfaded via opacity — the
-            mount set gates which layers actually render <SafeImage>, so
-            the browser doesn't preload every gallery shot on first paint.
-            On mobile the container takes the full width and a portrait
-            4:5 aspect. */}
+            Kalki-style: edge-to-edge fill via object-cover, decorative
+            zoom glyph pinned top-right. Images crossfade in place; only
+            the active + neighbours are mounted so the browser doesn't
+            preload the whole gallery on first paint. */}
         <div
           className={clsx(
-            "relative bg-onyx overflow-hidden aspect-[4/5] md:aspect-auto md:col-span-6",
-            // Image column ~70% of viewport height on desktop — a moderate
-            // portrait window that doesn't monopolise the screen the way a
-            // full 100svh image did.
-            "md:min-h-[70svh]"
+            "relative bg-onyx overflow-hidden aspect-[4/5] md:col-span-6",
+            "md:h-[600px] md:w-[600px] md:aspect-auto md:cursor-zoom-in"
           )}
+          onMouseEnter={() => setZooming(true)}
+          onMouseLeave={() => setZooming(false)}
+          onMouseMove={handleZoomMove}
         >
           {gallery.map((src, i) => (
             <div
@@ -114,6 +156,17 @@ export function ProductHero({ product, ref_ }: Props) {
                 "absolute inset-0 transition-opacity duration-700 ease-silk",
                 i === activeIndex ? "z-10 opacity-100" : "z-0 opacity-0"
               )}
+              style={
+                i === activeIndex
+                  ? {
+                      transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
+                      transform: zooming ? "scale(2)" : "scale(1)",
+                      transition: zooming
+                        ? "transform 0.15s ease-out"
+                        : "transform 0.4s ease-out, opacity 0.7s cubic-bezier(0.22,1,0.36,1)"
+                    }
+                  : undefined
+              }
             >
               {mounted.has(i) && (
                 <SafeImage
@@ -124,11 +177,20 @@ export function ProductHero({ product, ref_ }: Props) {
                   priority={i === 0}
                   sizes="(min-width: 768px) 50vw, 100vw"
                   quality={i === 0 ? 78 : 74}
-                  className="object-contain p-6 md:p-10"
+                  className="object-cover"
                 />
               )}
             </div>
           ))}
+
+          <div
+            className={clsx(
+              "pointer-events-none absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-chalk/40 bg-ink/40 text-chalk backdrop-blur-sm transition-opacity duration-300",
+              zooming ? "opacity-0" : "opacity-100"
+            )}
+          >
+            <ZoomGlyph />
+          </div>
         </div>
 
         {/* ── MOBILE THUMBNAIL STRIP ─────────────────────────────────────
@@ -169,7 +231,7 @@ export function ProductHero({ product, ref_ }: Props) {
             that scrolls with the page. Panel content is unchanged from
             the previous design. */}
         <aside className="relative md:col-span-5">
-          <div className="md:flex md:min-h-[70svh] md:items-center">
+          <div className="md:flex md:min-h-[80svh] md:items-center">
             <div className="w-full px-6 py-16 md:px-14 md:py-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -269,6 +331,45 @@ function HeartGlyph({ filled }: { filled: boolean }) {
       aria-hidden
     >
       <path d="M10 16.5S3.5 13 3.5 8.25a3.25 3.25 0 0 1 6.5-.5 3.25 3.25 0 0 1 6.5.5C16.5 13 10 16.5 10 16.5Z" />
+    </svg>
+  );
+}
+
+function Chevron({ dir }: { dir: "up" | "down" }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className={dir === "down" ? "rotate-180" : undefined}
+    >
+      <path d="M5 12l5-5 5 5" />
+    </svg>
+  );
+}
+
+function ZoomGlyph() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <circle cx="8.5" cy="8.5" r="5" />
+      <path d="M12.5 12.5l3.5 3.5" />
+      <path d="M8.5 6.5v4M6.5 8.5h4" />
     </svg>
   );
 }

@@ -18,19 +18,19 @@ export function ProductStickyBar({ product }: { product: Product }) {
   };
 
   useEffect(() => {
-    const hero = document.getElementById("product-hero");
-    if (!hero) return;
+    // Observe `#product-info` (the section directly below the hero) rather
+    // than the hero itself. The bar only appears once the info section has
+    // fully scrolled out of view — well below the fold, when the persistent
+    // Add-to-Bag becomes actually useful. Attaching to the hero triggered
+    // the bar as soon as the hero moved by a pixel, which felt premature.
+    const target = document.getElementById("product-info");
+    if (!target) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      // Trigger when the hero has fully scrolled out of view. The previous
-      // "-90% top" margin only worked when the hero was multi-viewport tall
-      // (old scroll-spacer design). With the current one-viewport hero,
-      // negative margins push the observer band past the hero, so it
-      // wrongly reports the hero as already gone at scroll=0.
+      ([entry]) => setVisible(!entry.isIntersecting && entry.boundingClientRect.top < 0),
       { threshold: 0 }
     );
-    observer.observe(hero);
+    observer.observe(target);
     return () => observer.disconnect();
   }, []);
 

@@ -63,11 +63,10 @@ export function ObjectsHero() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-[14px] leading-[1.8] text-chalk/80 md:text-[15px]"
         >
-          Sculptural, decorative and quiet — the objects that finish a room.
-          Sculptures in hand-carved wood and cast bronze, vessels wheel-thrown in
-          stoneware and glass, small figurines, decorative mirrors and tabletop
-          pieces for the dining table. Each conceived as a composition, sized to
-          be lived with.
+          Sculptural and quiet — the objects that finish a room. Sculptures in
+          hand-carved wood and cast bronze, vessels wheel-thrown in stoneware
+          and glass, and tabletop pieces for the dining table. Each conceived
+          as a composition, sized to be lived with.
         </motion.p>
       </div>
     </section>
