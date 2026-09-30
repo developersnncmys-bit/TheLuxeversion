@@ -9,7 +9,7 @@ import { categorySlug, type Product } from "@/lib/content";
 // public/images/product-banners/ and they'll appear automatically; missing
 // files fall back to picsum via SafeImage.
 const CATEGORY_BANNERS: Record<Product["category"], string> = {
-  Sculptures: "/images/product-banners/Sculpture-banner.png",
+  Sculptures: "/images/product-banners/sculpture-banner.png",
   Vases: "/images/product-banners/vase-banner.png",
   Tabletop: "/images/product-banners/tabletop-banner.png",
   Lighting: "/images/product-banners/lighting-banner.png"
