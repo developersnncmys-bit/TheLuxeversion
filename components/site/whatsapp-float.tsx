@@ -21,26 +21,15 @@ export function WhatsAppFloat() {
       // dark ink pages and the light footer strip.
       className="group fixed bottom-36 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-black text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition-transform duration-500 hover:scale-105 md:bottom-40 md:right-10"
     >
+      {/* A single very restrained ring that expands slowly from the button
+          edge. Smaller amplitude (scale to 1.35 instead of 2), lower start
+          opacity (0.35), longer cycle (5s) — visible on close look, easy
+          to miss otherwise. Cadence deliberately gentle. */}
       <motion.span
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-white"
-        animate={{ scale: [1, 2], opacity: [0.9, 0] }}
-        transition={{ duration: 3.8, repeat: Infinity, ease: "easeOut" }}
-      />
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-white/80"
-        animate={{ scale: [1, 2], opacity: [0.7, 0] }}
-        transition={{ duration: 3.8, repeat: Infinity, ease: "easeOut", delay: 1.9 }}
-      />
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-full"
-        animate={{ boxShadow: [
-          "0 0 0 0 rgba(255,255,255,0.35)",
-          "0 0 0 10px rgba(255,255,255,0)",
-        ] }}
-        transition={{ duration: 3.8, repeat: Infinity, ease: "easeOut" }}
+        className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/60"
+        animate={{ scale: [1, 1.35], opacity: [0.35, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeOut" }}
       />
       <WhatsAppGlyph />
     </motion.a>

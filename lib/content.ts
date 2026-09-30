@@ -222,11 +222,11 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Cast in metal and hand-finished in a textured bronze patina. The surface catches light differently at every angle; every casting bears its own tonal variations — no two Ardor read exactly the same way.",
-        image: "/images/sculptures/Ardor/bull%202.jpg"
+        image: "/images/sculptures/Ardor/Ardor-craft.png"
       }
     ],
     pullQuote: "Momentum captured in bronze — a study in strength and resolve.",
-    lifestyleImage: "/images/sculptures/Ardor/bull%205.jpg",
+    lifestyleImage: "/images/sculptures/Ardor/Ardor.png",
     inspiration: {
       title: "Strength and momentum, held in bronze",
       reasons: [
@@ -397,7 +397,7 @@ export const PRODUCTS: Product[] = [
     ],
     pullQuote:
       "Sculpture that also holds — the honest, ancient trick of the vessel.",
-    lifestyleImage: "/images/vases/Auren/15.jpg",
+    lifestyleImage: "/images/vases/Auren/Vase-auren-presence.png",
     inspiration: {
       title: "Part of a series of forty. Signed at the foot.",
       reasons: [
@@ -449,11 +449,11 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Hand-painted and hand-textured with a coarse, tactile finish and expressive multitone brushwork. Each piece bears its own composition — no two Rivages are alike.",
-        image: "/images/vases/Vase-rivage/02.jpg"
+        image: "/images/vases/Vase-rivage/Rivage-craft.png"
       }
     ],
     pullQuote: "Colour moves across the surface like an abstract landscape.",
-    lifestyleImage: "/images/vases/Vase-rivage/05.jpg",
+    lifestyleImage: "/images/vases/Vase-rivage/Rivage-presence.png",
     inspiration: {
       title: "A vessel transformed into a canvas",
       reasons: [
@@ -505,12 +505,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "The grey marbling is worked into the porcelain by hand — every piece bears its own pattern of drift. Fine gold lines are applied last, tracing the rim and descending through the body.",
-        image: "/images/vases/Onde/07.jpg"
+        image: "/images/vases/Onde/Vase-onde-craft.png"
       }
     ],
     pullQuote:
       "Water moving over pale stone, with a trace of gold in the last light.",
-    lifestyleImage: "/images/vases/Onde/10.jpg",
+    lifestyleImage: "/images/vases/Onde/Vase-onde-presence.png",
     inspiration: {
       title: "A wave, held in porcelain",
       reasons: [
@@ -564,7 +564,7 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "A study in quiet majesty.",
-    lifestyleImage: "/images/sculptures/Majeste/majeste-hover.png",
+    lifestyleImage: "/images/sculptures/Majeste/Majeste.png",
     inspiration: {
       title: "A face carried by time",
       reasons: [
@@ -962,17 +962,18 @@ export const PRODUCTS: Product[] = [
     description:
       "Ancient in spirit. Monumental in presence. VESTIGE rises in carved wood, its Egyptian-inspired form shaped by geometry, instinct and time.",
     price: { inr: 112000, usd: 1380 },
-    image: "/images/sculptures/Vestige/16.jpg",
+    image: "/images/sculptures/Vestige/Vestige1.jpg",
     aspect: "portrait",
     material: "Solid wood, distressed finish",
     body:
       "At over five feet, VESTIGE commands space without ornament. Deep incisions trace its elongated form, while the weathered surface reveals the natural character of solid wood. Primitive in expression, architectural in scale — an object with the presence of a discovered artefact.",
     gallery: [
-      "/images/sculptures/Vestige/16.jpg",
-      "/images/sculptures/Vestige/17.jpg",
-      "/images/sculptures/Vestige/18.jpg",
-      "/images/sculptures/Vestige/19.jpg",
-      "/images/sculptures/Vestige/20.jpg"
+      "/images/sculptures/Vestige/Vestige1.jpg",
+      "/images/sculptures/Vestige/Vestige2.jpg",
+      "/images/sculptures/Vestige/Vestige3.jpg",
+      "/images/sculptures/Vestige/vestige4.png",
+      "/images/sculptures/Vestige/Vestige5.png",
+      "/images/sculptures/Vestige/Vestige6.jpg"
     ],
     details: [
       {
@@ -985,11 +986,11 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Deep incisions trace the elongated form; each cut is worked by hand. The distressed finish preserves the natural character of the wood — grain, knots and the marks of shaping intact.",
-        image: "/images/sculptures/Vestige/17.jpg"
+        image: "/images/sculptures/Vestige/Vestige-Craft.png"
       }
     ],
     pullQuote: "Ancient in spirit. Monumental in presence.",
-    lifestyleImage: "/images/sculptures/Vestige/20.jpg",
+    lifestyleImage: "/images/sculptures/Vestige/Vestige-presence.png",
     inspiration: {
       title: "An object with the presence of a discovered artefact",
       reasons: [
@@ -1018,16 +1019,15 @@ export const PRODUCTS: Product[] = [
     description:
       "A study in abstraction and restraint. ÉNIGME reduces the human face to its most elemental lines, leaving expression deliberately unresolved.",
     price: { inr: 132000, usd: 1620 },
-    image: "/images/sculptures/Engime/face%201%20(1).jpg",
+    image: "/images/sculptures/Engime/Engime1.png",
     aspect: "portrait",
     material: "Metal, textured pale gold and charcoal finish",
     body:
       "Two faces, two scales, two finishes — held together by a singular sculptural language. Their quiet ambiguity invites interpretation rather than defining it.",
     gallery: [
-      "/images/sculptures/Engime/face%201%20(1).jpg",
-      "/images/sculptures/Engime/face%202%20(1).jpg",
-      "/images/sculptures/Engime/face%203.%20(1).jpg",
-      "/images/sculptures/Engime/face%204%20(1).jpg"
+      "/images/sculptures/Engime/Engime1.png",
+      "/images/sculptures/Engime/Engime2.png",
+      "/images/sculptures/Engime/engime3.png"
     ],
     details: [
       {
@@ -1040,12 +1040,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Cast in metal, the pairing juxtaposes pale gold with deep charcoal. Textured surfaces temper the metallic finish, while carved contours give each face its individual presence.",
-        image: "/images/sculptures/Engime/face%202%20(1).jpg"
+        image: "/images/sculptures/Engime/Engime-craft.png"
       }
     ],
     pullQuote:
       "Two faces, one language — expression deliberately unresolved.",
-    lifestyleImage: "/images/sculptures/Engime/face%204%20(1).jpg",
+    lifestyleImage: "/images/sculptures/Engime/Engime-presence.png",
     inspiration: {
       title: "Two faces, one sculptural language",
       reasons: [
@@ -1097,12 +1097,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Tonal variations and an intentionally irregular surface texture lend depth and individual character to the piece. Each casting bears a slightly different pattern of light — no two Fougue read exactly the same way.",
-        image: "/images/sculptures/Fouge/horse%202.jpg"
+        image: "/images/sculptures/Fouge/Fouge-craft.png"
       }
     ],
     pullQuote:
       "Contained power — strong without heaviness, expressive without excess.",
-    lifestyleImage: "/images/sculptures/Fouge/horse%205.jpg",
+    lifestyleImage: "/images/sculptures/Fouge/Fouge-presence.png",
     inspiration: {
       title: "The horse, reduced to line and gesture",
       reasons: [
@@ -1153,12 +1153,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Monumental in expression, L'Inconnu commands through elegance, texture and restraint — an enigmatic objet d'art conceived as a focal point. The metallic surfaces are layered by hand; every piece bears its own pattern of light.",
-        image: "/images/sculptures/Linconnu/L5.PNG"
+        image: "/images/sculptures/Linconnu/Linconnu-craft.png"
       }
     ],
     pullQuote:
       "As instinct yields to consciousness, light becomes revelation.",
-    lifestyleImage: "/images/sculptures/Linconnu/L6.PNG",
+    lifestyleImage: "/images/sculptures/Linconnu/Linconnu-presence.png",
     inspiration: {
       title: "The space between the visible and the unknown",
       reasons: [
@@ -1210,12 +1210,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Selected for its generous scale, layered colour and exceptionally defined, jewel-like edge. Each piece is mouth-blown by hand — the spiral, the striations and the coppered flecks are the maker's decisions in the moment.",
-        image: "/images/sculptures/Telassa/22.jpg"
+        image: "/images/sculptures/Telassa/Telassa-craft.png"
       }
     ],
     pullQuote:
       "The sea, held in glass — sunlight along the shore.",
-    lifestyleImage: "/images/sculptures/Telassa/25.jpg",
+    lifestyleImage: "/images/sculptures/Telassa/Telassa-presence.png",
     inspiration: {
       title: "Selected for what a machine cannot make",
       reasons: [
@@ -1244,16 +1244,18 @@ export const PRODUCTS: Product[] = [
     description:
       "ALTESSE captures the regal presence of an eagle in a magnificent study of scale and proportion. Its transparent wing rises like an architectural gesture, giving the silhouette striking movement. Free-flowing, seemingly unstoppable curves carry ivory, black, amber and touches of brown through the glass. The finesse lies in its watchful eye, defined beak and talons, and the changing light within the form.",
     price: { inr: 158000, usd: 1940 },
-    image: "/images/sculptures/Altesse/altesse1.png",
+    image: "/images/sculptures/Altesse/Altesse1.png",
     aspect: "portrait",
     material: "Glass",
     body:
       "Its scale makes it a focal point, yet its transparency allows the room to breathe. From a distance, the silhouette commands attention; up close, the layers of colour invite discovery.",
     gallery: [
-      "/images/sculptures/Altesse/altesse1.png",
-      "/images/sculptures/Altesse/altesse2.png",
-      "/images/sculptures/Altesse/altesse3.png",
-      "/images/sculptures/Altesse/altesse4.png"
+      "/images/sculptures/Altesse/Altesse1.png",
+      "/images/sculptures/Altesse/Altesse2.png",
+      "/images/sculptures/Altesse/Altesse3.png",
+      "/images/sculptures/Altesse/Altesse4.png",
+      "/images/sculptures/Altesse/Altesse5.png",
+      "/images/sculptures/Altesse/Altesse6.png"
     ],
     details: [
       {
@@ -1266,12 +1268,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Selected for its architectural scale, balanced proportions and fluid layers of colour. The watchful eye, defined beak and talons are worked by hand — the finesse of the piece lives in those small marks against the sweep of the wing.",
-        image: "/images/sculptures/Altesse/altesse-craft.png"
+        image: "/images/sculptures/Altesse/Altesse-carft.png"
       }
     ],
     pullQuote:
       "A silhouette from across the room; layers of colour from close up.",
-    lifestyleImage: "/images/sculptures/Altesse/altesse-hover.png",
+    lifestyleImage: "/images/sculptures/Altesse/Altesse-presence.png",
     inspiration: {
       title: "Architecture in glass, watched over by an eye",
       reasons: [
