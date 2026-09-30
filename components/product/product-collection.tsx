@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { SafeImage } from "@/components/ui/safe-image";
 import { categorySlug, type Product } from "@/lib/content";
@@ -16,10 +17,14 @@ const CATEGORY_BANNERS: Record<Product["category"], string> = {
 };
 
 // Collection tie-in — full-bleed image banner with the collection copy
-// overlaid on the right. Shorter and cinematic; no gutters, no columns.
+// overlaid on either side. Sculpture pages anchor the copy on the LEFT (to
+// preserve the composition of the sculpture-banner shot); every other
+// category anchors on the RIGHT. The scrim direction flips to match, so
+// the copy is always sitting over the darkened side of the image.
 export function ProductCollection({ product }: { product: Product }) {
   const image = CATEGORY_BANNERS[product.category];
   const slug = categorySlug(product.category);
+  const alignLeft = product.category === "Sculptures";
 
   return (
     <section className="relative bg-ink text-chalk">
@@ -34,20 +39,36 @@ export function ProductCollection({ product }: { product: Product }) {
           className="object-cover"
         />
 
-        {/* Left-side scrim so the copy stays legible over any imagery. */}
+        {/* Scrim direction follows the copy side so the text is always
+            over the darkened half of the image. */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/40 to-transparent"
+          className={clsx(
+            "absolute inset-0 from-ink/80 via-ink/40 to-transparent",
+            alignLeft ? "bg-gradient-to-r" : "bg-gradient-to-l"
+          )}
         />
 
-        {/* Copy — pinned to the left, vertically centred. */}
-        <div className="absolute inset-y-0 left-0 flex items-center px-6 md:px-14">
+        {/* Copy — pinned to left OR right depending on category, vertically
+            centred either way. Right-aligned pages get a wider gutter from
+            the screen edge so the text doesn't crowd the viewport. */}
+        <div
+          className={clsx(
+            "absolute inset-y-0 flex items-center px-6",
+            alignLeft
+              ? "left-0 md:px-14"
+              : "right-0 md:px-20 lg:px-28"
+          )}
+        >
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15% 0px" }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-sm text-left md:max-w-md"
+            className={clsx(
+              "max-w-sm md:max-w-md",
+              alignLeft ? "text-left" : "text-right"
+            )}
           >
             <p className="text-[10px] uppercase tracking-[0.32em] text-chalk/70">
               The Collection
