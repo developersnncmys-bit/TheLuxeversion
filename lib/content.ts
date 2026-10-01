@@ -199,7 +199,7 @@ export const PRODUCTS: Product[] = [
     description:
       "A rare sculpture captures strength and momentum. Its sweeping horns and grounded stance convey an unmistakable sense of power and resolve.",
     price: { inr: 96000, usd: 1180 },
-    image: "/images/sculptures/Ardor/bull%201.jpg",
+    image: "/images/sculptures/Ardor/The-Ardor1.png",
     aspect: "portrait",
     material: "Metal, textured bronze finish",
     body:
@@ -209,7 +209,7 @@ export const PRODUCTS: Product[] = [
       "/images/sculptures/Ardor/bull%202.jpg",
       "/images/sculptures/Ardor/bull%203.jpg",
       "/images/sculptures/Ardor/bull%204.jpg",
-      "/images/sculptures/Ardor/bull%205.jpg"
+      
     ],
     details: [
       {
@@ -226,7 +226,7 @@ export const PRODUCTS: Product[] = [
       }
     ],
     pullQuote: "Momentum captured in bronze — a study in strength and resolve.",
-    lifestyleImage: "/images/sculptures/Ardor/Ardor.png",
+    lifestyleImage: "/images/sculptures/Ardor/The-Ardor1.png",
     inspiration: {
       title: "Strength and momentum, held in bronze",
       reasons: [
@@ -370,16 +370,16 @@ export const PRODUCTS: Product[] = [
     description:
       "A sculptural vase defined by sweeping vertical contours and a dramatic petal-like crown. AUREN is a study of scale and texture, with a quiet presence.",
     price: { inr: 74000, usd: 910 },
-    image: "/images/vases/Auren/11.jpg",
+    image: "/images/vases/Auren/Vase-Auren1.png",
     aspect: "portrait",
     material: "Ceramic, textured grey glaze",
     body:
       "A substantial ceramic vase defined by its broad proportions and sculptural, foliage-inspired silhouette. Deep vertical ridges travel across the surface into curved, rising edges, giving AUREN a distinct architectural character.",
     gallery: [
-      "/images/vases/Auren/11.jpg",
-      "/images/vases/Auren/12.jpg",
-      "/images/vases/Auren/14.jpg",
-      "/images/vases/Auren/15.jpg"
+      "/images/vases/Auren/Vase-Auren1.png",
+      "/images/vases/Auren/Auren2.png",
+      "/images/vases/Auren/Auren3.png",
+      "/images/vases/Auren/Auren4.png"
     ],
     details: [
       {
@@ -392,7 +392,7 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Thrown, glazed and fired in a small studio in Auroville. Each piece signed and dated at the foot.",
-        image: "/images/vases/Auren/12.jpg"
+        image: "/images/vases/Auren/Auren-Craft.png"
       }
     ],
     pullQuote:
@@ -426,16 +426,16 @@ export const PRODUCTS: Product[] = [
     description:
       "A sculptural ceramic form where colour moves like an abstract landscape. Sweeps of mineral blue, ivory, charcoal and muted rust travel across its broad silhouette, giving the piece the presence of a painted canvas.",
     price: { inr: 82000, usd: 1010 },
-    image: "/images/vases/Vase-rivage/01%20.jpg",
+    image: "/images/vases/Vase-rivage/Rivage1.png",
     aspect: "portrait",
     material: "Premium ceramic, hand-painted multitone finish",
     body:
       "RIVAGE transforms a vessel into an art object. Its generous proportions, tactile surface and expressive composition allow it to stand confidently on its own — commanding attention without excess.",
     gallery: [
-      "/images/vases/Vase-rivage/01%20.jpg",
-      "/images/vases/Vase-rivage/02.jpg",
-      "/images/vases/Vase-rivage/03.jpg",
-      "/images/vases/Vase-rivage/04.jpg",
+      "/images/vases/Vase-rivage/Rivage1.png",
+      "/images/vases/Vase-rivage/Rivage2.png",
+      "/images/vases/Vase-rivage/Rivage3.png",
+      "/images/vases/Vase-rivage/Rivage4.png",
       "/images/vases/Vase-rivage/05.jpg"
     ],
     details: [
@@ -482,24 +482,24 @@ export const PRODUCTS: Product[] = [
     description:
       "An open porcelain form with a fluid, irregular silhouette. Misty grey markings move across its ivory surface, while fine gold lines trace the rim and descend through the body.",
     price: { inr: 72000, usd: 890 },
-    image: "/images/vases/Onde/06.jpg",
+    image: "/images/vases/Onde/Onde-1.png",
     aspect: "portrait",
     material: "Porcelain, grey marbling with gold detailing",
     body:
       "Onde means \"wave\" in French. The piece evokes France's Atlantic shoreline: water moving over pale stone, with a trace of gold in the last light. The glossy interior catches light within each curve.",
     gallery: [
       "/images/vases/Onde/06.jpg",
-      "/images/vases/Onde/07.jpg",
-      "/images/vases/Onde/08.jpg",
-      "/images/vases/Onde/09.jpg",
-      "/images/vases/Onde/10.jpg"
+      "/images/vases/Onde/Onde5.png",
+      "/images/vases/Onde/Onde3.png",
+      "/images/vases/Onde/Onde4.png",
+      "/images/vases/Onde/Onde-2.png"
     ],
     details: [
       {
         label: "Material",
         body:
           "Porcelain with grey marbling, a smooth lacquered sheen and gold detailing. Dimensions: 52 × 29 × 26 cm (20.5 × 11.4 × 10.2 in). Weight: 3.841 kg / 8.47 lb.",
-        image: "/images/materials/ceramic.png"
+        image: "/images/materials/marble.png"
       },
       {
         label: "Craft",
@@ -528,6 +528,65 @@ export const PRODUCTS: Product[] = [
           label: "Atlantic reference",
           body:
             "Named for the French word for wave, the piece evokes France's Atlantic shoreline — water moving over pale stone, with a trace of gold in the last light."
+        }
+      ]
+    }
+  },
+  {
+    handle: "sculpture-Rein",
+    name: "Sculpture — Rein",
+    category: "Sculptures",
+    description:
+      "A lowered gaze and flowing mane give REIN its composed presence. Carved in wood, its sculpted contours carry a weathered grey finish with bronze-painted accents. A black pedestal lends the form an architectural stance.",
+    price: { inr: 136000, usd: 1620 },
+    image: "/images/sculptures/Rein/Rein1.png",
+    aspect: "portrait",
+    material: "Wood, Weathered grey with bronze-painted accents, mounted on a black base.",
+    body:
+      "The horse embodies strength guided by sensitivity. REIN captures that balance, bringing quiet authority to a console, study or collected interior.",
+      
+    gallery: [
+      "/images/sculptures/Rein/Rein1.png",
+      "/images/sculptures/Rein/Rein2.png",
+      "/images/sculptures/Rein/Rein3.png",
+      "/images/sculptures/Rein/Rein4.png",
+      "/images/sculptures/Rein/Rein5.png",
+      "/images/sculptures/Rein/Rein6.png"
+      
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Wood, Weathered grey with bronze-painted accents, mounted on a black base. Dimensions: 12.2 × 5.9 × 19.7 in (31 × 15 × 50 cm). Weight: 3.178 kg / 7.01 lb.",
+        image: "/images/materials/wood.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "The flowing mane, layered painted finish and precise black base create a measured balance of movement and stillness.",
+        image: "/images/sculptures/Rein/Rein-craft.png"
+      }
+    ],
+    pullQuote: "A STUDY IN STRENGTH, FORM AND TIME.",
+    lifestyleImage: "/images/sculptures/Rein/Rein-presence.png",
+    inspiration: {
+      title: "A STUDY IN STRENGTH AND STILLNESS",
+      reasons: [
+        {
+          label: "TIME-WORN CHARACTER",
+          body:
+            "Weathered grey tones and bronze-painted accents give REIN a distinctive aged character, allowing the surface to carry a sense of depth and history."
+        },
+        {
+          label: "EQUESTRIAN FORM",
+          body:
+            "A sculpted horse head captures the strength and presence of the animal through its elongated form, defined features and expressive silhouette."
+        },
+        {
+          label: "QUIETLY MONUMENTAL",
+          body:
+            "Mounted on a black base, REIN transforms a familiar equestrian form into a striking sculptural object with a strong architectural presence."
         }
       ]
     }
@@ -587,55 +646,56 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
-    handle: "vase-ondule",
-    name: "Vase — Ondulé",
+    handle: "vase-Obre",
+    name: "Vase — Obre",
     category: "Vases",
     description:
-      "A rippled stoneware vase, wheel-thrown and unglazed. For the console, the sideboard, the shelf that wants weight and quiet.",
+      "Defined by a continuous sweep of deep teal glass, Obre balances an elongated silhouette with a generous oval opening. Its substantial 1 cm thickness creates visual depth, while light traces the transition from the rising arch to the rounded body. A subtly lifted lip and clear glass base complete its architectural form.",
     price: { inr: 58000, usd: 720 },
-    image: "/images/vases/vase2.png",
+    image: "/images/vases/Obre/Obre1.png",
     aspect: "portrait",
-    material: "Wheel-thrown stoneware, unglazed",
+    material: "Polished Deep Teal Glass",
     body:
-      "A rippled stoneware vase, thrown on the wheel and left unglazed — the clay body reads directly, warm and matte. For the console, the sideboard, the shelf that wants weight and quiet.",
+      "A study in fullness and space. Obre brings fluid movement to architectural settings, its open centre allowing the surroundings to become part of the composition. Perfect for a candlelit cocktail bar or lounge setting, where soft light accentuates its deep teal curves.",
     gallery: [
-      "/images/vases/vase2.png",
-      "/images/vases/vase3.png",
-      "/images/vases/vase4.png",
-      "/images/vases/vase5.png"
+      "/images/vases/Obre/Obre1.png",
+      "/images/vases/Obre/Obre2.png",
+      "/images/vases/Obre/Obre3.png",
+      "/images/vases/Obre/Obre4.png",
+      "/images/vases/Obre/Obre5.png"
     ],
     details: [
       {
         label: "Material",
-        body: "Stoneware clay, unglazed. Sealed interior for water use. 42 cm tall.",
-        image: "/images/materials/ceramic.png"
+        body: "Polished deep teal glass with a clear glass base. Dimensions: 8.7 x 3.9 x 15.4 in ( 22 x 10 x 39 cm). Weight: 4.4445 Kg / 9.80 lb.",
+        image: "/images/materials/glass.png"
       },
       {
         label: "Craft",
         body:
-          "Thrown, ribbed and fired in a single studio. Each ripple pulled by hand — the rhythm varies piece to piece.",
-        image: "/images/vases/vase1.png"
+          "The interplay of substantial glass, fine elegance and flowing contours gives the piece a changing presence as light moves across it.",
+        image: "/images/vases/Obre/Obre-craft.png"
       }
     ],
-    pullQuote: "Weight and quiet — the shelf finally at rest.",
-    lifestyleImage: "/images/vases/vase5.png",
+    pullQuote: "A QUIET STATEMENT — WHERE DEEP TEAL GLASS MEETS FLOWING FORM.",
+    lifestyleImage: "/images/vases/Obre/Obre-presence.png",
     inspiration: {
-      title: "Every ripple pulled by one pair of hands",
+      title: "EVERY CURVE HOLDS THE LIGHT",
       reasons: [
         {
-          label: "No mould",
+          label: "CONTINUOUS FORM",
           body:
-            "Thrown on the wheel and ribbed entirely by hand. The rhythm shifts piece by piece — no two vessels move the same way."
+            "A single sweeping curve rises into an elongated arch before flowing into the rounded body, giving Obre its distinctive architectural presence."
         },
         {
-          label: "Unglazed",
+          label: "DEEP TEAL GLASS",
           body:
-            "Left bare so the stoneware reads warm and direct. The clay itself is the finish."
+            "Its substantial glass construction creates layers of depth within the deep teal surface, revealing changing tones and reflections as light moves across the form."
         },
         {
-          label: "A specific afternoon",
+          label: "SPACE BECOMES PART OF THE FORM",
           body:
-            "What you're buying isn't a shape. It's a particular afternoon in a particular studio, held in the surface."
+            "The generous oval opening gives Obre an airy quality, allowing its surroundings, light, and reflections to become part of the composition."
         }
       ]
     }
@@ -905,17 +965,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A carved metal sculpture captured in motion. SILLAGE is conceived for a mantel, lounge or formal living that calls for a defining line.",
     price: { inr: 174000, usd: 2150 },
-    image: "/images/sculptures/Sillage/26.jpg",
+    image: "/images/sculptures/Sillage/Sillage1.png",
     aspect: "portrait",
     material: "Metal, textured gold finish",
     body:
       "Monumental in scale, SILLAGE expresses an extravagance of form and gold, with a fluidity that seems to know no bounds. Its substantial metal construction gives the piece weight, solidity and commanding presence.",
     gallery: [
-      "/images/sculptures/Sillage/26.jpg",
-      "/images/sculptures/Sillage/27.jpg",
-      "/images/sculptures/Sillage/28.jpg",
-      "/images/sculptures/Sillage/29.jpg",
-      "/images/sculptures/Sillage/30.jpg"
+      "/images/sculptures/Sillage/Sillage1.png",
+      "/images/sculptures/Sillage/Sillage2.png",
+      "/images/sculptures/Sillage/Sillage3.png",
+      "/images/sculptures/Sillage/Sillage4.png",
+      "/images/sculptures/Sillage/Sillage5.png"
     ],
     details: [
       {
@@ -928,12 +988,12 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "Cast in metal and hand-finished in textured gold. Each surface is layered to catch light differently at every angle; the tactile character emerges only when the piece is placed in a room.",
-        image: "/images/sculptures/Sillage/27.jpg"
+        image: "/images/sculptures/Sillage/Sillage-Craft.png"
       }
     ],
     pullQuote:
       "An extravagance of form — a fluidity that seems to know no bounds.",
-    lifestyleImage: "/images/sculptures/Sillage/30.jpg",
+    lifestyleImage: "/images/sculptures/Sillage/Sillage-presence.png",
     inspiration: {
       title: "A defining line for the room",
       reasons: [
@@ -962,7 +1022,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Ancient in spirit. Monumental in presence. VESTIGE rises in carved wood, its Egyptian-inspired form shaped by geometry, instinct and time.",
     price: { inr: 112000, usd: 1380 },
-    image: "/images/sculptures/Vestige/Vestige1.jpg",
+    image: "/images/sculptures/Vestige/Vestige.png",
     aspect: "portrait",
     material: "Solid wood, distressed finish",
     body:
@@ -1423,36 +1483,36 @@ export const EDITS: EditSelection[] = [
 
 export const JOURNAL_ENTRIES = [
   {
-    slug: "on-the-brass-lamp",
+    slug: "AT THE CERAMIC STUDIO",
     kicker: "Guide",
-    title: "On the brass lamp",
+    title: "AT THE CERAMIC STUDIO",
     excerpt:
-      "Which brass lamp fits which reading chair — scale, arm reach, and shade height.",
-    image: "/images/lighting/light1.png"
+      "A sculptural vessel shaped by layered colour and movement — Rivage brings a hand-painted character to quiet, considered interiors.",
+    image: "/images/vases/vase-rivage/Rivage-Studio.png"
   },
   {
-    slug: "on-the-mantel-object",
+    slug: "ON THE SCULPTURAL PLINTH",
     kicker: "Guide",
-    title: "On the mantel object",
+    title: "ON THE SCULPTURAL PLINTH",
     excerpt:
-      "Choosing one sculptural piece for the mantel — proportion, weight, and the shadow it casts at dusk.",
-    image: "/images/sculptures/scu1.png"
+      "A study in contrast and balance — ÉNIGME pairs textured pale gold with charcoal to create an object of quiet visual tension.",
+    image: "/images/sculptures/Engime/Engime-Studio.png"
   },
   {
-    slug: "at-the-ceramics-kiln",
+    slug: "IN THE AMBIENT LIGHT",
     kicker: "Studio",
-    title: "At the ceramics kiln",
+    title: "IN THE AMBIENT LIGHT",
     excerpt:
-      "A morning inside the small studio where our vessels are thrown, glazed and fired.",
-    image: "/images/vases/vase1.png"
+      "Defined by a fluid silhouette and deep teal glass, OBRE turns a simple vessel into a striking sculptural presence.",
+    image: "/images/vases/Obre/Obre-studio.png"
   },
   {
-    slug: "on-the-wall-piece",
+    slug: "IN THE QUIET CORNER",
     kicker: "Guide",
-    title: "On the wall piece",
+    title: "IN THE QUIET CORNER",
     excerpt:
-      "How to choose one sculptural piece that anchors the wall — without competing with the room below it.",
-    image: "/images/sculptures/scu2.png"
+      "Carved from solid wood and marked by a distressed finish, VESTIGE carries the character of an object shaped by time",
+    image: "/images/sculptures/Vestige/Vestige.png"
   },
   {
     slug: "a-house-in-the-hills",

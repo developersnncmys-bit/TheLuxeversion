@@ -57,24 +57,26 @@ const CATEGORIES: Record<string, CategoryConfig> = {
       kicker: "The Savoir-faire",
       title: "Of The Luxe Version",
       body:
-        "Every sculpture begins as a single billet — walnut, travertine, or cast bronze — worked by a single hand until one line remains. Forty hours per piece; signed and dated at the base.",
-      poster: "/images/sculptures/scu4.png",
+        "A study in quiet majesty. MAJESTÉ captures the profound stillness of the Buddha through a serene expression and intricately sculpted crown, while its time-worn patina lends the piece a sense of history, character and regal presence.",
+      poster: "/images/sculptures/Majeste/majeste3.jpg",
       posterAlt: "A hand-carved sculpture in a lived-in room",
-      videoSrc: "/images/living-room2.mp4"
+      href: "/collections/sculptures/sculpture-majeste",
+      ctaLabel: "DISCOVER MAJESTE"
+      //videoSrc: "/images/living-room2.mp4"
     },
     editorial: {
       kicker: "The Collection",
       title: "One Line, Held",
       body:
         "A sculpture is the piece a room turns toward first. Placed on a mantel or at the edge of an entry, it holds the eye without asking. The rest of the room arranges itself around it.",
-      image: "/images/sculptures/scu3.png",
+      image: "/images/sculptures/Altesse/Altesse1.png",
       imageAlt: "A carved sculpture in profile",
       href: "/collections/sculptures"
     },
     related: [
       {
         title: "Vases",
-        image: "/images/vases/vase1.png",
+        image: "/images/vases/vase-rivage/Rivage-craft.png",
         imageAlt: "A ceramic vessel",
         href: "/collections/vases"
       },
@@ -230,7 +232,9 @@ export default function CategoryPage({
   const cfg = CATEGORIES[params.category];
   if (!cfg) notFound();
 
-  const products = PRODUCTS.filter((p) => p.category === cfg.filter);
+  const products = PRODUCTS.filter(
+  (p) => p.category === cfg.filter && p.handle !== "sculpture-majeste"
+);
 
   return (
     <>
