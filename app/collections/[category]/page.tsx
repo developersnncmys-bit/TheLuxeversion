@@ -76,7 +76,7 @@ const CATEGORIES: Record<string, CategoryConfig> = {
     related: [
       {
         title: "Vases",
-        image: "/images/vases/vase-rivage/Rivage-craft.png",
+        image: "/images/vases/Vase-rivage/Rivage-craft.png",
         imageAlt: "A ceramic vessel",
         href: "/collections/vases"
       },

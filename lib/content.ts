@@ -565,7 +565,7 @@ export const PRODUCTS: Product[] = [
         label: "Craft",
         body:
           "The flowing mane, layered painted finish and precise black base create a measured balance of movement and stillness.",
-        image: "/images/sculptures/Rein/Rein-craft.png"
+        image: "/images/sculptures/Rein/Rein-Craft.png"
       }
     ],
     pullQuote: "A STUDY IN STRENGTH, FORM AND TIME.",
@@ -1029,11 +1029,11 @@ export const PRODUCTS: Product[] = [
       "At over five feet, VESTIGE commands space without ornament. Deep incisions trace its elongated form, while the weathered surface reveals the natural character of solid wood. Primitive in expression, architectural in scale — an object with the presence of a discovered artefact.",
     gallery: [
       "/images/sculptures/Vestige/Vestige1.jpg",
-      "/images/sculptures/Vestige/Vestige2.jpg",
       "/images/sculptures/Vestige/Vestige3.jpg",
       "/images/sculptures/Vestige/vestige4.png",
-      "/images/sculptures/Vestige/Vestige5.png",
+      "/images/sculptures/Vestige/vestige5.png",
       "/images/sculptures/Vestige/Vestige6.jpg"
+    
     ],
     details: [
       {
@@ -1488,7 +1488,7 @@ export const JOURNAL_ENTRIES = [
     title: "AT THE CERAMIC STUDIO",
     excerpt:
       "A sculptural vessel shaped by layered colour and movement — Rivage brings a hand-painted character to quiet, considered interiors.",
-    image: "/images/vases/vase-rivage/Rivage-Studio.png"
+    image: "/images/vases/Vase-rivage/Rivage-Studio.png"
   },
   {
     slug: "ON THE SCULPTURAL PLINTH",
