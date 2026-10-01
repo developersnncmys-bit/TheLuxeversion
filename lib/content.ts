@@ -435,8 +435,8 @@ export const PRODUCTS: Product[] = [
       "/images/vases/Vase-rivage/Rivage1.png",
       "/images/vases/Vase-rivage/Rivage2.png",
       "/images/vases/Vase-rivage/Rivage3.png",
-      "/images/vases/Vase-rivage/Rivage4.png",
-      "/images/vases/Vase-rivage/05.jpg"
+      "/images/vases/Vase-rivage/Rivage4.png"
+      
     ],
     details: [
       {
@@ -1031,7 +1031,7 @@ export const PRODUCTS: Product[] = [
       "/images/sculptures/Vestige/Vestige1.jpg",
       "/images/sculptures/Vestige/Vestige3.jpg",
       "/images/sculptures/Vestige/vestige4.png",
-      "/images/sculptures/Vestige/vestige5.png",
+      "/images/sculptures/Vestige/Vestige5.png",
       "/images/sculptures/Vestige/Vestige6.jpg"
     
     ],
