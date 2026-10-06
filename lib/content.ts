@@ -1414,17 +1414,60 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
-    handle: "vase-colline",
-    name: "Vase — Colline",
+    // Dimensions are estimated — confirm against finished piece before publishing.
+    handle: "vase-elio",
+    name: "Vase — Elio",
     category: "Vases",
     description:
-      "A rounded stoneware vase in a warm ochre glaze. Wide enough for branches, quiet enough to stand empty.",
-    price: { inr: 62000, usd: 770 },
-    image: "/images/vases/vase4.png",
+      "Named for its association with Helios, the Greek sun god, ELIO evokes light and warmth. A serene facial profile emerges from this sculptural vase, its elongated form complemented by a white marble-effect finish with flowing grey veins — a poetic expression of presence and stillness.",
+    price: { inr: 74000, usd: 910 },
+    image: "/images/vases/Elios/Elio1.png",
     aspect: "portrait",
-    material: "Stoneware, ochre glaze",
+    material: "Ceramic and glass, white marble-effect finish with grey veining",
     body:
-      "A rounded stoneware vase finished in a warm, hand-mixed ochre glaze. Wide enough for a bough of leaves; quiet enough to stand alone on a low table."
+      "ELIO invites contemplation through a face only partly revealed. Its architectural proportions create a distinctive focal point, bringing quiet strength and individuality to a thoughtfully composed space.",
+    gallery: [
+      "/images/vases/Elios/Elio1.png",
+      "/images/vases/Elios/Elio2.png",
+      "/images/vases/Elios/Elio3.png",
+      "/images/vases/Elios/Elio4.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Ceramic and glass with a white marble-effect finish and flowing grey veins. Dimensions: 18 × 14 × 45 cm (7.1 × 5.5 × 17.7 in). Weight: 2.83 kg / 6.24 lb.",
+        image: "/images/materials/ceramic.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "The sculpted facial profile is modelled by hand; the marble veining is drawn across the surface individually, so the pattern of each piece is its own.",
+        image: "/images/vases/Elios/Elios-craft.png"
+      }
+    ],
+    pullQuote: "A face only partly revealed — the rest, held in stillness.",
+    lifestyleImage: "/images/vases/Elios/Elio-presence.png",
+    inspiration: {
+      title: "Named for Helios — light and warmth, held in form",
+      reasons: [
+        {
+          label: "A face, only partly revealed",
+          body:
+            "The profile emerges from the vessel rather than sitting on it. Half-sculpture, half-vase — the piece asks the room to look twice."
+        },
+        {
+          label: "Marble-effect finish",
+          body:
+            "A white marble-effect surface with hand-drawn grey veining. The pattern of each piece is its own; no two ELIOs read identically."
+        },
+        {
+          label: "Architectural proportions",
+          body:
+            "At 45 cm tall and under 3 kg, ELIO rises as a distinctive focal point — tall enough to command a console, quiet enough to let the room breathe around it."
+        }
+      ]
+    }
   },
   {
     handle: "vessel-argile",
