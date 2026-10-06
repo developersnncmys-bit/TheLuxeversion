@@ -58,7 +58,7 @@ const CATEGORIES: Record<string, CategoryConfig> = {
       title: "Of The Luxe Version",
       body:
         "A study in quiet majesty. MAJESTÉ captures the profound stillness of the Buddha through a serene expression and intricately sculpted crown, while its time-worn patina lends the piece a sense of history, character and regal presence.",
-      poster: "/images/sculptures/Majeste/majeste3.jpg",
+      poster: "/images/sculptures/Majeste/Budha1.png",
       posterAlt: "A hand-carved sculpture in a lived-in room",
       href: "/collections/sculptures/sculpture-majeste",
       ctaLabel: "DISCOVER MAJESTE"
@@ -117,8 +117,8 @@ const CATEGORIES: Record<string, CategoryConfig> = {
     related: [
       {
         title: "Sculptures",
-        image: "/images/sculptures/scu1.png",
-        imageAlt: "A hand-carved sculpture",
+        image: "/images/sculptures/Majeste/Majeste.png",
+        imageAlt: "The Majesté sculpture in a lived-in setting",
         href: "/collections/sculptures"
       },
       {

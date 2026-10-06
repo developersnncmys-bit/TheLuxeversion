@@ -598,15 +598,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A study in quiet majesty. MAJESTÉ captures the profound stillness of the Buddha through a serene expression and intricately sculpted crown, while its time-worn patina lends the piece a sense of history, character and regal presence.",
     price: { inr: 148000, usd: 1820 },
-    image: "/images/sculptures/Majeste/majeste3.jpg",
+    image: "/images/sculptures/Majeste/Budha1.png",
     aspect: "portrait",
     material: "Premium ceramic, textured aged patina finish",
     body:
       "Arched brows, elongated features and an intricately carved crown lend MAJESTÉ its distinctly regal character. A richly aged patina in warm earth, ivory and charcoal heightens its time-worn presence. Rising to 52 cm, its substantial scale and commanding form give the sculpture an almost monumental presence.",
     gallery: [
-      "/images/sculptures/Majeste/majeste1.jpg",
-      "/images/sculptures/Majeste/majeste2.jpg",
-      "/images/sculptures/Majeste/majeste3.jpg"
+      "/images/sculptures/Majeste/Budha1.png",
+      "/images/sculptures/Majeste/Budha2.png",
+      "/images/sculptures/Majeste/Budha3.png",
+      "/images/sculptures/Majeste/Budha4.png",
+      "/images/sculptures/Majeste/Budha5.png"
     ],
     details: [
       {
@@ -701,56 +703,112 @@ export const PRODUCTS: Product[] = [
     }
   },
   {
-    handle: "vase-obra",
-    name: "Vase — Obra",
+    handle: "vase-seve",
+    name: "Vase — Sève",
     category: "Vases",
     description:
-      "A tall bronze-glazed vessel with a narrow throat. Reads sculptural empty; holds a single stem beautifully.",
-    price: { inr: 96000, usd: 1180 },
-    image: "/images/vases/vase3.png",
+      "SÈVE expresses botanical grace through softened contours and an asymmetric silhouette. A finely veined gold leaf rests against its textured grey surface, creating a considered balance of warmth, depth and quiet presence.",
+    price: { inr: 68000, usd: 840 },
+    image: "/images/vases/Seve/Seve1.png",
     aspect: "portrait",
-    material: "Stoneware, bronze glaze",
+    material: "Premium ceramic, textured surface with gold leaf detailing",
     body:
-      "A tall bronze-glazed vessel with a narrow throat. Reads sculptural when empty; holds a single stem — a branch, a long tulip — beautifully.",
+      "Named after the French word for sap, SÈVE evokes the life within nature. Its solitary leaf becomes a focal point, bringing an intimate sense of artistry to a console, library or thoughtfully composed living space.",
     gallery: [
-      "/images/vases/vase3.png",
-      "/images/vases/vase4.png",
-      "/images/vases/vase5.png",
-      "/images/vases/vase6.png"
+      "/images/vases/Seve/Seve1.png",
+      "/images/vases/Seve/Seve2.png",
+      "/images/vases/Seve/Seve3.png",
+      "/images/vases/Seve/Seve4.png",
+      "/images/vases/Seve/Seve5.png",
+      "/images/vases/Seve/Seve6.png"
     ],
     details: [
       {
         label: "Material",
         body:
-          "Stoneware body, layered bronze glaze fired to cone 10. 46 cm tall, 6 cm mouth.",
+          "Premium ceramic in grey with a gold leaf motif. Dimensions: 21 × 14 × 34 cm (8.3 × 5.5 × 13.4 in). Weight: 1.368 kg / 3.02 lb.",
         image: "/images/materials/ceramic.png"
       },
       {
         label: "Craft",
         body:
-          "Thrown and glazed by hand. Bronze fluctuates in the kiln — no two vessels take the light identically.",
-        image: "/images/vases/vase2.png"
+          "A textured grey surface is finished by hand, then detailed with a single finely veined gold leaf — applied individually, no two placements identical.",
+        image: "/images/vases/Seve/Seve-craft.png"
       }
     ],
-    pullQuote: "One stem, held. The rest of the room composes itself.",
-    lifestyleImage: "/images/vases/vase6.png",
+    pullQuote: "A solitary leaf — the quietest way to speak of nature.",
+    lifestyleImage: "/images/vases/Seve/Seve-presence.png",
     inspiration: {
-      title: "The kiln decides how each one looks",
+      title: "Named for the sap that moves inside a living thing",
       reasons: [
         {
-          label: "Unpredictable glaze",
+          label: "Botanical grace",
           body:
-            "Bronze glaze at cone 10 is unstable by nature. The potter loads the piece; the kiln decides the finish."
+            "Softened contours and an asymmetric silhouette draw from the shapes plants make when they are left to grow unchecked — never symmetrical, always balanced."
         },
         {
-          label: "No duplicates",
+          label: "A single gold leaf",
           body:
-            "No two vessels reflect light the same way. There is no way to order a matching pair."
+            "One finely veined leaf, applied by hand against the textured grey. The piece needs no second gesture; the leaf alone carries it."
         },
         {
-          label: "Two objects in one",
+          label: "Intimate scale",
           body:
-            "Holds a single tall stem beautifully. Empty, it is a sculpture. Neither role requires the other."
+            "At 34 cm tall and 1.37 kg, SÈVE belongs on a console, library shelf or dining composition — close enough to be read, not so large it dominates."
+        }
+      ]
+    }
+  },
+  {
+    handle: "vase-fauve",
+    name: "Vase — Fauve",
+    category: "Vases",
+    description:
+      "Broad, rounded shoulders meet an elongated body in a sculptural study of form and proportion. A fine dull gold seam traces the textured grey surface, lending a quiet luminosity to its earthy character.",
+    price: { inr: 72000, usd: 890 },
+    image: "/images/vases/Fauve/Fauve1.png",
+    aspect: "portrait",
+    material: "Premium ceramic, textured grey with dull gold seam",
+    body:
+      "FAUVE finds beauty in irregularity — the subtle shifts of tone, the expressive surface, the line that draws the eye. Its composed presence brings depth and character to a thoughtfully curated setting.",
+    gallery: [
+      "/images/vases/Fauve/Fauve1.png",
+      "/images/vases/Fauve/Fauve2.png",
+      "/images/vases/Fauve/Fauve3.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Premium ceramic in grey with a dull gold seam. Dimensions: 19 × 11 × 38 cm (7.48 × 4.33 × 14.96 in). Weight: 2.276 kg / 5.02 lb.",
+        image: "/images/materials/ceramic.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "The textured surface is worked by hand before firing; the fine gold seam is applied individually, following the natural line of each piece.",
+        image: "/images/vases/Fauve/Fauve-craft.png"
+      }
+    ],
+    pullQuote: "Substantial form, restrained detail — the quiet finesse of a single line.",
+    lifestyleImage: "/images/vases/Fauve/Fauve-presence.png",
+    inspiration: {
+      title: "Where generous silhouette meets a single, considered line",
+      reasons: [
+        {
+          label: "A single gold seam",
+          body:
+            "A generous silhouette balanced by a delicate dull gold seam. The contrast between substantial form and restrained detailing gives the piece its quiet finesse."
+        },
+        {
+          label: "Beauty in irregularity",
+          body:
+            "Subtle shifts of tone and an expressive, hand-worked surface mean no two FAUVE vases read identically. The irregularity is the point, not a flaw to correct."
+        },
+        {
+          label: "Weight that holds the room",
+          body:
+            "At 38 cm tall and over two kilos, FAUVE anchors a console or library shelf. Substantial enough to hold its own; composed enough never to shout."
         }
       ]
     }
@@ -1393,6 +1451,61 @@ export const PRODUCTS: Product[] = [
     material: "Hand-blown tinted glass",
     body:
       "A tall glass vase, hand-blown with a soft sand tint pulled through the wall. Reads sculptural in daylight; holds a single tall stem — a branch, a lily — beautifully."
+  },
+  {
+    handle: "vase-obra",
+    name: "Vase — Obra",
+    category: "Vases",
+    description:
+      "A tall bronze-glazed vessel with a narrow throat. Reads sculptural empty; holds a single stem beautifully.",
+    price: { inr: 96000, usd: 1180 },
+    image: "/images/vases/vase3.png",
+    aspect: "portrait",
+    material: "Stoneware, bronze glaze",
+    body:
+      "A tall bronze-glazed vessel with a narrow throat. Reads sculptural when empty; holds a single stem — a branch, a long tulip — beautifully.",
+    gallery: [
+      "/images/vases/vase3.png",
+      "/images/vases/vase4.png",
+      "/images/vases/vase5.png",
+      "/images/vases/vase6.png"
+    ],
+    details: [
+      {
+        label: "Material",
+        body:
+          "Stoneware body, layered bronze glaze fired to cone 10. 46 cm tall, 6 cm mouth.",
+        image: "/images/materials/ceramic.png"
+      },
+      {
+        label: "Craft",
+        body:
+          "Thrown and glazed by hand. Bronze fluctuates in the kiln — no two vessels take the light identically.",
+        image: "/images/vases/vase2.png"
+      }
+    ],
+    pullQuote: "One stem, held. The rest of the room composes itself.",
+    lifestyleImage: "/images/vases/vase6.png",
+    inspiration: {
+      title: "The kiln decides how each one looks",
+      reasons: [
+        {
+          label: "Unpredictable glaze",
+          body:
+            "Bronze glaze at cone 10 is unstable by nature. The potter loads the piece; the kiln decides the finish."
+        },
+        {
+          label: "No duplicates",
+          body:
+            "No two vessels reflect light the same way. There is no way to order a matching pair."
+        },
+        {
+          label: "Two objects in one",
+          body:
+            "Holds a single tall stem beautifully. Empty, it is a sculpture. Neither role requires the other."
+        }
+      ]
+    }
   },
   {
     handle: "salt-cellar-sel",
