@@ -106,10 +106,10 @@ export function AmbientAudio() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        // Sits on the right, stacked above the BackToTop mark so the two
-        // never overlap. mix-blend-difference keeps it legible over both
-        // dark ink pages and the white client-services strip in the footer.
-        className="group fixed bottom-20 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-current/40 text-chalk mix-blend-difference transition-[border-color] duration-500 hover:border-current md:bottom-24 md:right-10"
+        // Sits on the right rail, stacked above the BackToTop mark so the two
+        // never overlap. Solid black bubble, white glyph — matches the
+        // WhatsApp button above it so the right rail reads as one stack.
+        className="fixed bottom-28 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-black text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] md:bottom-32 md:right-10"
       >
         <SpeakerGlyph on={enabled} />
       </motion.button>

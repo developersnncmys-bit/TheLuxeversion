@@ -1,38 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 // Replace with the house's WhatsApp number in international format, no plus.
 const WHATSAPP_NUMBER = "911234567890";
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export function WhatsAppFloat() {
   return (
-    <motion.a
+    <a
       href={WHATSAPP_HREF}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
       // Sits on the right rail, one slot above the ambient-audio toggle so the
       // two never overlap. Solid black bubble, white glyph — legible on both
       // dark ink pages and the light footer strip.
-      className="group fixed bottom-36 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-black text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition-transform duration-500 hover:scale-105 md:bottom-40 md:right-10"
+      className="fixed bottom-44 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-black text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] md:bottom-48 md:right-10"
     >
-      {/* A single very restrained ring that expands slowly from the button
-          edge. Smaller amplitude (scale to 1.35 instead of 2), lower start
-          opacity (0.35), longer cycle (5s) — visible on close look, easy
-          to miss otherwise. Cadence deliberately gentle. */}
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/60"
-        animate={{ scale: [1, 1.35], opacity: [0.35, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeOut" }}
-      />
       <WhatsAppGlyph />
-    </motion.a>
+    </a>
   );
 }
 
