@@ -108,7 +108,7 @@ export function ProductHero({ product, ref_ }: Props) {
                 className={clsx(
                   "relative aspect-[4/5] w-full flex-shrink-0 overflow-hidden bg-onyx transition-all duration-500 ease-silk",
                   i === activeIndex
-                    ? "opacity-100 ring-1 ring-chalk"
+                    ? "opacity-100 ring-1 ring-chalk/40"
                     : "opacity-60 hover:opacity-100"
                 )}
               >
@@ -208,7 +208,7 @@ export function ProductHero({ product, ref_ }: Props) {
               className={clsx(
                 "relative aspect-[4/5] w-16 flex-shrink-0 overflow-hidden bg-onyx transition-all duration-500 ease-silk",
                 i === activeIndex
-                  ? "opacity-100 ring-1 ring-chalk"
+                  ? "opacity-100 ring-1 ring-chalk/40"
                   : "opacity-60"
               )}
             >

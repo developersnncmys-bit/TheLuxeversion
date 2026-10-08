@@ -199,17 +199,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A rare sculpture captures strength and momentum. Its sweeping horns and grounded stance convey an unmistakable sense of power and resolve.",
     price: { inr: 96000, usd: 1180 },
-    image: "/images/sculptures/Ardor/The-Ardor1.png",
+    image: "/images/sculptures/Ardor/Ardor0.png",
     aspect: "portrait",
     material: "Metal, textured bronze finish",
     body:
       "Defined by its richly textured surface and sculptural weight, the piece captures the bull's muscularity with striking depth. Sweeping horns, a lowered stance and pronounced contours heighten its sense of movement, while the nuanced bronze finish accentuates the character of the piece.",
     gallery: [
-      "/images/sculptures/Ardor/bull%201.jpg",
-      "/images/sculptures/Ardor/bull%202.jpg",
-      "/images/sculptures/Ardor/bull%203.jpg",
-      "/images/sculptures/Ardor/bull%204.jpg",
-      
+      "/images/sculptures/Ardor/Ardor0.png",
+      "/images/sculptures/Ardor/Ardor1.png",
+       "/images/sculptures/Ardor/Ardor2.png",
+      "/images/sculptures/Ardor/Ardor3.png",
+      "/images/sculptures/Ardor/Ardor5.png"
     ],
     details: [
       {
@@ -310,17 +310,17 @@ export const PRODUCTS: Product[] = [
     description:
       "A study in rhythm, form and restraint. Sculpted in textured wood, CADENCE pairs a bowed silhouette with a deeply textured black finish, carrying a quiet yet commanding presence.",
     price: { inr: 128000, usd: 1580 },
-    image: "/images/sculptures/Cadence/Cadence1.png",
+    image: "/images/sculptures/Cadence/Cadence3.png",
     aspect: "portrait",
     material: "Textured wood, textured black finish",
     body:
       "Defined by its graphic equine silhouette, CADENCE balances the solidity of carved wood with the visual lightness of slender metal supports. The raised composition gives the sculpture an architectural quality, while the textured surface brings depth to its monochromatic form.",
     gallery: [
+      "/images/sculptures/Cadence/Cadence3.png",
       "/images/sculptures/Cadence/Cadence1.png",
       "/images/sculptures/Cadence/Cadence2.png",
-      "/images/sculptures/Cadence/Cadence3.png",
-      "/images/sculptures/Cadence/Cadence4.png",
       "/images/sculptures/Cadence/Cadence5.png",
+      "/images/sculptures/Cadence/Cadence4.png",
       "/images/sculptures/Cadence/Cadence6.png",
       "/images/sculptures/Cadence/Cadence7.png",
       "/images/sculptures/Cadence/Cadence8.png",
@@ -547,9 +547,9 @@ export const PRODUCTS: Product[] = [
       
     gallery: [
       "/images/sculptures/Rein/Rein1.png",
-      "/images/sculptures/Rein/Rein2.png",
-      "/images/sculptures/Rein/Rein3.png",
       "/images/sculptures/Rein/Rein4.png",
+      "/images/sculptures/Rein/Rein3.png",
+      "/images/sculptures/Rein/Rein2.png",
       "/images/sculptures/Rein/Rein5.png",
       "/images/sculptures/Rein/Rein6.png"
       
@@ -559,7 +559,7 @@ export const PRODUCTS: Product[] = [
         label: "Material",
         body:
           "Wood, Weathered grey with bronze-painted accents, mounted on a black base. Dimensions: 12.2 × 5.9 × 19.7 in (31 × 15 × 50 cm). Weight: 3.178 kg / 7.01 lb.",
-        image: "/images/materials/wood.png"
+        image: "/images/sculptures/Rein/Rein-decor.png"
       },
       {
         label: "Craft",
@@ -1086,10 +1086,10 @@ export const PRODUCTS: Product[] = [
     body:
       "At over five feet, VESTIGE commands space without ornament. Deep incisions trace its elongated form, while the weathered surface reveals the natural character of solid wood. Primitive in expression, architectural in scale — an object with the presence of a discovered artefact.",
     gallery: [
-      "/images/sculptures/Vestige/Vestige1.jpg",
+      "/images/sculptures/Vestige/Vestige.png",
       "/images/sculptures/Vestige/Vestige3.jpg",
-      "/images/sculptures/Vestige/vestige4.png",
-      "/images/sculptures/Vestige/Vestige5.png",
+      "/images/sculptures/Vestige/vestige5.png",
+      "/images/sculptures/Vestige/Vestige1.jpg",
       "/images/sculptures/Vestige/Vestige6.jpg"
     
     ],
@@ -1145,14 +1145,14 @@ export const PRODUCTS: Product[] = [
     gallery: [
       "/images/sculptures/Engime/Engime1.png",
       "/images/sculptures/Engime/Engime2.png",
-      "/images/sculptures/Engime/engime3.png"
+      "/images/sculptures/Engime/Engime3.png"
     ],
     details: [
       {
         label: "Material",
         body:
           "Metal with a textured pale gold and charcoal finish. Dimensions: 11 × 6 × 6 cm (4.3 × 2.4 × 2.4 in).",
-        image: "/images/materials/metal.png"
+        image: "/images/sculptures/Engime/engime-presence2.png"
       },
       {
         label: "Craft",
@@ -1192,17 +1192,18 @@ export const PRODUCTS: Product[] = [
     description:
       "An abstract interpretation of the horse, defined by elongated lines, sculptural geometry and a commanding stance. The contrasting metallic mane brings a quiet flash of opulence to its otherwise restrained form.",
     price: { inr: 118000, usd: 1450 },
-    image: "/images/sculptures/Fouge/horse%201.jpg",
+    image: "/images/sculptures/Fouge/Fouge-new1.png",
     aspect: "portrait",
     material: "Metal, aged patina with metallic mane",
     body:
       "FOUGUE embodies contained power — strong without heaviness, expressive without excess. Its poised silhouette and architectural proportions give it a striking presence from every angle.",
     gallery: [
-      "/images/sculptures/Fouge/horse%201.jpg",
-      "/images/sculptures/Fouge/horse%202.jpg",
-      "/images/sculptures/Fouge/horse%203.jpg",
-      "/images/sculptures/Fouge/horse%204.jpg",
-      "/images/sculptures/Fouge/horse%205.jpg"
+      "/images/sculptures/Fouge/Fouge-new1.png",
+      "/images/sculptures/Fouge/Fouge-new2.png",
+      "/images/sculptures/Fouge/Fouge-new3.png",
+      "/images/sculptures/Fouge/Fouge-new4.png",
+      "/images/sculptures/Fouge/horse1.jpg",
+      "/images/sculptures/Fouge/horse2.jpg"
     ],
     details: [
       {
@@ -1369,10 +1370,11 @@ export const PRODUCTS: Product[] = [
       "Its scale makes it a focal point, yet its transparency allows the room to breathe. From a distance, the silhouette commands attention; up close, the layers of colour invite discovery.",
     gallery: [
       "/images/sculptures/Altesse/Altesse1.png",
+      "/images/sculptures/Altesse/Altesse5.png",
+      "/images/sculptures/Altesse/Altesse7.png",
       "/images/sculptures/Altesse/Altesse2.png",
       "/images/sculptures/Altesse/Altesse3.png",
       "/images/sculptures/Altesse/Altesse4.png",
-      "/images/sculptures/Altesse/Altesse5.png",
       "/images/sculptures/Altesse/Altesse6.png"
     ],
     details: [
