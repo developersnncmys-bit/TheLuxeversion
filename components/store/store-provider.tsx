@@ -45,6 +45,18 @@ const DEFAULT_PREFERENCES: Preferences = {
   currency: "INR"
 };
 
+export type WrappingOption = "essential" | "classic";
+
+export type CartExtras = {
+  wrapping: WrappingOption;
+  giftMessage: string; // empty string = no card
+};
+
+const DEFAULT_EXTRAS: CartExtras = {
+  wrapping: "essential",
+  giftMessage: ""
+};
+
 type StoreState = {
   cart: CartItem[];
   wishlist: string[];
@@ -52,6 +64,7 @@ type StoreState = {
   user: User | null;
   addresses: Address[];
   preferences: Preferences;
+  cartExtras: CartExtras;
 
   openDrawer: (kind: DrawerKind) => void;
   closeDrawer: () => void;
@@ -60,6 +73,7 @@ type StoreState = {
   removeFromCart: (handle: string) => void;
   updateCartQty: (handle: string, qty: number) => void;
   clearCart: () => void;
+  setCartExtras: (patch: Partial<CartExtras>) => void;
 
   toggleWishlist: (handle: string) => void;
   isInWishlist: (handle: string) => boolean;
@@ -86,6 +100,7 @@ const WISHLIST_KEY = "tlv:wishlist:v1";
 const USER_KEY = "tlv:user:v1";
 const ADDRESSES_KEY = "tlv:addresses:v1";
 const PREFERENCES_KEY = "tlv:preferences:v1";
+const EXTRAS_KEY = "tlv:cart-extras:v1";
 
 function safeParse<T>(raw: string | null, fallback: T): T {
   if (!raw) return fallback;
@@ -103,6 +118,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [preferences, setPreferences] = useState<Preferences>(DEFAULT_PREFERENCES);
+  const [cartExtras, setCartExtrasState] = useState<CartExtras>(DEFAULT_EXTRAS);
   const [drawer, setDrawer] = useState<DrawerKind>(null);
   const [hydrated, setHydrated] = useState(false);
 
@@ -117,6 +133,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         localStorage.getItem(PREFERENCES_KEY),
         DEFAULT_PREFERENCES
       )
+    );
+    setCartExtrasState(
+      safeParse<CartExtras>(localStorage.getItem(EXTRAS_KEY), DEFAULT_EXTRAS)
     );
     setHydrated(true);
   }, []);
@@ -149,6 +168,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(PREFERENCES_KEY, JSON.stringify(preferences));
   }, [preferences, hydrated]);
 
+  useEffect(() => {
+    if (!hydrated) return;
+    localStorage.setItem(EXTRAS_KEY, JSON.stringify(cartExtras));
+  }, [cartExtras, hydrated]);
+
   const openDrawer = useCallback((kind: DrawerKind) => setDrawer(kind), []);
   const closeDrawer = useCallback(() => setDrawer(null), []);
 
@@ -176,6 +200,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const clearCart = useCallback(() => setCart([]), []);
+
+  const setCartExtras = useCallback((patch: Partial<CartExtras>) => {
+    setCartExtrasState((prev) => ({ ...prev, ...patch }));
+  }, []);
 
   const toggleWishlist = useCallback((handle: string) => {
     setWishlist((prev) =>
@@ -241,12 +269,14 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     user,
     addresses,
     preferences,
+    cartExtras,
     openDrawer,
     closeDrawer,
     addToCart,
     removeFromCart,
     updateCartQty,
     clearCart,
+    setCartExtras,
     toggleWishlist,
     isInWishlist,
     removeFromWishlist,

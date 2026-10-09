@@ -53,6 +53,13 @@ export function Nav() {
   const wishlistCount = wishlist.length;
   const isSignedIn = !!user;
   const isProductPage = pathname.startsWith("/collections/");
+  // Cart + checkout flow: nav flips to white (like product pages) and the
+  // secondary row of page links is suppressed so the page is a bare brand
+  // bar + breadcrumb.
+  const isCheckoutPage =
+    pathname.startsWith("/cart") || pathname.startsWith("/checkout");
+  // Treat checkout pages the same as product pages for white-nav styling.
+  const navLight = isProductPage || isCheckoutPage;
   // Three-or-more segments under /collections → product detail page.
   // Distinct from `isProductPage` (which covers any collections subpath and
   // drives the white/ink nav styling); this narrower flag suppresses the
@@ -168,7 +175,7 @@ export function Nav() {
             Replaces the full navbar (wordmark + icons + sublinks) with a small
             floating pill of the main page links. */}
         <AnimatePresence>
-          {pastHero && !menuOpen && !isProductPage && (
+          {pastHero && !menuOpen && !isProductPage && !isCheckoutPage && (
             <motion.div
               key="nav-compact"
               initial={{ opacity: 0, y: -12 }}
@@ -217,14 +224,14 @@ export function Nav() {
             "w-full border-b transition-[background-color,border-color,color,backdrop-filter,opacity] duration-500 ease-silk",
             menuOpen
               ? "border-transparent bg-transparent"
-              : isProductPage
-                ? // Product pages get the inverted look permanently — white bar, ink text.
+              : navLight
+                ? // Product + checkout pages get the inverted look permanently — white bar, ink text.
                   "border-ink/10 bg-white text-ink"
                 : scrolled
                   ? "border-chalk/10 bg-ink/75 backdrop-blur-md group-hover/nav:border-ink/10 group-hover/nav:bg-white group-hover/nav:text-ink group-hover/nav:backdrop-blur-none"
                   : // At the top (over the hero) — solid dark bar; on hover, whole strip inverts to white with dark text (Chanel-style).
                     "border-transparent bg-ink group-hover/nav:bg-white group-hover/nav:text-ink",
-            pastHero && !menuOpen && !isProductPage && "pointer-events-none opacity-0"
+            pastHero && !menuOpen && !navLight && "pointer-events-none opacity-0"
           )}
         >
           <div className="relative mx-auto flex h-16 max-w-editorial items-center justify-end px-6 md:h-20 md:px-10">
@@ -286,7 +293,7 @@ export function Nav() {
                 // Solid chalk/ink (no /opacity) so high-contrast mode's
                 // opacity-lift rule doesn't force chalk with !important and
                 // clobber the group-hover:text-ink flip when the bar inverts.
-                isProductPage ? "text-ink" : "text-chalk group-hover/nav:text-ink"
+                navLight ? "text-ink" : "text-chalk group-hover/nav:text-ink"
               )}
               aria-label="Utilities"
             >
@@ -336,11 +343,14 @@ export function Nav() {
 
           {/* Below-wordmark row — swaps content based on hover:
               unhovered = page links (Home, The Collection, …)
-              hovered = collection sublinks (All Objects, Sculptures, …) */}
+              hovered = collection sublinks (All Objects, Sculptures, …)
+              Checkout flow always shows the category sublinks so visitors can
+              still browse mid-purchase, but never the page-level links which
+              feel out of place on a transactional page. */}
           {!menuOpen && (
             <nav aria-label="Collections" className="hidden md:block">
               <ul className="mx-auto flex max-w-editorial items-center justify-center gap-10 px-10 py-3 lg:gap-14">
-                {(navHovered || pathname.startsWith("/collections/") ? COLLECTION_SUBLINKS : DROPDOWN_LINKS).map((l) => {
+                {(isCheckoutPage || navHovered || pathname.startsWith("/collections/") ? COLLECTION_SUBLINKS : DROPDOWN_LINKS).map((l) => {
                   const active = isActive(l.href);
                   return (
                     <li key={l.href}>
@@ -349,7 +359,7 @@ export function Nav() {
                         aria-current={active ? "page" : undefined}
                         className={clsx(
                           "relative text-[11px] font-bold uppercase tracking-[0.28em] transition-colors duration-500 ease-silk",
-                          isProductPage
+                          navLight
                             ? "text-ink hover:text-ink/70"
                             : "text-chalk group-hover/nav:text-ink/80 hover:!text-ink",
                           active &&
@@ -369,7 +379,7 @@ export function Nav() {
         {/* Floating dark dropdown panel — appears below the navbar on hover.
             Only over the hero (before the compact panel takes over). */}
         <AnimatePresence>
-          {(navHovered || pathname.startsWith("/collections/")) && !menuOpen && !pastHero && !isProductDetailPage && (
+          {(navHovered || pathname.startsWith("/collections/")) && !menuOpen && !pastHero && !isProductDetailPage && !isCheckoutPage && (
             <motion.div
               key="nav-dropdown"
               initial={{ opacity: 0, y: -8 }}

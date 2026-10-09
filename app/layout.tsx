@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Inter_Tight, Noto_Serif_Display } from "next/font/google";
 import { SmoothScroll } from "@/components/site/smooth-scroll";
-import { Nav } from "@/components/site/nav";
-import { Footer } from "@/components/site/footer";
-import { BackToTop } from "@/components/site/back-to-top";
-import { AmbientAudio } from "@/components/site/ambient-audio";
-import { WhatsAppFloat } from "@/components/site/whatsapp-float";
+import { SiteChrome } from "@/components/site/site-chrome";
 import { ScrollTopOnRoute } from "@/components/site/scroll-top-on-route";
 import { Preloader } from "@/components/ui/preloader";
 import { StoreProvider } from "@/components/store/store-provider";
@@ -54,12 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StoreProvider>
           <SmoothScroll>
             <ScrollTopOnRoute />
-            <Nav />
-            <main>{children}</main>
-            <Footer />
-            <BackToTop />
-            <AmbientAudio />
-            <WhatsAppFloat />
+            <SiteChrome>{children}</SiteChrome>
           </SmoothScroll>
           <StoreMount />
         </StoreProvider>
