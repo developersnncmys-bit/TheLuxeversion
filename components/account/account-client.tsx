@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
-import { useStore, type Address, type Preferences } from "@/components/store/store-provider";
+import clsx from "clsx";
+import {
+  useStore,
+  type Address,
+  type Order,
+  type Preferences
+} from "@/components/store/store-provider";
 
 // The whole /account page. Sections stack vertically; the sidebar nav (or
 // drawer menu items) jump-scrolls to each via #anchor.
@@ -17,7 +23,9 @@ export function AccountClient() {
     preferences,
     updatePreferences,
     wishlist,
-    cartCount
+    cartCount,
+    orders,
+    cancelOrder
   } = useStore();
 
   // Scroll to hash after mount (Next doesn't auto-scroll to hash on same-page
@@ -79,7 +87,11 @@ export function AccountClient() {
 
         {/* Sections */}
         <div className="mt-16 space-y-24 md:col-span-9 md:mt-0 md:space-y-32 lg:col-span-9">
-          <OrdersSection cartCount={cartCount} />
+          <OrdersSection
+            orders={orders}
+            cartCount={cartCount}
+            onCancel={cancelOrder}
+          />
           <AddressesSection
             addresses={addresses}
             onAdd={addAddress}
@@ -141,26 +153,147 @@ function SectionHeader({ id, label }: { id: string; label: string }) {
   );
 }
 
-function OrdersSection({ cartCount }: { cartCount: number }) {
+function OrdersSection({
+  orders,
+  cartCount,
+  onCancel
+}: {
+  orders: Order[];
+  cartCount: number;
+  onCancel: (id: string) => void;
+}) {
   return (
     <section>
       <SectionHeader id="orders" label="My Orders" />
-      <div className="border border-chalk/10 px-8 py-16 text-center">
-        <p className="text-[11px] uppercase tracking-[0.28em] text-chalk/55">
-          No orders yet
-        </p>
-        <p className="mt-6 text-[13px] leading-[1.7] text-chalk/70">
-          When you place an order, the details will appear here — pieces,
-          delivery status, and receipts.
-        </p>
-        <Link
-          href="/collections/objects"
-          className="mt-8 inline-block text-[11px] uppercase tracking-[0.28em] text-chalk underline underline-offset-[6px] decoration-chalk/50 transition-colors hover:decoration-chalk"
-        >
-          {cartCount > 0 ? "Return to your bag" : "Browse the collection"}
-        </Link>
-      </div>
+
+      {orders.length === 0 ? (
+        <div className="border border-chalk/10 px-8 py-16 text-center">
+          <p className="text-[11px] uppercase tracking-[0.28em] text-chalk/55">
+            No orders yet
+          </p>
+          <p className="mt-6 text-[13px] leading-[1.7] text-chalk/70">
+            When you place an order, the details will appear here — pieces,
+            delivery status, and receipts.
+          </p>
+          <Link
+            href="/collections/objects"
+            className="mt-8 inline-block text-[11px] uppercase tracking-[0.28em] text-chalk underline underline-offset-[6px] decoration-chalk/50 transition-colors hover:decoration-chalk"
+          >
+            {cartCount > 0 ? "Return to your bag" : "Browse the collection"}
+          </Link>
+        </div>
+      ) : (
+        <ul className="space-y-6">
+          {orders.map((o) => (
+            <OrderCard key={o.id} order={o} onCancel={onCancel} />
+          ))}
+        </ul>
+      )}
     </section>
+  );
+}
+
+function OrderCard({
+  order,
+  onCancel
+}: {
+  order: Order;
+  onCancel: (id: string) => void;
+}) {
+  const placed = new Date(order.placedAt).toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric"
+  });
+  const itemCount = order.items.reduce((acc, i) => acc + i.qty, 0);
+  const isCancellable = order.status === "placed";
+
+  const handleCancel = () => {
+    const confirmed = window.confirm(
+      `Cancel order ${order.id}? Any refund will settle within 5–7 working days.`
+    );
+    if (confirmed) onCancel(order.id);
+  };
+
+  return (
+    <li className="border border-chalk/10 p-6 md:p-8">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.26em] text-chalk/55">
+            Order {order.id}
+          </p>
+          <p className="mt-2 text-[12px] text-chalk/60">Placed {placed}</p>
+        </div>
+        <AccountStatusBadge status={order.status} />
+      </div>
+
+      <ul className="mt-6 space-y-2 text-[13px] leading-[1.6] text-chalk/80">
+        {order.items.slice(0, 3).map((item) => (
+          <li key={item.handle} className="flex justify-between gap-6">
+            <span className="min-w-0 truncate">
+              <span className="text-chalk/60">{item.qty} ×</span> {item.name}
+            </span>
+            <span className="shrink-0 text-chalk/70">
+              ₹ {item.lineTotal.toLocaleString("en-IN")}
+            </span>
+          </li>
+        ))}
+        {order.items.length > 3 && (
+          <li className="text-chalk/50">
+            + {order.items.length - 3} more piece
+            {order.items.length - 3 === 1 ? "" : "s"}
+          </li>
+        )}
+      </ul>
+
+      <div className="mt-6 flex flex-wrap items-baseline justify-between gap-4 border-t border-chalk/10 pt-5">
+        <p className="text-[11px] uppercase tracking-[0.24em] text-chalk/60">
+          {itemCount} piece{itemCount === 1 ? "" : "s"}
+        </p>
+        <p className="text-[14px] font-semibold tracking-[0.02em] text-chalk">
+          ₹ {order.total.toLocaleString("en-IN")}.00
+        </p>
+      </div>
+
+      {isCancellable && (
+        <div className="mt-6 text-[11px] uppercase tracking-[0.22em]">
+          <button
+            type="button"
+            onClick={handleCancel}
+            className="text-chalk/80 underline underline-offset-[6px] decoration-chalk/30 transition-colors hover:text-chalk hover:decoration-chalk/70"
+          >
+            Cancel order
+          </button>
+        </div>
+      )}
+      {order.status === "cancelled" && order.cancelledAt && (
+        <p className="mt-6 text-[11px] uppercase tracking-[0.22em] text-chalk/50">
+          Cancelled on{" "}
+          {new Date(order.cancelledAt).toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+          })}
+        </p>
+      )}
+    </li>
+  );
+}
+
+function AccountStatusBadge({ status }: { status: Order["status"] }) {
+  const label = status.charAt(0).toUpperCase() + status.slice(1);
+  return (
+    <span
+      className={clsx(
+        "inline-block border px-3 py-1 text-[9px] uppercase tracking-[0.26em]",
+        status === "cancelled" && "border-red-400/40 bg-red-400/10 text-red-200",
+        status === "placed" && "border-chalk/25 bg-chalk/5 text-chalk/80",
+        status === "shipped" && "border-amber-400/40 bg-amber-400/10 text-amber-200",
+        status === "delivered" && "border-emerald-400/40 bg-emerald-400/10 text-emerald-200"
+      )}
+    >
+      {label}
+    </span>
   );
 }
 

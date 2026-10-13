@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { PRODUCTS, type Product } from "@/lib/content";
+import { type Product } from "@/lib/content";
+import { fetchProducts } from "@/lib/products-api";
 import { CollectionHero } from "@/components/collections/collection-hero";
 import { CollectionManifesto } from "@/components/collections/collection-manifesto";
 import { CollectionInterlude } from "@/components/collections/collection-interlude";
@@ -46,14 +47,15 @@ const CATEGORY_CONFIG: Array<{
   }
 ];
 
-export default function CollectionsPage() {
+export default async function CollectionsPage() {
+  const products = await fetchProducts();
   const active = CATEGORY_CONFIG
     .map((c) => ({
       ...c,
       // Cap at 3 per category — the collections overview is a taste of each
       // category, not the full grid; the dedicated /collections/{slug} page
       // shows every piece.
-      products: PRODUCTS.filter((p) => p.category === c.label).slice(0, 3)
+      products: products.filter((p) => p.category === c.label).slice(0, 3)
     }))
     .filter((c) => c.products.length > 0);
 

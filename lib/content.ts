@@ -1639,6 +1639,82 @@ export const EDITS: EditSelection[] = [
   }
 ];
 
+// In-house, made-to-order pieces — not part of the regular catalogue. Each
+// is produced on request, with a quoted lead time. Shown on /exclusive as a
+// slow, full-bleed procession rather than a grid.
+export type ExclusivePiece = {
+  slug: string;
+  number: string;
+  name: string;
+  discipline: string;
+  intro: string;
+  body: string;
+  material: string;
+  dimensions: string;
+  leadTime: string;
+  edition: string;
+  image: string;
+};
+
+export const EXCLUSIVE_PIECES: ExclusivePiece[] = [
+  {
+    slug: "monolithe",
+    number: "I",
+    name: "Monolithe",
+    discipline: "Floor sculpture",
+    intro: "A single carved form, standing.",
+    body:
+      "Hand-shaped at the studio and finished in a slow, matte patina. Monolithe is sized to anchor a room — a quiet, upright presence meant to be lived with rather than looked at.",
+    material: "Burnished bronze, hand-patinated",
+    dimensions: "H 1420 · W 320 · D 280 mm",
+    leadTime: "14 – 18 weeks",
+    edition: "Made to order · signed",
+    image: "/images/sculptures/scu3.png"
+  },
+  {
+    slug: "halo",
+    number: "II",
+    name: "Halo",
+    discipline: "Suspended lighting",
+    intro: "A ring of brass, suspended in air.",
+    body:
+      "A single machined ring, polished and then softly brushed by hand. Halo throws a warm, downward wash — a quiet circle of light above a table, a bed, a stair.",
+    material: "Solid brass, hand-brushed",
+    dimensions: "Ø 1100 · D 60 mm",
+    leadTime: "10 – 12 weeks",
+    edition: "Made to order · numbered",
+    image: "/images/lighting/light2.png"
+  },
+  {
+    slug: "veille",
+    number: "III",
+    name: "Veille",
+    discipline: "Tabletop vessel",
+    intro: "A vessel the shape of a long evening.",
+    body:
+      "Thrown in a single pour and finished in a soft, chalk-white glaze. Veille is intended for the table — flowers, dried branches, or nothing at all.",
+    material: "Stoneware, chalk glaze",
+    dimensions: "H 480 · Ø 220 mm",
+    leadTime: "8 – 10 weeks",
+    edition: "Made to order · signed",
+    image: "/images/vases/vase2.png"
+  },
+  {
+    slug: "silence",
+    number: "IV",
+    name: "Silence",
+    discipline: "Wall relief",
+    intro: "A low relief, carved in a single pass.",
+    body:
+      "A hand-carved panel in cast plaster, finished to a soft matte. Silence hangs flush to the wall and shifts entirely with the hour of the day — read it in morning light, then again at dusk.",
+    material: "Cast plaster, hand-finished",
+    dimensions: "H 900 · W 1200 · D 45 mm",
+    leadTime: "12 – 16 weeks",
+    edition: "Made to order · one of one",
+    image: "/images/sculptures/scu6.png"
+  }
+];
+
 export const JOURNAL_ENTRIES = [
   {
     slug: "AT THE CERAMIC STUDIO",

@@ -23,7 +23,8 @@ const COLLECTION_SUBLINKS = [
   { href: "/collections/sculptures", label: "Sculptures" },
   { href: "/collections/vases", label: "Vases" },
   { href: "/collections/tabletop", label: "Tabletop" },
-  { href: "/collections/lighting", label: "Lighting" }
+  { href: "/collections/lighting", label: "Lighting" },
+  { href: "/exclusive", label: "Luxe Exclusive" }
 ];
 
 // Sits inside a floating dark panel that drops below the navbar on hover
@@ -53,13 +54,14 @@ export function Nav() {
   const wishlistCount = wishlist.length;
   const isSignedIn = !!user;
   const isProductPage = pathname.startsWith("/collections/");
+  const isExclusivePage = pathname.startsWith("/exclusive");
   // Cart + checkout flow: nav flips to white (like product pages) and the
   // secondary row of page links is suppressed so the page is a bare brand
   // bar + breadcrumb.
   const isCheckoutPage =
     pathname.startsWith("/cart") || pathname.startsWith("/checkout");
-  // Treat checkout pages the same as product pages for white-nav styling.
-  const navLight = isProductPage || isCheckoutPage;
+  // Treat checkout + Luxe Exclusive the same as product pages for white-nav styling.
+  const navLight = isProductPage || isCheckoutPage || isExclusivePage;
   // Three-or-more segments under /collections → product detail page.
   // Distinct from `isProductPage` (which covers any collections subpath and
   // drives the white/ink nav styling); this narrower flag suppresses the
@@ -175,7 +177,7 @@ export function Nav() {
             Replaces the full navbar (wordmark + icons + sublinks) with a small
             floating pill of the main page links. */}
         <AnimatePresence>
-          {pastHero && !menuOpen && !isProductPage && !isCheckoutPage && (
+          {pastHero && !menuOpen && !isProductPage && !isCheckoutPage && !isExclusivePage && (
             <motion.div
               key="nav-compact"
               initial={{ opacity: 0, y: -12 }}
@@ -350,7 +352,7 @@ export function Nav() {
           {!menuOpen && (
             <nav aria-label="Collections" className="hidden md:block">
               <ul className="mx-auto flex max-w-editorial items-center justify-center gap-10 px-10 py-3 lg:gap-14">
-                {(isCheckoutPage || navHovered || pathname.startsWith("/collections/") ? COLLECTION_SUBLINKS : DROPDOWN_LINKS).map((l) => {
+                {(isCheckoutPage || navHovered || pathname.startsWith("/collections/") || pathname.startsWith("/exclusive") ? COLLECTION_SUBLINKS : DROPDOWN_LINKS).map((l) => {
                   const active = isActive(l.href);
                   return (
                     <li key={l.href}>
@@ -379,7 +381,7 @@ export function Nav() {
         {/* Floating dark dropdown panel — appears below the navbar on hover.
             Only over the hero (before the compact panel takes over). */}
         <AnimatePresence>
-          {(navHovered || pathname.startsWith("/collections/")) && !menuOpen && !pastHero && !isProductDetailPage && !isCheckoutPage && (
+          {(navHovered || pathname.startsWith("/collections/") || isExclusivePage) && !menuOpen && !pastHero && !isProductDetailPage && !isCheckoutPage && (
             <motion.div
               key="nav-dropdown"
               initial={{ opacity: 0, y: -8 }}

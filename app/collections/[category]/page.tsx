@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PRODUCTS, type Product } from "@/lib/content";
+import { type Product } from "@/lib/content";
+import { fetchProducts } from "@/lib/products-api";
 import { CategoryHero } from "@/components/collections/category/category-hero";
 import { CategoryFilterableGrid } from "@/components/collections/category/category-filterable-grid";
 import { CategorySavoirFaire } from "@/components/collections/category/category-savoir-faire";
@@ -224,7 +225,7 @@ export function generateMetadata({
   };
 }
 
-export default function CategoryPage({
+export default async function CategoryPage({
   params
 }: {
   params: { category: string };
@@ -232,7 +233,8 @@ export default function CategoryPage({
   const cfg = CATEGORIES[params.category];
   if (!cfg) notFound();
 
-  const products = PRODUCTS.filter(
+  const all = await fetchProducts();
+  const products = all.filter(
   (p) => p.category === cfg.filter && p.handle !== "sculpture-majeste"
 );
 

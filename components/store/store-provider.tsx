@@ -57,6 +57,48 @@ const DEFAULT_EXTRAS: CartExtras = {
   giftMessage: ""
 };
 
+export type OrderStatus = "placed" | "cancelled" | "shipped" | "delivered";
+
+export type OrderItem = {
+  handle: string;
+  name: string;
+  image?: string;
+  qty: number;
+  unitPrice: number;
+  lineTotal: number;
+};
+
+export type Order = {
+  id: string;
+  placedAt: string; // ISO
+  status: OrderStatus;
+  cancelledAt?: string;
+  items: OrderItem[];
+  extras: CartExtras;
+  delivery: { method: "standard" | "express"; cost: number };
+  payment: { method: "upi" | "card" | "netbanking" | "cod"; fee: number };
+  contact: {
+    email: string;
+    firstName: string;
+    lastName: string;
+    phone: string;
+  };
+  shipping: {
+    line1: string;
+    line2: string;
+    city: string;
+    state: string;
+    postal: string;
+    country: string;
+  };
+  subtotal: number;
+  total: number;
+  gst: number;
+};
+
+// What the caller passes to addOrder. The store fills in id/placedAt/status.
+export type OrderDraft = Omit<Order, "id" | "placedAt" | "status">;
+
 type StoreState = {
   cart: CartItem[];
   wishlist: string[];
@@ -65,6 +107,7 @@ type StoreState = {
   addresses: Address[];
   preferences: Preferences;
   cartExtras: CartExtras;
+  orders: Order[];
 
   openDrawer: (kind: DrawerKind) => void;
   closeDrawer: () => void;
@@ -87,6 +130,10 @@ type StoreState = {
 
   updatePreferences: (patch: Partial<Preferences>) => void;
 
+  placeOrder: (draft: OrderDraft) => Order;
+  cancelOrder: (id: string) => void;
+  orderById: (id: string) => Order | undefined;
+
   cartCount: number;
   cartSubtotal: number;
 
@@ -101,6 +148,7 @@ const USER_KEY = "tlv:user:v1";
 const ADDRESSES_KEY = "tlv:addresses:v1";
 const PREFERENCES_KEY = "tlv:preferences:v1";
 const EXTRAS_KEY = "tlv:cart-extras:v1";
+const ORDERS_KEY = "tlv:orders:v1";
 
 function safeParse<T>(raw: string | null, fallback: T): T {
   if (!raw) return fallback;
@@ -119,6 +167,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [preferences, setPreferences] = useState<Preferences>(DEFAULT_PREFERENCES);
   const [cartExtras, setCartExtrasState] = useState<CartExtras>(DEFAULT_EXTRAS);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [drawer, setDrawer] = useState<DrawerKind>(null);
   const [hydrated, setHydrated] = useState(false);
 
@@ -137,6 +186,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setCartExtrasState(
       safeParse<CartExtras>(localStorage.getItem(EXTRAS_KEY), DEFAULT_EXTRAS)
     );
+    setOrders(safeParse<Order[]>(localStorage.getItem(ORDERS_KEY), []));
     setHydrated(true);
   }, []);
 
@@ -172,6 +222,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     if (!hydrated) return;
     localStorage.setItem(EXTRAS_KEY, JSON.stringify(cartExtras));
   }, [cartExtras, hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+  }, [orders, hydrated]);
 
   const openDrawer = useCallback((kind: DrawerKind) => setDrawer(kind), []);
   const closeDrawer = useCallback(() => setDrawer(null), []);
@@ -248,6 +303,33 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     setPreferences((prev) => ({ ...prev, ...patch }));
   }, []);
 
+  const placeOrder = useCallback((draft: OrderDraft): Order => {
+    const id = `LV-${Date.now().toString().slice(-8)}`;
+    const order: Order = {
+      ...draft,
+      id,
+      placedAt: new Date().toISOString(),
+      status: "placed"
+    };
+    setOrders((prev) => [order, ...prev]);
+    return order;
+  }, []);
+
+  const cancelOrder = useCallback((id: string) => {
+    setOrders((prev) =>
+      prev.map((o) =>
+        o.id === id && o.status === "placed"
+          ? { ...o, status: "cancelled", cancelledAt: new Date().toISOString() }
+          : o
+      )
+    );
+  }, []);
+
+  const orderById = useCallback(
+    (id: string) => orders.find((o) => o.id === id),
+    [orders]
+  );
+
   const cartCount = useMemo(
     () => cart.reduce((acc, i) => acc + i.qty, 0),
     [cart]
@@ -270,6 +352,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     addresses,
     preferences,
     cartExtras,
+    orders,
     openDrawer,
     closeDrawer,
     addToCart,
@@ -285,6 +368,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     addAddress,
     removeAddress,
     updatePreferences,
+    placeOrder,
+    cancelOrder,
+    orderById,
     cartCount,
     cartSubtotal,
     productByHandle

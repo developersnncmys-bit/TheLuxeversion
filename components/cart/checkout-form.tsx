@@ -111,7 +111,8 @@ export function CheckoutForm() {
     addresses,
     addAddress,
     clearCart,
-    signIn
+    signIn,
+    placeOrder
   } = useStore();
 
   // Guest-mode is per-visit, not persisted — if a visitor returns later we
@@ -198,9 +199,7 @@ export function CheckoutForm() {
 
     setSubmitting(true);
 
-    const order = {
-      id: `LV-${Date.now().toString().slice(-8)}`,
-      placedAt: new Date().toISOString(),
+    const draft = {
       items: cart.map((item) => {
         const p = productByHandle(item.handle);
         return {
@@ -240,10 +239,15 @@ export function CheckoutForm() {
       gst
     };
 
+    // placeOrder returns the stored order (with id, placedAt, status) and
+    // pushes it to the orders list. We stash the id in sessionStorage so the
+    // confirmation page knows which order was just placed — the order itself
+    // is read live from the store, so cancel/status updates reflect instantly.
+    const order = placeOrder(draft);
     try {
-      sessionStorage.setItem("tlv:last-order", JSON.stringify(order));
+      sessionStorage.setItem("tlv:last-order-id", order.id);
     } catch {
-      // Ignore quota errors — confirmation page falls back to a generic view.
+      // Quota errors are harmless — confirmation page falls back on redirect.
     }
 
     // If the visitor filled a new address and ticked "save this address", add

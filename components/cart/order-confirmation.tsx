@@ -1,57 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import clsx from "clsx";
 import { SafeImage } from "@/components/ui/safe-image";
+import { useStore, type Order } from "@/components/store/store-provider";
 import { CheckoutChrome } from "./checkout-chrome";
 
-type OrderItem = {
-  handle: string;
-  name: string;
-  image?: string;
-  qty: number;
-  unitPrice: number;
-  lineTotal: number;
-};
-
-type Order = {
-  id: string;
-  placedAt: string;
-  items: OrderItem[];
-  extras: { wrapping: "essential" | "classic"; giftMessage: string };
-  delivery: { method: "standard" | "express"; cost: number };
-  contact: {
-    email: string;
-    firstName: string;
-    lastName: string;
-    phone: string;
-  };
-  shipping: {
-    line1: string;
-    line2: string;
-    city: string;
-    state: string;
-    postal: string;
-    country: string;
-  };
-  subtotal: number;
-  total: number;
-  gst: number;
-};
-
 export function OrderConfirmation() {
-  const [order, setOrder] = useState<Order | null>(null);
+  const { orders, orderById, cancelOrder } = useStore();
+  const [orderId, setOrderId] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
 
+  // The checkout flow stashes the just-placed order id in sessionStorage so
+  // the confirmation page knows which order to focus on. The order itself is
+  // read live from the store so cancel-order state flows through immediately.
   useEffect(() => {
     try {
-      const raw = sessionStorage.getItem("tlv:last-order");
-      if (raw) setOrder(JSON.parse(raw) as Order);
+      setOrderId(sessionStorage.getItem("tlv:last-order-id"));
     } catch {
-      // Fall through — we show the generic no-order view below.
+      // Ignore.
     }
     setLoaded(true);
   }, []);
+
+  const order: Order | undefined = useMemo(() => {
+    if (!orderId) return orders[0];
+    return orderById(orderId) ?? orders[0];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderId, orders]);
+
+  const [cancelling, setCancelling] = useState(false);
+  const handleCancel = () => {
+    if (!order) return;
+    const confirmed = window.confirm(
+      "Cancel this order? Cancellation is immediate and the amount will be refunded within 5–7 working days."
+    );
+    if (!confirmed) return;
+    setCancelling(true);
+    cancelOrder(order.id);
+    setCancelling(false);
+  };
 
   if (!loaded) {
     return (
@@ -91,6 +80,9 @@ export function OrderConfirmation() {
     year: "numeric"
   });
 
+  const isCancelled = order.status === "cancelled";
+  const isCancellable = order.status === "placed";
+
   return (
     <div className="min-h-svh bg-chalk pt-16 text-ink md:pt-32">
       <CheckoutChrome />
@@ -98,16 +90,25 @@ export function OrderConfirmation() {
       <main className="mx-auto max-w-3xl px-6 pb-32 pt-14 md:px-12 md:pt-20">
         <header className="text-center">
           <p className="text-[11px] uppercase tracking-[0.3em] text-ink/60">
-            Thank you
+            {isCancelled ? "Cancelled" : "Thank you"}
           </p>
           <h1 className="mt-6 font-display text-[clamp(1.75rem,3.4vw,2.75rem)] font-semibold uppercase tracking-[0.02em]">
-            Your order has been placed
+            {isCancelled ? "This order has been cancelled" : "Your order has been placed"}
           </h1>
           <p className="mx-auto mt-6 max-w-md text-[13px] leading-[1.8] text-ink/70">
-            A confirmation has been sent to{" "}
-            <span className="text-ink">{order.contact.email}</span>.
-            <br />
-            Our studio will reach out to confirm hand-over details.
+            {isCancelled ? (
+              <>
+                We've cancelled your order and no amount will be charged.
+                Refunds, where applicable, settle within 5–7 working days.
+              </>
+            ) : (
+              <>
+                A confirmation has been sent to{" "}
+                <span className="text-ink">{order.contact.email}</span>.
+                <br />
+                Our studio will reach out to confirm hand-over details.
+              </>
+            )}
           </p>
           <div className="mt-10 inline-flex flex-col gap-1 border-y border-ink/15 py-5 px-10 text-[11px] uppercase tracking-[0.26em]">
             <span className="text-ink/60">Order reference</span>
@@ -117,6 +118,7 @@ export function OrderConfirmation() {
             <span className="mt-2 text-[10px] text-ink/50">
               Placed {placedLabel}
             </span>
+            <StatusBadge status={order.status} />
           </div>
         </header>
 
@@ -204,13 +206,19 @@ export function OrderConfirmation() {
                     : `₹ ${order.delivery.cost.toLocaleString("en-IN")}.00`
                 }
               />
+              {order.payment.fee > 0 && (
+                <Row
+                  label="COD handling"
+                  value={`₹ ${order.payment.fee.toLocaleString("en-IN")}.00`}
+                />
+              )}
               <Row
                 label="GST included"
                 value={`₹ ${order.gst.toLocaleString("en-IN")}.00`}
               />
               <div className="mt-4 border-t border-ink/15 pt-4">
                 <Row
-                  label="Total paid"
+                  label={isCancelled ? "Order total" : "Total paid"}
                   value={`₹ ${order.total.toLocaleString("en-IN")}.00`}
                   strong
                 />
@@ -220,6 +228,16 @@ export function OrderConfirmation() {
         </div>
 
         <div className="mt-16 flex flex-col items-center gap-5">
+          {isCancellable && (
+            <button
+              type="button"
+              onClick={handleCancel}
+              disabled={cancelling}
+              className="w-full max-w-sm border border-ink/40 py-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-chalk disabled:opacity-50"
+            >
+              {cancelling ? "Cancelling…" : "Cancel order"}
+            </button>
+          )}
           <Link
             href="/collections/objects"
             className="w-full max-w-sm bg-ink py-5 text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-chalk transition-opacity hover:opacity-90"
@@ -227,10 +245,10 @@ export function OrderConfirmation() {
             Continue shopping
           </Link>
           <Link
-            href="/"
+            href="/account#orders"
             className="text-[11px] uppercase tracking-[0.26em] text-ink/70 underline underline-offset-[6px] decoration-ink/30 transition-colors hover:text-ink"
           >
-            Back to home
+            View all orders
           </Link>
         </div>
       </main>
@@ -264,5 +282,22 @@ function Row({
       </dt>
       <dd>{value}</dd>
     </div>
+  );
+}
+
+export function StatusBadge({ status }: { status: Order["status"] }) {
+  const label = status.charAt(0).toUpperCase() + status.slice(1);
+  return (
+    <span
+      className={clsx(
+        "mt-3 inline-block self-center border px-3 py-1 text-[9px] uppercase tracking-[0.26em]",
+        status === "cancelled" && "border-red-300 bg-red-50 text-red-700",
+        status === "placed" && "border-ink/30 bg-ink/5 text-ink/80",
+        status === "shipped" && "border-amber-300 bg-amber-50 text-amber-800",
+        status === "delivered" && "border-emerald-300 bg-emerald-50 text-emerald-800"
+      )}
+    >
+      {label}
+    </span>
   );
 }
