@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export function CollectionClosing() {
   return (
     <section
-      className="relative bg-ink pt-32 pb-16 text-chalk md:pt-44 md:pb-20"
+      className="relative bg-ink pt-20 pb-12 text-chalk md:pt-44 md:pb-20"
       aria-labelledby="closing-heading"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center md:px-14">

@@ -11,7 +11,7 @@ const COLUMNS = [
     links: [
       { href: "/collections/sculptures", label: "Sculptures" },
       { href: "/collections/vases", label: "Vases" },
-      { href: "/collections", label: "The Complete Collection" }
+      { href: "/collections/objects", label: "The Complete Collection" }
     ]
   },
   {
@@ -150,7 +150,11 @@ export function Footer() {
       {/* Rest of footer — flows normally below the client-services strip */}
       <div className="relative z-10 bg-ink">
         {/* Small centered wordmark — serif, matching preloader + nav */}
-        <div className="mx-auto max-w-editorial px-6 pt-16 pb-10 text-center md:px-10 md:pt-20 md:pb-14">
+        {/* Top padding must exceed the Client Care strip's `-mb-20 md:-mb-28`
+            (80/112px) that pulls the dark section up — otherwise the wordmark
+            sits inside the overlap zone where the chalk-bg strip (z-20)
+            clips the top of the `scaleY(1.55)` glyphs. */}
+        <div className="mx-auto max-w-editorial px-6 pt-24 pb-10 text-center md:px-10 md:pt-36 md:pb-14">
           <div
             style={{
               fontFamily: "var(--font-serif-display)",

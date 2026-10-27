@@ -110,11 +110,13 @@ export function ObjectsCatalog({ products }: { products: Product[] }) {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="hidden shrink-0 items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-chalk/85 transition-colors hover:text-chalk md:inline-flex"
+              className="inline-flex shrink-0 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-chalk/85 transition-colors hover:text-chalk md:gap-3"
               aria-label="Open filters"
             >
               <FilterIcon />
-              Filters
+              {/* On mobile the chip row needs the horizontal space; show just the
+                  icon + count. Full "Filters" label returns on md+. */}
+              <span className="hidden md:inline">Filters</span>
               {activeDrawerCount > 0 && (
                 <span className="text-chalk/60">({activeDrawerCount})</span>
               )}

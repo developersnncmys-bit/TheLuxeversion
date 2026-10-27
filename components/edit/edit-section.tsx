@@ -30,7 +30,11 @@ export function EditSection({
       aria-labelledby={`${id}-heading`}
     >
       <div className="mx-auto max-w-editorial px-6 md:px-14">
-        <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-16 lg:gap-24">
+        {/* `lg:gap-24` (96px × 11 = 1056px) exceeds the 1032px iPad content
+            area and squeezes columns to near-zero width. Hold at a tablet-
+            safe gap through lg, promote to the wider editorial gap at xl+
+            where the viewport can actually afford it. */}
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-10 xl:gap-16">
           {/* Text panel — sticky pin per section, positioned so the pinned
               block sits around the vertical centre of the viewport.
               Placement flips on `mirror` for editorial rhythm. */}

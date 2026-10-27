@@ -61,7 +61,7 @@ export function ChapterRoom() {
           vertically-centered, while a small strip of Living Room still peeks
           below during pin. Inner div gets the direct transform mutation. */}
       <section
-        className="pointer-events-none sticky top-0 z-40 h-auto pt-56 pb-32"
+        className="pointer-events-none sticky top-0 z-40 h-auto pt-24 pb-16 md:pt-56 md:pb-32"
         aria-labelledby="chapter-room-heading"
       >
         <div

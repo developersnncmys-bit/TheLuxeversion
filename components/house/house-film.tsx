@@ -35,8 +35,8 @@ export function HouseFilm() {
         >
           <video
             ref={videoRef}
-            src="/images/living-room1.mp4"
-            poster="/images/Living-room1.png"
+            src="/images/dining-video.mp4"
+            poster="/images/house-hero.png"
             autoPlay
             muted
             loop

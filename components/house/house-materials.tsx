@@ -98,7 +98,7 @@ const MATERIALS = [
     name: "Metal",
     image: "/images/materials/metal.png",
     body:
-      "Unlacquered brass and cast bronze — finishes that darken with the years."
+      "Cast bronze and patinated metal — finishes that darken with the years."
   },
   {
     name: "Wood",

@@ -66,7 +66,7 @@ export function HouseArtOfObjects() {
             />
           </div>
           <p className="mt-6 text-[10px] uppercase tracking-[0.32em] text-chalk/40">
-            Objet · Sillon — cast bronze
+            Sillage · Textured metal, gold finish
           </p>
         </motion.div>
       </div>

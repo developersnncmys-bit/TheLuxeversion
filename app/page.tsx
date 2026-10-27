@@ -21,7 +21,7 @@ export default function HomePage() {
           ChapterFilm can sit between chapter-room and the Living Room reveal. */}
       <div className="relative bg-ink">
         <ChapterFilm />
-        <div className="relative h-[300vh]">
+        <div className="relative h-[200vh]">
           <ChapterLook
             pinned
             eyebrow="Shop the Room"

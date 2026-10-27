@@ -77,13 +77,13 @@ export function ProductHero({ product, ref_ }: Props) {
       {/* Top padding clears the fixed nav (h-20 main bar + top-5 pill panel
           on desktop). Without this the hero's first row of content sits
           behind the nav. Value matches the old design's `top-36` offset. */}
-      <div className="grid grid-cols-1 pt-24 md:grid-cols-12 md:pt-36">
+      <div className="grid grid-cols-1 pt-24 md:pt-36 xl:grid-cols-12">
         {/* ── DESKTOP THUMBNAIL COLUMN ────────────────────────────────────
             Kalki-style: narrow strip on the left with up/down chevrons
             that advance the selected image. Thumbnails hold a fixed
             portrait aspect and scroll vertically inside the column if
             there are more than fit; overflow bar is hidden. */}
-        <div className="hidden md:col-span-1 md:flex md:h-[80svh] md:flex-col md:items-stretch md:py-2 md:pl-4 md:pr-2">
+        <div className="hidden xl:col-span-1 xl:flex xl:h-[80svh] xl:flex-col xl:items-stretch xl:py-2 xl:pl-4 xl:pr-2">
           <button
             type="button"
             onClick={() => scrollThumbs(-1)}
@@ -139,8 +139,19 @@ export function ProductHero({ product, ref_ }: Props) {
             preload the whole gallery on first paint. */}
         <div
           className={clsx(
-            "relative bg-onyx overflow-hidden aspect-[4/5] md:col-span-6",
-            "md:h-[600px] md:w-[600px] md:aspect-auto md:cursor-zoom-in"
+            // `w-full` is needed so aspect-ratio can compute a height.
+            // Without it the grid item width stays `auto` in a 1-col grid
+            // context and the container collapses to 0 height, hiding
+            // the hero image entirely on tablet widths.
+            "relative bg-onyx overflow-hidden aspect-[4/5] w-full",
+            // Tablet (md→xl): the stacked layout would otherwise balloon the
+            // image to ~1290px tall on a 1032px iPad (full viewport). Cap it
+            // to a readable editorial crop — wide enough to feel like a
+            // hero, narrow enough to leave the info panel visible without
+            // excessive scroll.
+            "md:mx-auto md:max-w-xl",
+            // Desktop (xl+): side-by-side grid, square image capped at 600.
+            "xl:col-span-6 xl:aspect-square xl:max-w-[600px] xl:self-start xl:cursor-zoom-in"
           )}
           onMouseEnter={() => setZooming(true)}
           onMouseLeave={() => setZooming(false)}
@@ -192,7 +203,7 @@ export function ProductHero({ product, ref_ }: Props) {
             Horizontal row below the main image on mobile. Scrolls
             horizontally if the gallery is wide enough. Hidden on desktop
             (thumbnails live in the left column instead). */}
-        <div className="flex gap-2 overflow-x-auto px-4 py-4 md:hidden">
+        <div className="flex gap-2 overflow-x-auto px-4 py-4 md:mx-auto md:max-w-xl md:px-0 xl:hidden">
           {gallery.map((src, i) => (
             <button
               key={`thumb-mobile-${src}-${i}`}
@@ -223,14 +234,18 @@ export function ProductHero({ product, ref_ }: Props) {
             sticky positioning — the hero is now a single-viewport section
             that scrolls with the page. Panel content is unchanged from
             the previous design. */}
-        <aside className="relative md:col-span-5">
-          <div className="md:flex md:min-h-[80svh] md:items-center">
-            <div className="w-full px-6 py-16 md:px-14 md:py-12">
+        <aside className="relative xl:col-span-5">
+          <div className="xl:flex xl:min-h-[80svh] xl:items-center">
+            <div className="w-full px-6 py-16 xl:px-14 xl:py-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="max-w-sm"
+                // Tablet (md→xl range): widen the content a touch and
+                // horizontally centre it, so a stacked panel on a 1032px
+                // iPad doesn't sit pinned to the left of the viewport.
+                // Desktop (xl+): back to the left-aligned narrow column.
+                className="max-w-sm md:mx-auto md:max-w-md xl:mx-0 xl:max-w-sm"
               >
                 <h1
                   id="product-heading"

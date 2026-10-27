@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function CollectionManifesto() {
   return (
     <section
-      className="relative bg-ink py-32 text-chalk md:py-44"
+      className="relative bg-ink py-16 text-chalk md:py-44"
       aria-labelledby="manifesto-heading"
     >
       {/* Chanel-style centred cluster: small kicker → wide display heading → narrow

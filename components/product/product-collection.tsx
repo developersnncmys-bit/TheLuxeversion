@@ -26,36 +26,39 @@ export function ProductCollection({ product }: { product: Product }) {
 
   return (
     <section className="relative bg-ink text-chalk">
-      <div className="relative aspect-[21/9] w-full overflow-hidden md:aspect-[21/8]">
-        <SafeImage
-          src={image}
-          alt={`${product.category} collection`}
-          fallbackSeed={`${product.handle}-collection`}
-          fill
-          sizes="100vw"
-          quality={62}
-          className="object-cover"
-        />
+      {/* Parent: natural flow on mobile (image above copy); fixed-aspect banner
+          on desktop (image + copy overlay). */}
+      <div className="relative md:aspect-[21/8] md:overflow-hidden">
+        {/* Image box — takes natural 16:10 aspect on mobile; absolute full-bleed on desktop. */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden md:absolute md:inset-0 md:aspect-auto">
+          <SafeImage
+            src={image}
+            alt={`${product.category} collection`}
+            fallbackSeed={`${product.handle}-collection`}
+            fill
+            sizes="100vw"
+            quality={62}
+            className="object-cover"
+          />
 
-        {/* Scrim direction follows the copy side so the text is always
-            over the darkened half of the image. */}
-        <div
-          aria-hidden
-          className={clsx(
-            "absolute inset-0 from-ink/80 via-ink/40 to-transparent",
-            alignLeft ? "bg-gradient-to-r" : "bg-gradient-to-l"
-          )}
-        />
+          {/* Directional scrim — only on desktop where copy overlays the image.
+              Mobile has copy below the image so no scrim is needed. */}
+          <div
+            aria-hidden
+            className={clsx(
+              "absolute inset-0 hidden from-ink/80 via-ink/40 to-transparent md:block",
+              alignLeft ? "md:bg-gradient-to-r" : "md:bg-gradient-to-l"
+            )}
+          />
+        </div>
 
-        {/* Copy — pinned to left OR right depending on category, vertically
-            centred either way. Right-aligned pages get a wider gutter from
-            the screen edge so the text doesn't crowd the viewport. */}
+        {/* Copy — block flow below image on mobile; absolute overlay on desktop. */}
         <div
           className={clsx(
-            "absolute inset-y-0 flex items-center px-6",
+            "px-6 py-12 md:absolute md:inset-y-0 md:flex md:items-center md:py-0",
             alignLeft
-              ? "left-0 md:px-14"
-              : "right-0 md:px-20 lg:px-28"
+              ? "md:left-0 md:px-14"
+              : "md:right-0 md:px-20 lg:px-28"
           )}
         >
           <motion.div
@@ -64,8 +67,8 @@ export function ProductCollection({ product }: { product: Product }) {
             viewport={{ once: true, margin: "-15% 0px" }}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             className={clsx(
-              "max-w-sm md:max-w-md",
-              alignLeft ? "text-left" : "text-right"
+              "mx-auto max-w-sm text-center md:mx-0 md:max-w-md",
+              alignLeft ? "md:text-left" : "md:text-right"
             )}
           >
             <p className="text-[10px] uppercase tracking-[0.32em] text-chalk/70">

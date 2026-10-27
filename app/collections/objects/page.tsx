@@ -16,7 +16,7 @@ export default function ObjectsPage() {
         kicker="The Collection"
         title="Objects"
         description="Sculptural and quiet — the objects that finish a room. Sculptures in hand-carved wood and cast bronze, vessels wheel-thrown in stoneware and glass. Each conceived as a composition, sized to be lived with."
-        image="/images/product-banners/allobjects-banner.png"
+        image="/images/banners/Objectsbanner.png"
         imageAlt="An arrangement of objects — a curated composition"
       />
       <ObjectsCatalog products={PRODUCTS} />

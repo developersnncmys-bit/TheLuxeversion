@@ -41,7 +41,7 @@ export function Collection() {
   return (
     <section
       id="collection"
-      className="relative bg-ink py-32 text-chalk md:py-8"
+      className="relative bg-ink py-16 text-chalk md:py-8"
       aria-labelledby="collection-heading"
     >
       <div className="mx-auto max-w-editorial px-6 md:px-10">

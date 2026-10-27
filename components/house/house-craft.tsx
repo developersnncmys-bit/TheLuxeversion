@@ -73,15 +73,15 @@ export function HouseCraft() {
               className="relative aspect-[4/5] w-full overflow-hidden bg-onyx"
             >
               <Image
-                src="/images/sculptures/scu4.webp"
-                alt="A brass table lamp on the studio floor — the hand of the maker still on it"
+                src="/images/sculptures/Vestige/Vestige-Craft.webp"
+                alt="A hand-carved wood sculpture on the studio floor — the mark of the maker still on it"
                 fill
                 sizes="(min-width: 768px) 40vw, 100vw"
                 className="object-cover"
               />
             </motion.div>
             <p className="mt-6 text-[10px] uppercase tracking-[0.32em] text-ink/40">
-              Lume Alba · Brass, hand-turned
+              Vestige · Hand-carved wood
             </p>
           </div>
         </div>
@@ -109,6 +109,6 @@ const PRINCIPLES = [
   {
     title: "Time as a material",
     body:
-      "Brass darkens. Wood warms. Glass clouds a shade. Our finishes are chosen for the year they will look best in — the fifth, not the first."
+      "Bronze darkens. Wood warms. Glass clouds a shade. Our finishes are chosen for the year they will look best in — the fifth, not the first."
   }
 ];

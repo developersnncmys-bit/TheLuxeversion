@@ -27,7 +27,7 @@ export function CategorySection({
   return (
     <section
       id={id}
-      className="relative bg-ink py-22 text-chalk md:py-28"
+      className="relative bg-ink py-16 text-chalk md:py-28"
       aria-labelledby={`${id}-heading`}
     >
       <div className="mx-auto max-w-editorial px-6 md:px-14">

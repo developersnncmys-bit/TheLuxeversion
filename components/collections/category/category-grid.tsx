@@ -72,7 +72,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       className="group"
     >
       <Link href={productHref(product)} className="block text-center">
-        <div className="relative mb-8 aspect-[4/5] w-full overflow-hidden bg-onyx">
+        <div className="relative mb-6 aspect-[4/5] w-full overflow-hidden bg-onyx md:mb-8">
           {/* Served directly from /public — WebP source is already sized
               and compressed for a card slot. Bypassing /_next/image
               avoids multi-second cold AVIF conversion on first paint. */}
@@ -86,7 +86,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           />
         </div>
 
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 text-center">
           <p className="text-[10px] uppercase tracking-[0.32em] text-chalk/55">
             {product.category}
           </p>

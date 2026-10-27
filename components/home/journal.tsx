@@ -29,7 +29,7 @@ export function JournalTeaser() {
 
   return (
     <section
-      className="relative bg-ink pt-32 pb-0 text-chalk md:pt-18"
+      className="relative bg-ink pt-20 pb-0 text-chalk md:pt-18"
       aria-labelledby="journal-heading"
     >
       {/* header — centered, matches Complete Collection rhythm */}
@@ -61,7 +61,7 @@ export function JournalTeaser() {
           full gallery lives at /the-studio. */}
       <div
         ref={stripRef}
-        className="mx-auto grid max-w-editorial grid-cols-1 gap-6 px-6 md:grid-cols-4 md:gap-8 md:px-10"
+        className="mx-auto grid max-w-editorial grid-cols-1 gap-6 px-6 md:grid-cols-2 md:gap-8 md:px-10 xl:grid-cols-4"
       >
         {JOURNAL_ENTRIES.slice(0, 4).map((entry, i) => (
           <JournalCard

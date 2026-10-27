@@ -39,6 +39,11 @@ type CategoryConfig = {
   description: string;
   image: string;
   imageAlt: string;
+  // Optional mobile-only hero image. Falls back to `image` on md+ screens.
+  mobileImage?: string;
+  // Optional tablet-only (iPad range, md→lg) hero image. Falls back to
+  // `image` on lg+ screens when present.
+  tabletImage?: string;
   // Accept a single config OR an array when the category wants to highlight
   // more than one piece back-to-back (e.g. Sculptures highlighting both
   // Majesté and Sillage). The grid interstitial renders each entry stacked.
@@ -55,6 +60,8 @@ const CATEGORIES: Record<string, CategoryConfig> = {
     description:
       "Hand-carved and cast forms — the piece a room turns toward first. Walnut, travertine, cast bronze, each shaped to hold a corner or an entry.",
     image: "/images/banners/sculpture.png",
+    mobileImage: "/Mobile-banners/Sculpture.png",
+    tabletImage: "/Ipads-tabs/Sculpture.png",
     imageAlt: "A hand-carved walnut sculpture",
     savoirFaire: [
       {
@@ -104,6 +111,8 @@ const CATEGORIES: Record<string, CategoryConfig> = {
     description:
       "Vessels in ceramic, stone and glass — sculpture that holds. Wheel-thrown, hand-blown, bronze-glazed; scaled for the console, the sideboard, the low table.",
     image: "/images/banners/vase.png",
+    mobileImage: "/Mobile-banners/Vase.png.png",
+    tabletImage: "/Ipads-tabs/Vase.png",
     imageAlt: "A ceramic vessel",
     savoirFaire: {
       kicker: "The Savoir-faire",
@@ -179,6 +188,8 @@ export default function CategoryPage({
         description={cfg.description}
         image={cfg.image}
         imageAlt={cfg.imageAlt}
+        mobileImage={cfg.mobileImage}
+        tabletImage={cfg.tabletImage}
       />
       <CategoryFilterableGrid
         products={products}

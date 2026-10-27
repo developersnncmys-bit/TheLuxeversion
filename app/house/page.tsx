@@ -11,7 +11,7 @@ import { HouseClosing } from "@/components/house/house-closing";
 export const metadata: Metadata = {
   title: "The House — The Luxe Version",
   description:
-    "The Luxe Version is a house of decorative objects — showpieces and mirrors, curated for a life lived slowly."
+    "The Luxe Version is a house of decorative objects — sculptures and vessels, curated for a life lived slowly."
 };
 
 export default function HousePage() {

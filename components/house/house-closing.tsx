@@ -39,7 +39,7 @@ export function HouseClosing() {
           className="mt-8 max-w-md text-[13px] leading-[1.8] text-chalk/70 md:text-[14px]"
         >
           The house sets the frame. The collection is where each piece lives —
-          showpieces and mirrors, one by one.
+          sculptures and vessels, one by one.
         </motion.p>
 
         <motion.div
