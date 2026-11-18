@@ -22,7 +22,7 @@ export function JournalHero() {
     >
       <motion.div style={{ y }} className="absolute inset-0">
         <Image
-          src="/images/studio-hero.png"
+          src="/images/new-banner/studio.png"
           alt="Inside the studio"
           fill
           priority

@@ -24,7 +24,7 @@ export function EditHero() {
       {/* Parallax cover — quieter than /collections; heavier wash so title dominates. */}
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
-          src="/images/edit-hero.png"
+          src="/images/new-banner/edit.png"
           alt="The Edit — a curated selection of pieces"
           fill
           priority
