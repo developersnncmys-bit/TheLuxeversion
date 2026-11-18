@@ -24,7 +24,7 @@ export function CollectionHero() {
       {/* Parallax cover — one still image; the drama comes from scale + wash, not autoplay */}
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
-          src="/images/collection-hero.png"
+          src="/images/new-banner/collection.png"
           alt="The Collection — a composed interior at dusk"
           fill
           priority

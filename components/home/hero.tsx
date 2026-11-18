@@ -7,12 +7,8 @@ import { useRef, useState } from "react";
 
 const SLIDES = [
   {
-    src: "/images/home-hero2.png",
-    alt: "The Luxe Version — interior in deep black velvet"
-  },
-  {
-    src: "/images/hero-banner-v2.png",
-    alt: "The Luxe Version — sculptural pieces in warm neutrals"
+    src: "/images/new-banner/home.png",
+    alt: "The Luxe Version — sculptural pieces composed in a quiet interior"
   }
 ];
 
