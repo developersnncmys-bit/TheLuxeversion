@@ -26,7 +26,7 @@ export default function HomePage() {
             pinned
             eyebrow="Shop the Room"
             title={"The\nSculpted\nRoom"}
-            cover="/images/collection-home.png"
+            cover="/images/new-banner/sculptures-stone.webp"
             // Video thumbnail cards temporarily hidden — pass empty array.
             thumbnails={[]}
             // thumbnails={[

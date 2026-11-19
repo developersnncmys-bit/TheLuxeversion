@@ -22,14 +22,14 @@ export function JournalHero() {
     >
       <motion.div style={{ y }} className="absolute inset-0">
         <Image
-          src="/images/new-banner/studio.png"
+          src="/images/new-banner/studio.webp"
           alt="Inside the studio"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-ink/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-transparent to-ink/45" />
       </motion.div>
 
       <motion.div

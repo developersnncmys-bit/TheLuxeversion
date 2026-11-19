@@ -24,15 +24,15 @@ export function CollectionHero() {
       {/* Parallax cover — one still image; the drama comes from scale + wash, not autoplay */}
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
-          src="/images/new-banner/collection.png"
+          src="/images/new-banner/product.webp"
           alt="The Collection — a composed interior at dusk"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover [object-position:center_15%]"
         />
         {/* Diagonal wash — heavier bottom so the title sits comfortably on darker ground */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/10 to-ink/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-transparent to-ink/40" />
       </motion.div>
 
       {/* Bottom-centered cta-rule — signature Chanel-style scroll cue */}

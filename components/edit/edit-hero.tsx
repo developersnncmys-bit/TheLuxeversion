@@ -21,17 +21,15 @@ export function EditHero() {
       ref={ref}
       className="relative h-[100svh] w-full overflow-hidden bg-ink text-chalk grain"
     >
-      {/* Parallax cover — quieter than /collections; heavier wash so title dominates. */}
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
-          src="/images/new-banner/edit.png"
+          src="/images/new-banner/edit-hero.webp"
           alt="The Edit — a curated selection of pieces"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover [object-position:center_15%]"
         />
-        <div className="absolute inset-0 bg-ink/55" />
       </motion.div>
 
       <motion.div

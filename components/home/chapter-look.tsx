@@ -143,8 +143,9 @@ export function ChapterLook({
             priority={false}
           />
         )}
-        {/* diagonal wash — heavier bottom-left where the title sits, lighter top-right */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/10 to-ink/25" />
+        {/* Very subtle diagonal wash — a whisper of darkness in the bottom-
+            left to seat the title, the rest of the frame reads near-unaltered. */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-ink/60 via-ink/15 to-transparent" />
       </motion.div>
 
       {/* Title cluster — bottom-left corner */}

@@ -17,13 +17,13 @@ export function ProductBoutique() {
           className="relative aspect-[16/7] w-full overflow-hidden bg-onyx md:aspect-[21/8]"
         >
           <SafeImage
-            src="/images/house-hero.png"
+            src="/images/new-banner/product.webp"
             alt="The house studio"
             fallbackSeed="product-boutique"
             fill
             sizes="100vw"
             quality={55}
-            className="object-cover grayscale"
+            className="object-cover"
           />
         </motion.div>
 

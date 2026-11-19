@@ -31,11 +31,11 @@ export function HouseFilm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10% 0px" }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="group relative mx-auto aspect-[16/9] w-full max-w-5xl overflow-hidden bg-onyx"
+          className="group relative mx-auto aspect-[16/10] w-full max-w-3xl overflow-hidden bg-onyx"
         >
           <video
             ref={videoRef}
-            src="/images/dining-video.mp4"
+            src="/images/new-banner/edit.mp4"
             poster="/images/house-hero.png"
             autoPlay
             muted

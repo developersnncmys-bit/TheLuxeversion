@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 
 const SLIDES = [
   {
-    src: "/images/new-banner/home.png",
+    src: "/images/new-banner/home.webp",
     alt: "The Luxe Version — sculptural pieces composed in a quiet interior"
   }
 ];
@@ -64,7 +64,7 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-transparent to-ink/40" />
       </motion.div>
 
       {/* Bottom-centered "cta-rule" — the tiny uppercase text sitting above a short vertical line */}

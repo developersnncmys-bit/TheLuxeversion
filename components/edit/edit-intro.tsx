@@ -31,6 +31,29 @@ export function EditIntro() {
           made in-house — carved by the studio, shaped by our hands, signed by the house.
           Each season, a handful of these in-house pieces sit at the front of the collection.
         </motion.p>
+
+        {/* Film card below the statement — autoplay, silent, loop */}
+        <motion.figure
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 1.2, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-20 md:mt-28"
+        >
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-onyx">
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src="/images/new-banner/edit.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/images/new-banner/edit1.webp"
+              aria-label="Inside the studio — the house at work"
+            />
+          </div>
+        </motion.figure>
       </div>
     </section>
   );

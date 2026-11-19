@@ -58,7 +58,7 @@ export function HouseArtOfObjects() {
         >
           <div className="relative aspect-[16/9] w-full overflow-hidden bg-onyx">
             <Image
-              src="/images/house.png"
+              src="/images/new-banner/studio.webp"
               alt="A single sculpted form — the room around it, kept quiet"
               fill
               sizes="100vw"
@@ -66,7 +66,7 @@ export function HouseArtOfObjects() {
             />
           </div>
           <p className="mt-6 text-[10px] uppercase tracking-[0.32em] text-chalk/40">
-            Sillage · Textured metal, gold finish
+            A procession of forms · Hand-carved stone
           </p>
         </motion.div>
       </div>

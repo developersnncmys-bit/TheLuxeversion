@@ -23,7 +23,7 @@ export function HouseHero() {
     >
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <Image
-          src="/images/house-hero.png"
+          src="/images/new-banner/sculptures-stone.webp"
           alt="The House — the studio at dusk"
           fill
           priority
@@ -31,7 +31,7 @@ export function HouseHero() {
           className="object-cover"
         />
         {/* Heavier bottom wash so the title has weight; deliberately quieter than /collections */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/25 to-ink/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/20 to-ink/70" />
       </motion.div>
 
       {/* Bottom-anchored title cluster — commented out; hero shows image + cta only.

@@ -42,9 +42,9 @@ export function CollectionManifesto() {
           className="mt-14 max-w-xl text-[14px] leading-[1.9] text-chalk/80 md:text-[15px]"
         >
           Every piece here is made to be lived with — not styled around.
-          A sculpture, a vessel, a mirror. Small in number, precise in
-          intent, each object has a life longer than the room it enters.
-          The Luxe Version is a house for those pieces.
+          A sculpture, a vessel, a quiet form on a shelf. Small in number,
+          precise in intent, each object has a life longer than the room
+          it enters. The Luxe Version is a house for those pieces.
         </motion.p>
       </div>
     </section>
