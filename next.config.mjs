@@ -2,14 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    // AVIF first, WebP fallback — both are dramatically smaller than the
-    // 2MB source PNGs in /public/images. Next serves the best format the
-    // browser accepts.
-    formats: ["image/avif", "image/webp"],
-    // Dev: 0 so replacing a source file under /public shows up on next
-    // request without manually clearing .next/cache/images. Prod: 30 days
-    // — repeat visits hit the CDN/browser cache instead of re-decoding.
-    minimumCacheTTL: process.env.NODE_ENV === "development" ? 0 : 60 * 60 * 24 * 30,
+    // Bypass Vercel's Image Optimization endpoint — Hobby-plan quota
+    // was exhausted and /_next/image?... started returning 402 Payment
+    // Required, breaking every hero on the deployed site. Source assets
+    // in /public are already pre-compressed WebPs (<100 KB), so serving
+    // them directly costs nothing in bandwidth or paint time.
+    unoptimized: true,
     // Only picsum is allowed — the SafeImage fallback when a local file is
     // missing. Unsplash and Pexels are deliberately excluded so no stock
     // imagery can slip into the site.
