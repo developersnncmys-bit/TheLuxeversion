@@ -5,50 +5,46 @@ import { motion } from "framer-motion";
 export function ExclusivePromise() {
   return (
     <section
-      className="relative bg-ink pt-20 pb-32 text-chalk md:pt-28 md:pb-44"
+      className="relative bg-ink py-24 text-chalk md:py-40"
       aria-labelledby="exclusive-promise-heading"
     >
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center md:px-14">
-        {/* Eyebrow */}
+      {/* Chanel-style centred cluster — matches CollectionManifesto / EditIntro
+          so the page reads in the same manifesto language as the rest of the
+          house. Small kicker-with-hairlines → wide display heading → stacked
+          body paragraphs → divider → signature lines. */}
+      <div className="mx-auto flex max-w-editorial flex-col items-center px-6 text-center md:px-14">
+        {/* Eyebrow with flanking hairlines */}
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20% 0px" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 text-[10px] uppercase tracking-[0.38em] text-chalk/55"
+          viewport={{ once: true, margin: "-15% 0px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-10 text-[12px] uppercase tracking-[0.3em] text-chalk/70 md:text-[14px]"
         >
           The Promise of the House
         </motion.p>
 
-        {/* Italic subhead */}
+        {/* Display heading — same typographic treatment as the other manifestos */}
         <motion.h2
           id="exclusive-promise-heading"
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20% 0px" }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-[clamp(1.5rem,2.6vw,2.25rem)] font-light italic leading-[1.2] tracking-[0.005em] text-chalk"
-        >
-          Artistry without borders.
-        </motion.h2>
-
-        {/* Hairline divider */}
-        <motion.span
-          aria-hidden
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true, margin: "-20% 0px" }}
-          transition={{ duration: 0.55, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-14 block h-px w-14 origin-center bg-chalk/40"
-        />
-
-        {/* Body paragraphs */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14 max-w-xl space-y-7 text-[13px] leading-[1.95] text-chalk/80 md:text-[14px]"
+          transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display text-[clamp(1.625rem,3vw,2.75rem)] font-semibold uppercase leading-[1.05] tracking-[0.005em]"
+        >
+          Artistry without borders
+        </motion.h2>
+
+        {/* Body paragraphs — centred, narrow column, same scale as sibling
+            manifestos (max-w-xl, 14/15 px, leading 1.9). Breathing room
+            between paragraphs keeps the stack from feeling wall-of-text. */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15% 0px" }}
+          transition={{ duration: 1.2, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-14 max-w-3xl space-y-6 text-[14px] leading-[1.9] text-chalk/80 [text-wrap:pretty] md:text-[15px]"
         >
           <p>
             Conceived in India with a global perspective, LUXE EXCLUSIVE brings
@@ -84,35 +80,36 @@ export function ExclusivePromise() {
           </p>
         </motion.div>
 
-        {/* Hairline above the signature lines */}
+        {/* Hairline separator before the signature lines */}
         <motion.span
           aria-hidden
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 0.55, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-20 block h-px w-14 origin-center bg-chalk/40 md:mt-28"
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto mt-16 block h-px w-14 origin-center bg-chalk/40 md:mt-20"
         />
 
-        {/* Signature lines */}
+        {/* Signature lines — close the section with brand mantra, same
+            uppercase-tracked treatment as elsewhere on the page. */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 0.6, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 text-[11px] uppercase tracking-[0.34em] text-chalk/85 md:text-[12px]"
         >
-          Rooted in India. Destined for the world.
+          Rooted in India · Destined for the world
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
-          transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 text-[11px] uppercase tracking-[0.34em] text-chalk/70 md:text-[12px]"
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 text-[11px] uppercase tracking-[0.34em] text-chalk/55 md:text-[12px]"
         >
-          Artistry. Intention. Legacy.
+          Artistry · Intention · Legacy
         </motion.p>
       </div>
     </section>
