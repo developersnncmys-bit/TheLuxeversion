@@ -26,7 +26,7 @@ export function ExclusiveClosing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20% 0px" }}
           transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-[30.528px] font-light uppercase leading-[1.05] tracking-[0.03em]"
+          className="font-display text-[40px] font-light uppercase leading-[1.05] tracking-[0.03em]"
         >
           A piece of your own
         </motion.h2>

@@ -84,7 +84,7 @@ export function ExclusiveFeature({ piece }: { piece: ExclusivePieceType }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 font-display text-[clamp(2rem,3.6vw,3.25rem)] font-light uppercase leading-[1.05] tracking-[0.03em]"
+          className="mt-5 font-display text-[40px] font-light uppercase leading-[1.05] tracking-[0.03em]"
         >
           <Link href={`/exclusive/${piece.slug}`} className="transition-opacity hover:opacity-80">
             {piece.name}

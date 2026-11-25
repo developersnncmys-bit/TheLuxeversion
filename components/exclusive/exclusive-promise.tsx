@@ -31,7 +31,7 @@ export function ExclusivePromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-[30.528px] font-light uppercase leading-[1.05] tracking-[0.03em]"
+          className="font-display text-[40px] font-light uppercase leading-[1.05] tracking-[0.03em]"
         >
           Artistry without borders
         </motion.h2>
