@@ -5,6 +5,7 @@ import { ExclusiveIntro } from "@/components/exclusive/exclusive-intro";
 import { ExclusiveFeature } from "@/components/exclusive/exclusive-feature";
 import { ExclusivePiece } from "@/components/exclusive/exclusive-piece";
 import { ExclusiveClosing } from "@/components/exclusive/exclusive-closing";
+import { ExclusivePromise } from "@/components/exclusive/exclusive-promise";
 
 export const metadata: Metadata = {
   title: "Luxe Exclusive — The Luxe Version",
@@ -26,6 +27,7 @@ export default function ExclusivePage() {
         <ExclusivePiece key={piece.slug} piece={piece} index={i} />
       ))}
       <ExclusiveClosing />
+      <ExclusivePromise />
     </>
   );
 }
