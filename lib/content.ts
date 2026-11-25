@@ -1416,7 +1416,7 @@ export const EXCLUSIVE_PIECES: ExclusivePiece[] = [
     slug: "essor",
     number: "I",
     name: "ESSOR",
-    discipline: "Mantel sculpture",
+    discipline: "Monumental sculpture",
     intro: "The Art of Ascent.",
     body:
       "An expression of power, instinct and effortless grace. ESSOR captures the eagle in a moment of poised majesty, its wings unfolding through an intricate rhythm of sculpted feathers. The artistry lies in the extraordinary treatment of marble — each feather emerges with its own definition, meticulously carved in successive layers to create a remarkable sense of depth, texture and movement. A dialogue between strength and refinement, movement and stillness.",

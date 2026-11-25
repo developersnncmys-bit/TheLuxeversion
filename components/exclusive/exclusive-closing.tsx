@@ -38,9 +38,11 @@ export function ExclusiveClosing() {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 max-w-md text-[13px] leading-[1.9] text-chalk/70 md:text-[14px]"
         >
-          Beyond the pieces above, the studio accepts a small number of private
-          commissions each year. Write to us with the shape of what you have in
-          mind.
+          In addition to the pieces featured within Luxe Exclusive, our studio
+          undertakes private commissions tailored to individual requirements.
+          From artistic concepts and reference images to specific dimensions and
+          finishes, each piece is developed in close consultation with the client
+          and crafted entirely in-house by our selected artisans.
         </motion.p>
 
         <motion.div

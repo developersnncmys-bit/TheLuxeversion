@@ -27,9 +27,20 @@ export function ExclusiveIntro() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-[clamp(0.95rem,1.2vw,1.1rem)] font-light leading-[1.75] text-chalk/85 md:leading-[1.8]"
         >
-          Pieces on this page do not sit on a shelf. They are made in the studio
-          after you ask for them — one at a time, by the same hands, finished to
-          the house standard. Expect a lead time. Expect the piece to be worth it.
+          Each piece within Luxe Exclusive is made to order, tailored to
+          individual preferences and specifications. Shaped by hand and finished
+          with meticulous attention to detail, every sculpture reflects the
+          artistry of our makers and the enduring aesthetic of the House.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15% 0px" }}
+          transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 font-display text-[clamp(0.95rem,1.2vw,1.1rem)] font-light italic leading-[1.75] text-chalk/80 md:leading-[1.8]"
+        >
+          An art form in which time is as essential as craftsmanship.
         </motion.p>
 
         <motion.span

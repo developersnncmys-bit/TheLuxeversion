@@ -45,7 +45,7 @@ export function ExclusiveHero() {
           transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8 text-[10px] uppercase tracking-[0.38em] text-chalk/70"
         >
-          By Request · In House
+          Made to Order · In-House
         </motion.p>
 
         <motion.h1
@@ -72,8 +72,8 @@ export function ExclusiveHero() {
           transition={{ duration: 0.65, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 max-w-sm text-[12px] leading-[1.85] text-chalk/80 md:text-[13px]"
         >
-          A small line of in-house pieces, made to order and finished by hand at
-          the studio.
+          An ode to the timeless beauty of marble. Each piece is brought to life
+          by our chosen artisans in India.
         </motion.p>
       </div>
 
