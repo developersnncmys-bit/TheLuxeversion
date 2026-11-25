@@ -30,7 +30,7 @@ export function ExclusiveFeature({ piece }: { piece: ExclusivePieceType }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10 text-[10px] uppercase tracking-[0.42em] text-champagne/80 md:mb-12"
+          className="mb-10 text-[10px] uppercase tracking-[0.38em] text-champagne/80 md:mb-12"
         >
           The Featured Piece
         </motion.p>
@@ -73,7 +73,7 @@ export function ExclusiveFeature({ piece }: { piece: ExclusivePieceType }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 text-[10px] uppercase tracking-[0.42em] text-chalk/55"
+          className="mt-10 text-[10px] uppercase tracking-[0.38em] text-chalk/55"
         >
           {piece.discipline}
         </motion.p>
@@ -84,7 +84,7 @@ export function ExclusiveFeature({ piece }: { piece: ExclusivePieceType }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 font-display text-[clamp(2rem,3.6vw,3.25rem)] font-light uppercase leading-[1.05] tracking-[0.015em]"
+          className="mt-5 font-display text-[clamp(2rem,3.6vw,3.25rem)] font-light uppercase leading-[1.05] tracking-[0.03em]"
         >
           <Link href={`/exclusive/${piece.slug}`} className="transition-opacity hover:opacity-80">
             {piece.name}

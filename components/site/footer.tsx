@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -155,17 +156,14 @@ export function Footer() {
             sits inside the overlap zone where the chalk-bg strip (z-20)
             clips the top of the `scaleY(1.55)` glyphs. */}
         <div className="mx-auto max-w-editorial px-6 pt-24 pb-10 text-center md:px-10 md:pt-36 md:pb-14">
-          <div
-            style={{
-              fontFamily: "var(--font-serif-display)",
-              transform: "scaleY(1.55)",
-              transformOrigin: "center",
-              display: "inline-block"
-            }}
-            className="text-[clamp(1.125rem,2.4vw,2.25rem)] font-semibold uppercase leading-none tracking-[0.06em]"
-          >
-            The Luxe Version
-          </div>
+          {/* Footer sits on bg-ink (dark) → use dark-bg-logo (white-coloured mark). */}
+          <Image
+            src="/dark-bg-logo.png"
+            alt="The Luxe Version"
+            width={2172}
+            height={724}
+            className="mx-auto h-10 w-auto md:h-14"
+          />
         </div>
 
         {/* 4-col link grid */}

@@ -19,7 +19,7 @@ export function ExclusivePromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10 text-[12px] uppercase tracking-[0.3em] text-chalk/70 md:text-[14px]"
+          className="mb-10 text-[12px] uppercase tracking-[0.38em] text-chalk/70 md:text-[14px]"
         >
           The Promise of the House
         </motion.p>
@@ -31,7 +31,7 @@ export function ExclusivePromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-[clamp(1.625rem,3vw,2.75rem)] font-semibold uppercase leading-[1.05] tracking-[0.005em]"
+          className="font-display text-[30.528px] font-light uppercase leading-[1.05] tracking-[0.03em]"
         >
           Artistry without borders
         </motion.h2>
@@ -44,7 +44,7 @@ export function ExclusivePromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 1.2, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14 max-w-3xl space-y-6 text-[14px] leading-[1.9] text-chalk/80 [text-wrap:pretty] md:text-[15px]"
+          className="mt-14 max-w-3xl space-y-6 text-[13px] leading-[1.9] text-chalk/70 [text-wrap:pretty] md:text-[14px]"
         >
           <p>
             Conceived in India with a global perspective, LUXE EXCLUSIVE brings
@@ -97,7 +97,7 @@ export function ExclusivePromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 text-[11px] uppercase tracking-[0.34em] text-chalk/85 md:text-[12px]"
+          className="mt-10 text-[11px] uppercase tracking-[0.03em] text-chalk/85 md:text-[12px]"
         >
           Rooted in India · Destined for the world
         </motion.p>
@@ -107,7 +107,7 @@ export function ExclusivePromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4 text-[11px] uppercase tracking-[0.34em] text-chalk/55 md:text-[12px]"
+          className="mt-4 text-[11px] uppercase tracking-[0.03em] text-chalk/55 md:text-[12px]"
         >
           Artistry · Intention · Legacy
         </motion.p>

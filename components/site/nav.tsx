@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -278,15 +279,26 @@ export function Nav() {
             <Link
               href="/"
               aria-label="THE LUXE VERSION — home"
-              style={{
-                fontFamily: "var(--font-serif-display)",
-                transform: "translate(-50%, -50%) scaleY(1.55)",
-                transformOrigin: "center",
-                display: "inline-block"
-              }}
-              className="absolute left-1/2 top-1/2 z-[60] whitespace-nowrap text-[14px] font-bold uppercase leading-none tracking-[0.08em] md:text-[22px] md:tracking-[0.12em]"
+              className="absolute left-1/2 top-1/2 z-[60] -translate-x-1/2 -translate-y-1/2"
             >
-              The Luxe Version
+              {/* File naming describes the target background:
+                    - `white-bg-logo.png` = dark-coloured mark, for use ON white bg
+                    - `dark-bg-logo.png`  = white-coloured mark, for use ON dark bg
+                  The panel reads light in three cases:
+                    1. `navLight` pages (products / checkout / exclusive) always
+                       render on a white panel.
+                    2. `navHovered` on any other page flips the dark bar to
+                       white via `md:group-hover/nav:bg-white`.
+                    3. Overlay menu excluded (`!menuOpen`) — when the mobile
+                       overlay is open the panel is dark regardless. */}
+              <Image
+                src={(navLight || navHovered) && !menuOpen ? "/white-bg-logo.png" : "/dark-bg-logo.png"}
+                alt="The Luxe Version"
+                width={2172}
+                height={724}
+                priority
+                className="h-8 w-auto md:h-12"
+              />
             </Link>
 
             {/* Right: utility icons */}
